@@ -1,0 +1,1369 @@
+Date,Budget,Expense,Income ($),Expense ($),Source Tab,Matched Keyword,Matched Vendor,Reimbursable Trip,Column 1,Column 2,Column 3,Column 4,Column 5,Column 6,Column 7,Column 8,Column 9,Column 10,Column 11,Column 12,Column 13,Column 14,Column 15,Column 16,Column 17
+3/11/2025,Entertainment,0240 WELLS FARGO ARENA DES MOINES IA,$0.00,$5.35,1,wells fargo arena,,FALSE,,,,,,,,,,,,,,,,,
+2/16/2025,Retail,AB* ABEBOOKS.CO KPMY7Y SEATTLE WA,$0.00,$7.24,1,abebooks,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Entertainment,ADVENTURELAND PARK,$0.00,$44.65,1,adventureland park,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Entertainment,ADVENTURELAND PARK ALTOONA IA,$0.00,$74.88,1,adventureland park,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/19/2025,Retail,AFFORDABLE COMPANY LEWISVILLE TX,$0.00,$291.95,1,affordable company,,FALSE,,,,,,,,,,,,,,,,,
+7/15/2025,Restaurant,AGAVE AZTECA OMAHA NE,$0.00,$24.21,1,agave azteca,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/16/2025,Groceries,Aldi 72035,$0.00,$42.64,2,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/23/2025,Groceries,Aldi 72035,$0.00,$15.11,2,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/7/2025,Groceries,Aldi 72035,$0.00,$7.92,2,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/8/2025,Groceries,Aldi 72035,$0.00,$68.15,2,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/28/2025,Groceries,Aldi 72035,$0.00,$29.43,2,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/19/2025,Groceries,Aldi 72035,$0.00,$72.23,2,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/31/2025,Groceries,Aldi 72035,$0.00,$22.28,2,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/16/2025,Groceries,Aldi 72035,$0.00,$2.75,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+1/17/2025,Groceries,Aldi 72035,$0.00,$45.99,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+1/17/2025,Groceries,Aldi 72035,$0.00,$7.98,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+1/17/2025,Groceries,Aldi 72035,$0.00,$6.99,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+1/19/2025,Groceries,Aldi 72035,$0.00,$19.95,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+1/25/2025,Groceries,Aldi 72035,$0.00,$31.58,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+1/26/2025,Groceries,Aldi 72035,$0.00,$16.46,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+2/1/2025,Groceries,Aldi 72035,$0.00,$87.57,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+2/2/2025,Groceries,Aldi 72035,$0.00,$13.74,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+2/8/2025,Groceries,Aldi 72035,$0.00,$24.22,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+2/8/2025,Groceries,Aldi 72035,$0.00,$5.29,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Groceries,Aldi 72035,$0.00,$13.66,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+2/27/2025,Groceries,Aldi 72035,$0.00,$6.78,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/15/2025,Groceries,Aldi 72035,$0.00,$29.32,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/16/2025,Groceries,Aldi 72035,$0.00,$5.69,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/17/2025,Groceries,Aldi 72035,$0.00,$12.66,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/23/2025,Groceries,Aldi 72035,$0.00,$45.42,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/23/2025,Groceries,Aldi 72035,$0.00,$6.86,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/27/2025,Groceries,Aldi 72035,$0.00,$6.58,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Groceries,Aldi 72035,$0.00,$15.96,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Groceries,Aldi 72035,$0.00,$9.55,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/31/2025,Groceries,Aldi 72035,$0.00,$5.98,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/1/2025,Groceries,Aldi 72035,$0.00,$2.32,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/5/2025,Groceries,Aldi 72035,$0.00,$27.80,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/8/2025,Groceries,Aldi 72035,$0.00,$2.71,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/11/2025,Groceries,Aldi 72035,$0.00,$1.94,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/13/2025,Groceries,Aldi 72035,$0.00,$71.18,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/15/2025,Groceries,Aldi 72035,$0.00,$5.38,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/19/2025,Groceries,Aldi 72035,$0.00,$21.56,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/22/2025,Groceries,Aldi 72035,$0.00,$1.26,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Groceries,Aldi 72035,$0.00,$2.75,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/5/2025,Groceries,Aldi 72035,$0.00,$70.91,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/5/2025,Groceries,Aldi 72035,$0.00,$2.59,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/12/2025,Groceries,Aldi 72035,$0.00,$38.24,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/23/2025,Groceries,Aldi 72035,$0.00,$33.91,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/23/2025,Groceries,Aldi 72035,$0.00,$1.69,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/26/2025,Groceries,Aldi 72035,$0.00,$3.78,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Groceries,Aldi 72035,$0.00,$6.89,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/1/2025,Groceries,Aldi 72035,$0.00,$109.15,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/8/2025,Groceries,Aldi 72035,$0.00,$31.73,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/15/2025,Groceries,Aldi 72035,$0.00,$76.37,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/15/2025,Groceries,Aldi 72035,$0.00,$7.82,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/22/2025,Groceries,Aldi 72035,$0.00,$5.00,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Groceries,Aldi 72035,$0.00,$11.08,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Groceries,Aldi 72035,$0.00,$0.93,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Groceries,Aldi 72035,$0.00,$41.51,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+7/1/2025,Groceries,Aldi 72035,$0.00,$15.25,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+7/1/2025,Groceries,Aldi 72035,$0.00,$0.79,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Groceries,Aldi 72035,$0.00,$21.21,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+7/12/2025,Groceries,Aldi 72035,$0.00,$26.14,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+7/29/2025,Groceries,Aldi 72035,$0.00,$36.75,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+7/31/2025,Groceries,Aldi 72035,$0.00,$2.81,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+8/7/2025,Groceries,Aldi 72035,$0.00,$6.58,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+8/8/2025,Groceries,Aldi 72035,$0.00,$24.93,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+8/21/2025,Groceries,Aldi 72035,$0.00,$49.19,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+8/25/2025,Groceries,Aldi 72035,$0.00,$3.89,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+8/25/2025,Groceries,Aldi 72035,$0.00,$33.61,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Groceries,Aldi 72035,$0.00,$2.19,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+9/6/2025,Groceries,Aldi 72035,$0.00,$20.13,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+9/13/2025,Groceries,Aldi 72035,$0.00,$30.50,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+9/15/2025,Groceries,Aldi 72035,$0.00,$6.46,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+9/21/2025,Groceries,Aldi 72035,$0.00,$47.11,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+10/16/2025,Groceries,ALDI 72035 ANKENY,$0.00,$14.32,5,aldi,,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Groceries,ALDI 72035 ANKENY,$0.00,$63.17,5,aldi,,FALSE,,,,,,,,,,,,,,,,,
+2/28/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$30.79,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+4/18/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$29.60,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/18/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$36.60,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/25/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$38.85,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+5/28/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$48.57,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+6/21/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$3.30,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+8/30/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$13.47,1,aldi,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/26/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$48.89,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+10/3/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$31.92,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+10/4/2025,Groceries,ALDI 72035 ANKENY IA,$0.00,$3.39,1,aldi,,FALSE,,,,,,,,,,,,,,,,,
+3/2/2025,Groceries,Aldi 72110,$0.00,$32.38,2,aldi,,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Clothing,AMAZON MKTPL*NM17U2J40,$0.00,$5.84,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Giving,AMAZON MKTPL*NM17U2J40,$0.00,$2.92,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Health,AMAZON MKTPL*NM17U2J40,$0.00,$5.84,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Housing,AMAZON MKTPL*NM17U2J40,$0.00,$14.61,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Retail,AMAZON MKTPL*NM17U2J40,$0.00,$23.37,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Toiletries,AMAZON MKTPL*NM17U2J40,$0.00,$5.84,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Clothing,AMAZON MKTPL*NM5W96E40,$0.00,$0.85,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Giving,AMAZON MKTPL*NM5W96E40,$0.00,$0.42,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Health,AMAZON MKTPL*NM5W96E40,$0.00,$0.85,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Housing,AMAZON MKTPL*NM5W96E40,$0.00,$2.12,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Retail,AMAZON MKTPL*NM5W96E40,$0.00,$3.39,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Toiletries,AMAZON MKTPL*NM5W96E40,$0.00,$0.85,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Clothing,AMAZON MKTPL*NM85O2Z30,$0.00,$3.72,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Giving,AMAZON MKTPL*NM85O2Z30,$0.00,$1.86,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Health,AMAZON MKTPL*NM85O2Z30,$0.00,$3.72,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Housing,AMAZON MKTPL*NM85O2Z30,$0.00,$9.29,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Retail,AMAZON MKTPL*NM85O2Z30,$0.00,$14.86,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/12/2025,Toiletries,AMAZON MKTPL*NM85O2Z30,$0.00,$3.72,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Clothing,AMAZON MKTPL*NV0C36DB2,$0.00,$19.08,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Giving,AMAZON MKTPL*NV0C36DB2,$0.00,$9.54,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Health,AMAZON MKTPL*NV0C36DB2,$0.00,$19.08,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Housing,AMAZON MKTPL*NV0C36DB2,$0.00,$47.70,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Retail,AMAZON MKTPL*NV0C36DB2,$0.00,$76.31,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Toiletries,AMAZON MKTPL*NV0C36DB2,$0.00,$19.08,5,amazon mktpl,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Clothing,Amazon.com*NF82A23X1,$0.00,$6.47,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Giving,Amazon.com*NF82A23X1,$0.00,$3.23,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Health,Amazon.com*NF82A23X1,$0.00,$6.47,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Housing,Amazon.com*NF82A23X1,$0.00,$16.16,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Retail,Amazon.com*NF82A23X1,$0.00,$25.86,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Toiletries,Amazon.com*NF82A23X1,$0.00,$6.47,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Clothing,Amazon.com*NF8A44SP1,$0.00,$3.39,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Giving,Amazon.com*NF8A44SP1,$0.00,$1.70,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Health,Amazon.com*NF8A44SP1,$0.00,$3.39,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Housing,Amazon.com*NF8A44SP1,$0.00,$8.48,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Retail,Amazon.com*NF8A44SP1,$0.00,$13.56,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Toiletries,Amazon.com*NF8A44SP1,$0.00,$3.39,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Clothing,Amazon.com*NM6KP6JS1,$0.00,$2.65,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Giving,Amazon.com*NM6KP6JS1,$0.00,$1.32,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Health,Amazon.com*NM6KP6JS1,$0.00,$2.65,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Housing,Amazon.com*NM6KP6JS1,$0.00,$6.62,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Retail,Amazon.com*NM6KP6JS1,$0.00,$10.60,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Toiletries,Amazon.com*NM6KP6JS1,$0.00,$2.65,5,amazon.com,amazon,FALSE,,,,,,,,,,,,,,,,,
+2/5/2025,Health,AMES CHIROPRACTIC & WC ANKENY,$0.00,$50.00,1,ames chiropractic,,FALSE,,,,,,,,,,,,,,,,,
+1/27/2025,Health,AMES CHIROPRACTIC & WC ANKENY IA,$0.00,$53.89,1,ames chiropractic,,FALSE,,,,,,,,,,,,,,,,,
+1/29/2025,Health,AMES CHIROPRACTIC & WC ANKENY IA,$0.00,$25.00,1,ames chiropractic,,FALSE,,,,,,,,,,,,,,,,,
+2/3/2025,Health,AMES CHIROPRACTIC & WC ANKENY IA,$0.00,$25.00,1,ames chiropractic,,FALSE,,,,,,,,,,,,,,,,,
+6/16/2025,Restaurant,Amigo Mexican Restaura,$0.00,$12.62,2,amigo mexican,,FALSE,,,,,,,,,,,,,,,,,
+3/20/2025,Housing,Ankeny Hardware,$0.00,$8.46,2,ankeny hardware,,FALSE,,,,,,,,,,,,,,,,,
+3/4/2025,Housing,ANKENY HARDWARE ANKENY IA,$0.00,$19.60,1,ankeny hardware,,FALSE,,,,,,,,,,,,,,,,,
+4/25/2025,Housing,ANKENY HARDWARE ANKENY IA,$0.00,$42.38,1,ankeny hardware,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$116.05,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$165.89,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$109.41,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$134.40,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$106.36,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$120.63,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$107.02,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$118.38,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,ANKENY IA,$0.00,$89.48,1,,,FALSE,,,,,,,,,,,,,,,,,
+2/1/2025,Utilities,ANKENY SANITATION ANKENY IA,$0.00,$48.83,1,ankeny sanitation,,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Utilities,ANKENY SANITATION ANKENY IA,$0.00,$49.56,1,ankeny sanitation,,FALSE,,,,,,,,,,,,,,,,,
+8/1/2025,Utilities,ANKENY SANITATION ANKENY IA,$0.00,$51.98,1,ankeny sanitation,,FALSE,,,,,,,,,,,,,,,,,
+8/18/2025,Restaurant,B-BOPS FLEUR DES MOINES IA,$0.00,$40.90,1,b-bops,,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Retail,Bass Pro Store Altoona,$0.00,$10.69,2,store,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/27/2025,Retail,BEELINE + BLUE. DES MOINES IA,$0.00,$35.36,1,beeline,,FALSE,,,,,,,,,,,,,,,,,
+4/25/2025,Retail,BOOKEMON,$0.00,$36.58,1,bookemon,,FALSE,,,,,,,,,,,,,,,,,
+3/27/2025,Vacation,BUC-EE'S #33 TEXAS CITY TX,$0.00,$10.26,1,buc-ee's,,FALSE,,,,,,,,,,,,,,,,,
+8/17/2025,Vacation,"BUTCHART GARDENS GELAT BRENTWOOD BAY BC
+ CA DOLLAR",$0.00,$20.57,1,butchart gardens,,FALSE,,,,,,,,,,,,,,,,,
+8/17/2025,Vacation,"BUTCHART GARDENS GIFT BRENTWOOD BAY BC
+ CA DOLLAR",$0.00,$18.06,1,butchart gardens,,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Groceries,C FRESH MARKET DES MOINES IA,$0.00,$96.41,1,c fresh market,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/4/2025,Restaurant,CANCUN GRILL & CANTINA ANKENY IA,$0.00,$23.71,1,cancun grill,,FALSE,,,,,,,,,,,,,,,,,
+4/18/2025,Restaurant,CANCUN GRILL & CANTINA URBANDALE IA,$0.00,$52.54,1,cancun grill,,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Restaurant,CANCUN GRILL &amp; CANTINA #,$0.00,$19.18,5,cancun grill,,FALSE,,,,,,,,,,,,,,,,,
+9/6/2025,Health,Capital Orthopaedics,$0.00,$25.00,2,capital orthopaedics,,FALSE,,,,,,,,,,,,,,,,,
+10/1/2025,Health,CAPITAL ORTHOPAEDICS CLIVE IA,$0.00,$61.78,1,capital orthopaedics,,FALSE,,,,,,,,,,,,,,,,,
+8/30/2025,Transportation,CASEYS #1327 LOVILIA IA,$0.00,$22.72,1,caseys,,TRUE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Transportation,CASEYS #1548 ANKENY IA,$0.00,$24.32,1,caseys,,FALSE,,,,,,,,,,,,,,,,,
+5/16/2025,Transportation,Caseys #2641 2849 E Eu,$0.00,$0.95,2,caseys,,FALSE,,,,,,,,,,,,,,,,,
+6/1/2025,Transportation,CASEYS #3481 MEDFORD MN,$0.00,$0.96,1,caseys,,FALSE,,,,,,,,,,,,,,,,,
+6/1/2025,Transportation,CASEYS #3481 MEDFORD MN,$0.00,$25.96,1,caseys,,FALSE,,,,,,,,,,,,,,,,,
+7/1/2025,Health,CENTRAL IOWA ORTHODONT ANKENY IA,$0.00,$100.00,1,central iowa orthodont,,FALSE,,,,,,,,,,,,,,,,,
+6/10/2025,Restaurant,Charleys Philly Steaks,$0.00,$19.25,2,charleys philly,,FALSE,,,,,,,,,,,,,,,,,
+,Education,CHECK,$0.00,$25.00,5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Vacation,CHECK,"$2,344.00",,5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Giving,CHECK,$0.00,"$1,060.00",5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Sports,CHECK,$0.00,$18.00,5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Taxes,CHECK,$0.00,$427.50,5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Vacation,CHECK,$0.00,$70.00,5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Vacation,CHECK,$0.00,$200.00,5,check,,FALSE,,,,,,,,,,,,,,,,,
+,Vacation,CHECK,$0.00,$370.00,5,check,,FALSE,,,,,,,,,,,,,,,,,
+5/7/2025,Restaurant,CHICK-FIL-A #03303 ANKENY IA,$0.00,$30.00,1,chick-fil-a,,FALSE,,,,,,,,,,,,,,,,,
+4/19/2025,Entertainment,CINEMARK 1132 BOXCON ALTOONA IA,$0.00,$43.61,1,cinemark,,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Entertainment,CITY OF ANKENY - AQUAT ANKENY IA,$0.00,$18.54,1,city of ankeny,,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Entertainment,CITY OF ANKENY - AQUAT ANKENY IA,$0.00,$30.90,1,city of ankeny,,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Vacation,CITY-MARKET #0430 BRECKENRIDGE CO,$0.00,$182.02,1,city-market,,FALSE,,,,,,,,,,,,,,,,,
+2/17/2025,Clothing,Clothing (Venmo),$0.00,$25.42,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/22/2025,Clothing,Clothing (Venmo),$25.42,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/27/2025,Clothing,Clothing (Venmo),$0.00,$20.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/4/2025,Clothing,Clothing (Venmo),$0.00,$20.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/21/2025,Clothing,Clothing (Venmo),$0.00,$32.09,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Clothing,Clothing (Venmo),$0.00,$88.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Clothing,Clothing (Venmo),$0.00,$5.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+,Clothing,Clothing (Venmo),$0.00,$80.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,
+,Clothing,Clothing (Venmo),$0.00,$25.95,3,venmo,,FALSE,,,,,,,,,,,,,,,,,
+1/15/2025,Restaurant,Coldstone,$0.00,$3.17,2,coldstone,,FALSE,,,,,,,,,,,,,,,,,
+2/2/2025,Restaurant,Coldstone,$0.00,$3.17,2,coldstone,,FALSE,,,,,,,,,,,,,,,,,
+10/11/2025,Giving,COMPASSION INTERNATION,$0.00,$150.00,5,compassion,,FALSE,,,,,,,,,,,,,,,,,
+1/15/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,
+3/15/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,
+4/15/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,
+5/15/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,
+6/15/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,
+2/15/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/15/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/25/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/11/2025,Giving,COMPASSION INTERNATION COLORADO SPRI CO,$0.00,$50.00,1,compassion,,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Restaurant,Culvers Ankeny,$0.00,$37.26,2,culvers,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/24/2025,Restaurant,Culvers N Ankeny,$0.00,$30.12,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+1/25/2025,Restaurant,Culvers N Ankeny,$0.00,$8.48,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Restaurant,Culvers N Ankeny,$0.00,$19.15,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+2/20/2025,Restaurant,Culvers N Ankeny,$0.00,$8.48,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+2/27/2025,Restaurant,Culvers N Ankeny,$0.00,$11.74,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+3/26/2025,Restaurant,Culvers N Ankeny,$0.00,$14.82,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+5/9/2025,Restaurant,Culvers N Ankeny,$0.00,$8.48,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+6/28/2025,Restaurant,Culvers N Ankeny,$0.00,$24.38,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+3/10/2025,Restaurant,Culvers N Ankeny,$0.00,$30.70,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/27/2025,Restaurant,Culvers N Ankeny,$0.00,$28.91,2,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/7/2025,Restaurant,CULVERS N ANKENY ANKENY IA,$0.00,$10.38,1,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+5/23/2025,Restaurant,CULVERS N ANKENY ANKENY IA,$0.00,$6.99,1,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+9/13/2025,Restaurant,CULVERS N ANKENY ANKENY IA,$0.00,$9.12,1,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,
+2/14/2025,Restaurant,CULVERS N ANKENY ANKENY IA,$0.00,$30.69,1,culvers n ankeny,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/23/2025,Education,CUSTOMER WITHDRAWAL,$0.00,$600.00,5,customer withdrawal,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/25/2025,Retail,DAVE S JEWELRY ANKENY IA,$0.00,$10.60,1,jewelry,,FALSE,,,,,,,,,,,,,,,,,
+7/24/2025,Restaurant,Daylight Donuts,$0.00,$7.80,2,daylight donuts,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/2/2025,Restaurant,DD *DOORDASH MENYAMUSA SAN FRANCISCO CA,$0.00,$36.20,1,doordash,,TRUE,,,,,,,,,,,,,,,,,FALSE
+2/15/2025,Entertainment,DES MOINES PERF. ARTS DES MOINES IA,$0.00,$119.80,1,des moines perf. arts,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/27/2025,Health,DESIGNED 2 MOVE CHIROP ANKENY IA,$0.00,$52.00,1,designed 2 move,,FALSE,,,,,,,,,,,,,,,,,
+6/3/2025,Health,DESIGNED 2 MOVE CHIROP ANKENY IA,$0.00,$52.00,1,designed 2 move,,FALSE,,,,,,,,,,,,,,,,,
+6/6/2025,Health,DESIGNED 2 MOVE CHIROP ANKENY IA,$0.00,$72.00,1,designed 2 move,,FALSE,,,,,,,,,,,,,,,,,
+6/13/2025,Health,DESIGNED 2 MOVE CHIROP ANKENY IA,$0.00,$27.00,1,designed 2 move,,FALSE,,,,,,,,,,,,,,,,,
+6/16/2025,Health,DESIGNED 2 MOVE CHIROP ANKENY IA,$0.00,$47.00,1,designed 2 move,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Health,DESIGNED 2 MOVE CHIROP ANKENY IA,$0.00,$47.00,1,designed 2 move,,FALSE,,,,,,,,,,,,,,,,,
+6/9/2025,Health,"DESIGNED 2 MOVE CHIROP ANKENY IA
+ REGULAR PURCHASES",$0.00,$72.00,1,designed 2 move,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Restaurant,DISTRICT 36 WINE BAR A ANKENY IA,$0.00,$47.88,1,district 36,,FALSE,,,,,,,,,,,,,,,,,
+8/25/2025,Education,DO CPR ANKENY IA,$0.00,$104.99,1,do cpr,,FALSE,,,,,,,,,,,,,,,,,
+6/24/2025,Health,DOC*IOWA DERM CLINIC ANKENY IA,$0.00,$75.00,1,doc*iowa derm,,FALSE,,,,,,,,,,,,,,,,,
+9/27/2025,Retail,DOLLAR TREE ANKENY IA,$0.00,$55.39,1,dollar tree,,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Retail,DOLLAR TREE ANKENY IA,$0.00,$48.88,1,dollar tree,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/8/2025,Retail,DOLLARTREE BOONE IA,$0.00,$6.34,1,dollartree,,TRUE,,,,,,,,,,,,,,,,,FALSE
+8/19/2025,Sports,DRIVE WITH COPS,$0.00,$425.00,1,drive with cops,,FALSE,,,,,,,,,,,,,,,,,
+3/14/2025,Transportation,Dsm Parking Meters,$0.00,$1.25,2,dsm parking,,FALSE,,,,,,,,,,,,,,,,,
+3/11/2025,Transportation,DSM PARKING METERS DES MOINES IA,$0.00,$1.00,1,dsm parking,,FALSE,,,,,,,,,,,,,,,,,
+5/10/2025,Transportation,DSM PARKING METERS DES MOINES IA,$0.00,$2.75,1,dsm parking,,FALSE,,,,,,,,,,,,,,,,,
+5/16/2025,Transportation,DSM PARKING METERS DES MOINES IA,$0.00,$5.25,1,dsm parking,,FALSE,,,,,,,,,,,,,,,,,
+5/16/2025,Transportation,DSM PARKING METERS DES MOINES IA,$0.00,$1.25,1,dsm parking,,FALSE,,,,,,,,,,,,,,,,,
+8/28/2025,Transportation,DSM PARKING METERS DES MOINES IA,$0.00,$1.50,1,dsm parking,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/28/2025,Transportation,DSM PARKING METERS DES MOINES IA,$0.00,$0.75,1,dsm parking,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/18/2025,Transportation,DSM PARKING TIBA DES MOINES IA,$0.00,$72.00,1,dsm parking tiba,,FALSE,,,,,,,,,,,,,,,,,
+7/17/2025,Restaurant,DUMPLING EMPIRE OMAHA NE,$0.00,$17.10,1,dumpling empire,,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/19/2025,Retail,DUNHAMS 288 AMES IA,$0.00,$16.04,1,dunhams,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/1/2025,Education,Education (Venmo),$125.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/8/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$80.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/10/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/12/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/21/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/21/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/21/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/21/2025,Education,Education (Venmo),$40.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/28/2025,Education,Education (Venmo),$135.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/11/2025,Education,Education (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/11/2025,Education,Education (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/12/2025,Education,Education (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/13/2025,Education,Education (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/14/2025,Education,Education (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/16/2025,Education,Education (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/18/2025,Education,Education (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/30/2025,Vacation,EG*TRVL73123044821297,$0.00,"$1,336.36",1,eg*trvl,,FALSE,,,,,,,,,,,,,,,,,
+1/21/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,466.21",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+2/7/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.68",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+3/21/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,392.02",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+4/7/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.68",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.67",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+5/7/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.69",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+5/21/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,547.68",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+6/6/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.67",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.69",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+7/7/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.67",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+8/7/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,963.58",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+8/21/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.68",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+9/5/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,237.66",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+9/19/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,299.96",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+10/7/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.69",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,
+2/21/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.67",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/7/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,471.89",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/21/2025,Income,ELECTRONIC DEPOSIT ADP TOTALSOURCE,"$2,132.68",$0.00,5,electronic deposit adp totalsource,,FALSE,,,,,,,,,,,,,,,,,FALSE
+,Income,ELECTRONIC DEPOSIT IASTTAXRFD,"$2,615.00",$0.00,5,electronic deposit,,FALSE,,,,,,,,,,,,,,,,,
+,Health,ELECTRONIC DEPOSIT LPL,"$4,000.00",$0.00,5,electronic deposit lpl,,FALSE,,,,,,,,,,,,,,,,,
+9/25/2025,Income,ELECTRONIC DEPOSIT Qube,$151.15,$0.00,5,electronic deposit qube,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/29/2025,Income,ELECTRONIC DEPOSIT Qube,$262.56,$0.00,5,electronic deposit qube,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/29/2025,Income,ELECTRONIC DEPOSIT Qube,$51.99,$0.00,5,electronic deposit qube,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/30/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,861.18",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+2/27/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,$242.90,$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+2/28/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,861.18",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,836.17",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,833.22",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+6/27/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$2,210.99",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,833.24",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+7/30/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,450.47",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+9/30/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,426.55",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,
+4/30/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,836.18",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,$11.28,$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/29/2025,Income,ELECTRONIC DEPOSIT RAKER RHODES ENG,"$5,426.56",$0.00,5,electronic deposit raker rhodes,,FALSE,,,,,,,,,,,,,,,,,FALSE
+,Education,ELECTRONIC DEPOSIT SMJEXQ-USSF LC,$0.01,$0.00,5,electronic deposit,,FALSE,,,,,,,,,,,,,,,,,
+3/17/2025,Taxes,ELECTRONIC WITHDRAWAL IRS,$0.00,$283.00,5,irs,,FALSE,,,,,,,,,,,,,,,,,
+1/15/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/22/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/29/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/5/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/12/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/19/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/26/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/5/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/12/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/19/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/26/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/2/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/9/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/16/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/23/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/30/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/7/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,$940.00,5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/13/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/20/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/28/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/3/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/10/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/17/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/24/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/1/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/8/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/15/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/22/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/29/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/5/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/12/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/19/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/26/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/3/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/9/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/16/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/23/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/30/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/7/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/15/2025,Savings,ELECTRONIC WITHDRAWAL LPL,$0.00,"$1,125.00",5,electronic withdrawal lpl,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/28/2025,Education,ELECTRONIC WITHDRAWAL SMJEXQ-USSF LC,$0.00,$0.01,5,smjexq-ussf lc,,FALSE,,,,,,,,,,,,,,,,,
+1/27/2025,Vacation,ELECTRONIC WITHDRAWAL SPLITWISE,$0.00,$300.53,5,splitwise,,FALSE,,,,,,,,,,,,,,,,,
+1/22/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$295.59,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+2/19/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$296.23,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+3/19/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$305.32,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$305.32,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+5/19/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$313.81,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$326.95,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+8/19/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$313.71,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+9/19/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$313.71,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,
+7/21/2025,Utilities,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,$0.00,$313.81,5,verizon wireless,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/17/2025,Transportation,"ENTERPRISE RENT-A-CAR DES MOINES IA
+ CK-OUT 02/18/25 RETURN 02/18/25
+ CHRISTOPHER COX",$0.00,$112.34,1,enterprise,,TRUE,,,,,,,,,,,,,,,,,FALSE
+9/3/2025,Transportation,"ENTERPRISE RENT-A-CAR DES MOINES IA
+ CK-OUT 09/03/25 RETURN 09/03/25
+ CHRISTOPHER COX",$0.00,$42.56,1,enterprise,,FALSE,,,,,,,,,,,,,,,,,
+2/27/2025,Entertainment,Entertainment (Venmo),$59.90,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/9/2025,Entertainment,Entertainment (Venmo),$0.00,$25.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/19/2025,Entertainment,Entertainment (Venmo),$0.00,$5.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/14/2025,Entertainment,Entertainment (Venmo),$200.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/14/2025,Entertainment,Entertainment (Venmo),$0.00,$70.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/11/2025,Retail,"Etsy, Inc.",$0.00,$37.20,2,etsy,,FALSE,,,,,,,,,,,,,,,,,
+2/15/2025,Retail,ETSY.COM*GRACEFULLYMAR BROOKLYN NY,$0.00,$6.56,1,etsy,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/21/2025,Groceries,Fareway Stores,$0.00,$5.99,2,fareway,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/2/2025,Groceries,Fareway Stores #061,$0.00,$14.85,2,fareway,,FALSE,,,,,,,,,,,,,,,,,
+3/23/2025,Groceries,Fareway Stores #061,$0.00,$50.06,2,fareway,,FALSE,,,,,,,,,,,,,,,,,
+4/26/2025,Groceries,Fareway Stores #061,$0.00,$37.92,2,fareway,,FALSE,,,,,,,,,,,,,,,,,
+2/28/2025,Groceries,FAREWAY STORES #061 ANKENY IA,$0.00,$13.55,1,fareway,,FALSE,,,,,,,,,,,,,,,,,
+5/10/2025,Groceries,FAREWAY STORES #061 ANKENY IA,$0.00,$34.41,1,fareway,,FALSE,,,,,,,,,,,,,,,,,
+,Entertainment,FISHINGBOOKE*WATERSEDG NORFOLK VA,$0.00,$30.00,1,,,FALSE,,,,,,,,,,,,,,,,,
+3/20/2025,Housing,FLEET FARM 3300 ANKENY IA,$0.00,$93.34,1,fleet farm,,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Health,FOCUS FAMILY EYE CARE ALTOONA IA,$0.00,$250.00,1,focus family eye,,FALSE,,,,,,,,,,,,,,,,,
+5/19/2025,Restaurant,Gdp*The Creamery,$0.00,$26.74,2,gdp*the creamery,,FALSE,,,,,,,,,,,,,,,,,
+6/7/2025,Restaurant,Gdp*The Creamery,$0.00,$15.24,2,gdp*the creamery,,FALSE,,,,,,,,,,,,,,,,,
+8/25/2025,Restaurant,Gdp*The Creamery,$0.00,$20.70,2,gdp*the creamery,,FALSE,,,,,,,,,,,,,,,,,
+7/21/2025,Restaurant,Gdp*The Creamery,$0.00,$20.99,2,gdp*the creamery,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/11/2025,Restaurant,GDP*THE CREAMERY POLK CITY IA,$0.00,$20.99,1,gdp*the creamery,,FALSE,,,,,,,,,,,,,,,,,
+7/19/2025,Restaurant,GDP*THE CREAMERY POLK CITY IA,$0.00,$26.74,1,gdp*the creamery,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/11/2025,Restaurant,Gdp*Uptown Dairy,$0.00,$10.48,2,gdp*uptown dairy,,FALSE,,,,,,,,,,,,,,,,,
+2/7/2025,Giving,Giving (Venmo),$5.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/14/2025,Giving,Giving (Venmo),$500.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/8/2025,Giving,Giving (Venmo),$20.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/15/2025,Giving,Giving (Venmo),$0.00,$50.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/26/2025,Giving,Giving (Venmo),$0.00,$25.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/18/2025,Giving,Giving (Venmo),$0.00,$50.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/21/2025,Giving,Giving (Venmo),$0.00,$20.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/26/2025,Giving,Giving (Venmo),$0.00,$25.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/21/2025,Giving,Giving (Venmo),$0.00,$127.19,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/28/2025,Giving,Giving (Venmo),$10.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+,Giving,Giving (Venmo),$10.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,
+7/1/2025,Vacation,GLACIER CANYON ECOMM WISCONSIN DEL WI,$0.00,"$1,460.52",1,glacier canyon ecomm,,FALSE,,,,,,,,,,,,,,,,,
+6/14/2025,Vacation,"GLACIER CANYON LODGE WISCONSIN DEL WI
+ ARRIVE 06/13/25 DEPART 06/14/25",$0.00,$335.63,1,glacier canyon,,FALSE,,,,,,,,,,,,,,,,,
+7/3/2025,Vacation,"GLACIER CANYON LODGE WISCONSIN DEL WI
+ ARRIVE 07/02/25 DEPART 07/03/25",$0.00,$10.66,1,glacier canyon,,FALSE,,,,,,,,,,,,,,,,,
+7/5/2025,Vacation,"GLACIER CANYON LODGE WISCONSIN DEL WI
+ ARRIVE 07/02/25 DEPART 07/05/25",$0.00,$132.25,1,glacier canyon,,FALSE,,,,,,,,,,,,,,,,,
+2/14/2025,Giving,GOFNDME* SUPPORT GAGE SAN DIEGO CA,$0.00,$575.00,1,gofndme,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/28/2025,Restaurant,GRACIES GALVESTON TX,$0.00,$12.99,1,gracies,,FALSE,,,,,,,,,,,,,,,,,
+3/26/2025,Education,GRAND VIEW CHRISTIAN S DES MOINES IA,$0.00,$11.00,1,grand view christian,,FALSE,,,,,,,,,,,,,,,,,
+5/5/2025,Education,GRAND VIEW CHRISTIAN S DES MOINES IA,$0.00,$20.00,1,grand view christian,,FALSE,,,,,,,,,,,,,,,,,
+5/8/2025,Education,GRAND VIEW CHRISTIAN S DES MOINES IA,$0.00,$9.00,1,grand view christian,,FALSE,,,,,,,,,,,,,,,,,
+5/13/2025,Education,GRAND VIEW CHRISTIAN S DES MOINES IA,$0.00,$50.00,1,grand view christian,,FALSE,,,,,,,,,,,,,,,,,
+1/30/2025,Education,GRANDVIEW CHRISTIAN SC,$0.00,$33.00,1,grandview christian,,FALSE,,,,,,,,,,,,,,,,,
+2/21/2025,Education,GRANDVIEW CHRISTIAN SC DES MOINES IA,$0.00,$53.25,1,grandview christian,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/27/2025,Education,GRANDVIEW CHRISTIAN SC DES MOINES IA,$0.00,$52.50,1,grandview christian,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/20/2025,Education,GRANDVIEW CHRISTIAN SC DES MOINES IA,$0.00,$61.50,1,grandview christian,,FALSE,,,,,,,,,,,,,,,,,
+8/19/2025,Education,GRANDVIEW CHRISTIAN SC DES MOINES IA,$0.00,$74.50,1,grandview christian,,FALSE,,,,,,,,,,,,,,,,,
+9/26/2025,Education,GRANDVIEW CHRISTIAN SC DES MOINES IA,$0.00,$60.50,1,grandview christian,,FALSE,,,,,,,,,,,,,,,,,
+2/8/2025,Groceries,Groceries (Venmo),$0.00,$30.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/14/2025,Groceries,Groceries (Venmo),$0.00,$9.99,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/21/2025,Groceries,Groceries (Venmo),$0.00,$55.59,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/22/2025,Groceries,Groceries (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/6/2025,Groceries,Groceries (Venmo),$0.00,$20.98,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/14/2025,Groceries,Groceries (Venmo),$21.50,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/17/2025,Groceries,Groceries (Venmo),$0.00,$13.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/23/2025,Groceries,Groceries (Venmo),$18.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/31/2025,Groceries,Groceries (Venmo),$0.00,$10.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/8/2025,Groceries,Groceries (Venmo),$0.00,$24.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/29/2025,Restaurant,H MART SEATTLE WA,$0.00,$8.82,1,h mart,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/22/2025,Health,Health (Venmo),$0.00,$94.87,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/29/2025,Restaurant,Hidalgo Mexican Bar An,$0.00,$24.13,2,hidalgo mexican,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/17/2025,Vacation,"HILTON HOTELS CEDAR RAPIDS IA
+ ARRIVE 02/16/25 DEPART 02/17/25",$0.00,$92.14,1,hilton,,TRUE,,,,,,,,,,,,,,,,,FALSE
+9/20/2025,Retail,Hobbylobby,$0.00,$12.56,2,hobbylobby,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Housing,HOMEDEPOT.COM,$0.00,$33.19,1,homedepot.com,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Housing,HOMEDEPOT.COM,$0.00,$18.80,1,homedepot.com,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Subscriptions,HP *INSTANT INK,$0.00,$1.04,1,hp *instant ink,,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Subscriptions,HP *INSTANT INK,$0.00,$5.82,1,hp *instant ink,,FALSE,,,,,,,,,,,,,,,,,
+7/20/2025,Subscriptions,HP *INSTANT INK,$0.00,$5.82,1,hp *instant ink,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/8/2025,Restaurant,Hy-Vee Ankeny 10 Hy Ve,$0.00,$54.36,2,hy-vee,,FALSE,,,,,,,,,,,,,,,,,
+9/4/2025,Restaurant,Hy-Vee Ankeny 10 Hy Ve,$0.00,$10.59,2,hy-vee,,FALSE,,,,,,,,,,,,,,,,,
+2/16/2025,Restaurant,Hy-Vee Ankeny 10 Hy Ve,$0.00,$5.30,2,hy-vee,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/9/2025,Restaurant,Hy-Vee Ankeny 10 Hy Ve,$0.00,$35.00,2,hy-vee,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/15/2025,Restaurant,HY-VEE ANKENY 1022 ANKENY IA,$0.00,$10.89,1,hy-vee,,FALSE,,,,,,,,,,,,,,,,,
+5/24/2025,Restaurant,HY-VEE ANKENY 1022 ANKENY IA,$0.00,$83.91,1,hy-vee,,FALSE,,,,,,,,,,,,,,,,,
+5/26/2025,Restaurant,HY-VEE ANKENY 1022 ANKENY IA,$0.00,$9.98,1,hy-vee,,FALSE,,,,,,,,,,,,,,,,,
+5/26/2025,Restaurant,HY-VEE ANKENY 1022 ANKENY IA,$0.00,$3.35,1,hy-vee,,FALSE,,,,,,,,,,,,,,,,,
+3/8/2025,Restaurant,HY-VEE ANKENY 1022 ANKENY IA,$0.00,$30.00,1,hy-vee,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/18/2025,Restaurant,HY-VEE ANKENY 1022 ANKENY IA,$0.00,$24.46,1,hy-vee,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/19/2025,Restaurant,HY-VEE ANKENY 1023 ANKENY IA,$0.00,$7.39,1,hy-vee,,FALSE,,,,,,,,,,,,,,,,,
+2/17/2025,Restaurant,HY-VEE JOHNSTON FFE 75 JOHNSTON IA,$0.00,$32.72,1,hy-vee johnston,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/26/2025,Restaurant,HY-VEE JOHNSTON FFE 75 JOHNSTON IA,$0.00,$49.57,1,hy-vee johnston,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/16/2025,Restaurant,I LOVE PAD THAI II OMAHA NE,$0.00,$16.74,1,i love pad thai,,TRUE,,,,,,,,,,,,,,,,,FALSE
+4/17/2025,Housing,IN *THE SHREDDER,$0.00,$40.00,1,in *the shredder,,FALSE,,,,,,,,,,,,,,,,,
+1/16/2025,Income,INTEREST PAID THIS PERIOD,$0.05,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+2/18/2025,Income,INTEREST PAID THIS PERIOD,$0.05,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+3/17/2025,Income,INTEREST PAID THIS PERIOD,$0.04,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+4/15/2025,Income,INTEREST PAID THIS PERIOD,$0.05,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+5/15/2025,Income,INTEREST PAID THIS PERIOD,$0.06,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+6/16/2025,Income,INTEREST PAID THIS PERIOD,$0.05,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+8/15/2025,Income,INTEREST PAID THIS PERIOD,$0.05,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+9/16/2025,Income,INTEREST PAID THIS PERIOD,$0.04,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+10/16/2025,Income,INTEREST PAID THIS PERIOD,$0.05,$0.00,5,interest paid this period,,FALSE,,,,,,,,,,,,,,,,,
+7/16/2025,Income,INTEREST PAID THIS PERIOD,$0.04,$0.00,5,interest paid this period,,TRUE,,,,,,,,,,,,,,,,,FALSE
+10/14/2025,Health,IOWA ENT CENTER,$0.00,$75.00,5,iowa ent center,,FALSE,,,,,,,,,,,,,,,,,
+3/11/2025,Entertainment,IOWA EVENTS CENTER TIX,$0.00,$40.00,1,iowa events center,,FALSE,,,,,,,,,,,,,,,,,
+3/13/2025,Entertainment,IOWA EVENTS CENTER TIX,$0.00,$40.00,1,iowa events center,,FALSE,,,,,,,,,,,,,,,,,
+2/28/2025,Health,IOWA RADIOLOGY WDM IA,$0.00,$74.97,1,iowa radiology,,FALSE,,,,,,,,,,,,,,,,,
+5/4/2025,Health,IOWA RADIOLOGY WDM IA,$0.00,$98.77,1,iowa radiology,,FALSE,,,,,,,,,,,,,,,,,
+7/15/2025,Restaurant,J'S SMOKEHOUSE RALSTON NE,$0.00,$21.44,1,j's smokehouse,,TRUE,,,,,,,,,,,,,,,,,FALSE
+5/25/2025,Restaurant,JETHRO S LAKEHOUSE ANKENY IA,$0.00,$100.00,1,jethro,,FALSE,,,,,,,,,,,,,,,,,
+5/5/2025,Restaurant,Jethro`S Lakehouse,$0.00,$15.96,2,jethro,,FALSE,,,,,,,,,,,,,,,,,
+2/14/2025,Sports,JFI*IOWA RUSH SOCCER C ANKENY IA,$0.00,$237.78,1,iowa rush soccer,,TRUE,,,,,,,,,,,,,,,,,FALSE
+6/13/2025,Restaurant,Jimmy Johns - 1732 Eco,$0.00,$6.93,2,jimmy johns,,FALSE,,,,,,,,,,,,,,,,,
+6/13/2025,Restaurant,Jimmy Johns - 1732 Eco,$0.00,$10.80,2,jimmy johns,,FALSE,,,,,,,,,,,,,,,,,
+2/25/2025,Restaurant,Jimmy Johns - 3287,$0.00,$4.97,2,jimmy johns,,FALSE,,,,,,,,,,,,,,,,,
+3/25/2025,Restaurant,Jimmy Johns - 3287,$0.00,$6.87,2,jimmy johns,,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Restaurant,Jimmy Johns - 3287,$0.00,$4.97,2,jimmy johns,,TRUE,,,,,,,,,,,,,,,,,FALSE
+2/12/2025,Restaurant,Jimmy Johns - 3287 - E,$0.00,$8.89,2,jimmy johns,,FALSE,,,,,,,,,,,,,,,,,
+7/31/2025,Restaurant,Jimmy Johns - 3287 - E,$0.00,$4.97,2,jimmy johns,,FALSE,,,,,,,,,,,,,,,,,
+7/19/2025,Restaurant,JIMMY JOHNS # 96 AMES IA,$0.00,$19.74,1,jimmy johns,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/3/2025,Education,JOSTENS INC.,$0.00,$58.69,1,jostens,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/2/2025,Transportation,KECK AIRPORT PARKING DES MOINES IA,$0.00,$50.00,1,airport parking,,TRUE,,,,,,,,,,,,,,,,,FALSE
+5/17/2025,Transportation,KECK PARKING DES MOINES IA,$0.00,$10.00,1,keck parking,,FALSE,,,,,,,,,,,,,,,,,
+5/17/2025,Transportation,KECK PARKING DES MOINES IA,$0.00,$10.00,1,keck parking,,FALSE,,,,,,,,,,,,,,,,,
+1/19/2025,Giving,KEYSTONE CHURCH ANKENY IA,$0.00,$10.00,1,keystone church,,FALSE,,,,,,,,,,,,,,,,,
+2/1/2025,Giving,KEYSTONE CHURCH ANKENY IA,$0.00,$75.00,1,keystone church,,FALSE,,,,,,,,,,,,,,,,,
+8/28/2025,Giving,KEYSTONE CHURCH ANKENY IA,$0.00,$40.00,1,keystone church,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/7/2025,Giving,KEYSTONE CHURCH ANKENY IA,$0.00,$130.00,1,keystone church,,FALSE,,,,,,,,,,,,,,,,,
+5/9/2025,Clothing,KOHL'S 0623 ANKENY IA,$109.05,$0.00,1,kohl's,,FALSE,,,,,,,,,,,,,,,,,
+5/11/2025,Clothing,Kohls 0623 1935 Se Del,$0.00,$62.36,2,kohls,,FALSE,,,,,,,,,,,,,,,,,
+2/20/2025,Transportation,KUM&GO 0022R GRINNELL GRINNELL IA,$0.00,$10.57,1,kum&go,,FALSE,,,,,,,,,,,,,,,,,
+7/14/2025,Transportation,KUM&GO 0076R ADAIR ADAIR IA,$0.00,$0.95,1,kum&go,,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/18/2025,Transportation,KUM&GO 0076R ADAIR ADAIR IA,$0.00,$3.85,1,kum&go,,TRUE,,,,,,,,,,,,,,,,,FALSE
+2/24/2025,Transportation,Kum&Go 0535R Des Moin,$0.00,$3.40,2,kum&go,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/27/2025,Transportation,KWIK STAR #1057 ANKENY IA,$0.00,$6.86,1,kwik star,,FALSE,,,,,,,,,,,,,,,,,
+5/26/2025,Transportation,KWIK STAR #1057 ANKENY IA,$0.00,$8.21,1,kwik star,,FALSE,,,,,,,,,,,,,,,,,
+4/20/2025,Transportation,KWIK STAR #1089 POLK CITY IA,$0.00,$8.07,1,kwik star,,FALSE,,,,,,,,,,,,,,,,,
+2/16/2025,Transportation,KWIK STAR #947 CEDAR RAPIDS IA,$0.00,$17.35,1,kwik star,,TRUE,,,,,,,,,,,,,,,,,FALSE
+3/2/2025,Transportation,Kwik Star 1057,$0.00,$20.12,2,kwik star,,FALSE,,,,,,,,,,,,,,,,,
+5/12/2025,Transportation,Kwik Star 1057,$0.00,$6.99,2,kwik star,,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Transportation,KWIK TRIP #117 DULUTH MN,$0.00,$28.85,1,kwik trip,,FALSE,,,,,,,,,,,,,,,,,
+6/1/2025,Transportation,KWIK TRIP #141 TWO HARBORS MN,$0.00,$6.69,1,kwik trip,,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Restaurant,LAKINGSCONFECTIONARY GALVESTON TX,$0.00,$8.61,1,laking,,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Restaurant,LAKINGSCONFECTIONARY GALVESTON TX,$0.00,$5.00,1,laking,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Housing,LOWES #00907*,$0.00,$603.14,1,lowes,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Housing,LOWES #00907*,$0.00,$34.96,1,lowes,,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Housing,LOWES #00907*,$0.00,$232.14,1,lowes,,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Retail,LS BEL PRI JEWELRY AND GALVESTON TX,$0.00,$47.63,1,ls bel pri jewelry,,FALSE,,,,,,,,,,,,,,,,,
+10/15/2025,Retail,LS BIKE COUNTRY,$0.00,$30.20,5,ls bike country,,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Retail,LS BIKE COUNTRY ANKENY IA,$0.00,$106.00,1,ls bike country,,FALSE,,,,,,,,,,,,,,,,,
+1/19/2025,Entertainment,LS DUNGEONS GATE ANKENY IA,$0.00,$14.83,1,ls dungeons gate,,FALSE,,,,,,,,,,,,,,,,,
+2/16/2025,Restaurant,MAI PHO VIETNAMESE RES CEDAR RAPIDS IA,$0.00,$47.20,1,mai pho,,TRUE,,,,,,,,,,,,,,,,,FALSE
+8/23/2025,Restaurant,Main Street Cafe & Bak,$0.00,$45.74,2,main street cafe,,FALSE,,,,,,,,,,,,,,,,,
+2/8/2025,Vacation,MARITIME COMMUNICATION MELBOURNE FL,$0.00,$31.80,1,maritime communication,,FALSE,,,,,,,,,,,,,,,,,
+7/24/2025,Clothing,Mercari*888-325-2168,$0.00,$20.80,2,mercari,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/24/2025,Clothing,Mercari*888-325-2168,$0.00,$21.78,2,mercari,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/27/2025,Clothing,Mercari*888-325-2168,$0.00,$23.36,2,mercari,,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Clothing,Mercari*888-325-2168,$0.00,$27.33,2,mercari,,FALSE,,,,,,,,,,,,,,,,,
+2/4/2025,Retail,MICHAELS STORES 3733 ANKENY IA,$0.00,$9.64,1,michaels,,FALSE,,,,,,,,,,,,,,,,,
+2/4/2025,Retail,MICHAELS STORES 3733 ANKENY IA,$0.00,$6.13,1,michaels,,FALSE,,,,,,,,,,,,,,,,,
+10/7/2025,Utilities,MIDAMERICAN ENERGY,$0.00,$131.08,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+2/27/2025,Health,MOBILE CHECK DEPOSIT,$241.50,$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/9/2025,Health,MOBILE CHECK DEPOSIT,$202.25,$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/9/2025,Health,MOBILE CHECK DEPOSIT,$200.00,$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/11/2025,Health,MOBILE CHECK DEPOSIT,$260.50,$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/22/2025,Health,MOBILE CHECK DEPOSIT,$101.03,$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/29/2025,Health,MOBILE CHECK DEPOSIT,$41.40,$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/11/2025,Transportation,MOBILE CHECK DEPOSIT,"$1,314.76",$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/15/2025,Vacation,MOBILE CHECK DEPOSIT,"$5,008.00",$0.00,5,mobile check deposit,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/9/2025,Transportation,NAPA STORE 3124005,$0.00,$52.98,5,napa store,,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Clothing,Nike Altoona 263,$0.00,$4.02,2,nike,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/9/2025,Clothing,Nike Altoona 263,$0.00,$11.22,2,nike,,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Clothing,NIKE ALTOONA 263 ALTOONA IA,$0.00,$2.62,1,nike,,FALSE,,,,,,,,,,,,,,,,,
+5/28/2025,Clothing,NIKE.COM,$0.00,$2.37,1,nike.com,,FALSE,,,,,,,,,,,,,,,,,
+6/28/2025,Clothing,NIKE.COM,$2.37,$0.00,1,nike.com,,FALSE,,,,,,,,,,,,,,,,,
+8/18/2025,Education,OFFICIAL SPORTS INTERN WARSAW IN,$0.00,$64.80,1,official sports,,FALSE,,,,,,,,,,,,,,,,,
+5/3/2025,Entertainment,OLD SCHOOL PINBALL GRIMES IA,$0.00,$48.69,1,old school pinball,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/18/2025,Restaurant,Olive Garden Zk 002183,$0.00,$25.35,2,olive garden,,FALSE,,,,,,,,,,,,,,,,,
+8/27/2025,Restaurant,Olive Garden Zk 002183,$0.00,$33.05,2,olive garden,,FALSE,,,,,,,,,,,,,,,,,
+9/25/2025,Vacation,ONLINE PASSPORT FEES CHARLESTON SC,$0.00,$130.00,1,online passport fees,,FALSE,,,,,,,,,,,,,,,,,
+2/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$20.00,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$20.00,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+4/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$20.00,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+6/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$20.00,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+7/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$20.00,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+8/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$20.00,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+9/5/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$21.20,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+10/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$21.20,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,
+5/3/2025,Subscriptions,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,$0.00,$20.00,1,openai *chatgpt,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/28/2025,Retail,ORCA SEATTLE WA,$0.00,$3.00,1,orca,,TRUE,,,,,,,,,,,,,,,,,FALSE
+9/11/2025,Restaurant,Panera Bread #203206 O,$0.00,$2.79,2,panera bread,,FALSE,,,,,,,,,,,,,,,,,
+9/5/2025,Restaurant,Panera Bread #203206 P,$0.00,$13.90,2,panera bread,,FALSE,,,,,,,,,,,,,,,,,
+8/23/2025,Restaurant,PANERA BREAD #203220 O,$0.00,$13.77,1,panera bread,,FALSE,,,,,,,,,,,,,,,,,
+5/19/2025,Restaurant,Panera Bread #203220 O,$0.00,$3.06,2,panera bread,,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Subscriptions,PANERA SIP CLUB 203220 O,$0.00,$127.19,5,panera sip club,,FALSE,,,,,,,,,,,,,,,,,
+1/21/2025,Vacation,PARK HYATT BVR CRK F&B AVON CO,$0.00,$9.92,1,park hyatt,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Restaurant,PARKWAY PIZZA -NORTHEA MINNEAPOLIS MN,$0.00,$7.83,1,parkway pizza,,FALSE,,,,,,,,,,,,,,,,,
+8/7/2025,Transportation,"PARKWHIZ, INC. CHICAGO IL",$0.00,$44.00,1,parkwhiz,,FALSE,,,,,,,,,,,,,,,,,
+7/17/2025,Vacation,PROJECTEXPEDITION TOUR NEW YORK NY,$950.00,$0.00,1,projectexpedition,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/22/2025,Vacation,PROJECTEXPEDITION TOUR NEW YORK NY,"$1,975.00",$0.00,1,projectexpedition,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/14/2025,Vacation,PROJECTEXPEDITION TOUR NEW YORK NY,$0.00,$950.00,1,projectexpedition,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/14/2025,Vacation,PROJECTEXPEDITION TOUR NEW YORK NY,$0.00,"$1,975.00",1,projectexpedition,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Vacation,PROJECTEXPEDITION TOUR NEW YORK NY,$0.00,"$1,572.90",1,projectexpedition,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/8/2025,Restaurant,PY *PIZZA RANCH - BOON BOONE IA,$0.00,$18.62,1,pizza ranch,,TRUE,,,,,,,,,,,,,,,,,FALSE
+1/24/2025,Restaurant,Py *Smokey Row Ankeny,$0.00,$5.30,2,smokey row,,FALSE,,,,,,,,,,,,,,,,,
+9/14/2025,Restaurant,Py *Smokey Row Ankeny,$0.00,$3.57,2,smokey row,,FALSE,,,,,,,,,,,,,,,,,
+9/28/2025,Restaurant,PY *SMOKEY ROW ANKENY ANKENY IA,$0.00,$5.04,1,smokey row,,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Restaurant,QDOBA 2964 NORTH PLATTE NE,$0.00,$13.17,1,qdoba,,FALSE,,,,,,,,,,,,,,,,,
+6/7/2025,Transportation,Qt 500,$0.00,$4.80,2,qt,,FALSE,,,,,,,,,,,,,,,,,
+6/11/2025,Transportation,Qt 517,$0.00,$8.93,2,qt,,FALSE,,,,,,,,,,,,,,,,,
+9/8/2025,Transportation,QT 517 WEST DES MOIN IA,$0.00,$5.84,1,qt,,FALSE,,,,,,,,,,,,,,,,,
+4/24/2025,Transportation,Qt 541,$0.00,$2.24,2,qt,,FALSE,,,,,,,,,,,,,,,,,
+8/19/2025,Transportation,QT 541 DES MOINES IA,$0.00,$14.78,1,qt,,FALSE,,,,,,,,,,,,,,,,,
+5/23/2025,Transportation,Qt 559,$0.00,$0.94,2,qt,,FALSE,,,,,,,,,,,,,,,,,
+3/7/2025,Subscriptions,QUSTODIO,$0.00,$86.35,1,qustodio,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/24/2025,Restaurant,RAISING CANES 0235 OMAHA NE,$0.00,$12.31,1,raising canes,,FALSE,,,,,,,,,,,,,,,,,
+9/20/2025,Restaurant,Raising Canes 0823 Mob,$0.00,$12.71,2,raising canes,,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Entertainment,RAO MNHUNTFISH VEHICLE DNR.STATE.MN. MN,$0.00,$15.45,1,mnhuntfish,,FALSE,,,,,,,,,,,,,,,,,
+7/3/2025,Housing,RASMUSSEN LAWN CARE ANKENY IA,$0.00,$98.56,1,rasmussen lawn care,,FALSE,,,,,,,,,,,,,,,,,
+8/28/2025,Housing,RASMUSSEN LAWN CARE ANKENY IA,$0.00,$39.61,1,rasmussen lawn care,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/24/2025,Vacation,REATATRAVELSTOP-STERLI STERLING CO,$0.00,$3.52,1,reatatravelstop,,FALSE,,,,,,,,,,,,,,,,,
+7/9/2025,Restaurant,RED CHILLEZ INDIAN CUI ANKENY IA,$0.00,$47.48,1,red chillez,,FALSE,,,,,,,,,,,,,,,,,
+4/20/2025,Restaurant,Restaurant (Venmo),$0.00,$5.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/11/2025,Restaurant,Restaurants (Venmo),$50.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/19/2025,Retail,Retail (Venmo),$0.00,$100.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/9/2025,Retail,Retail (Venmo),$0.00,$8.15,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/18/2025,Retail,Retail (Venmo),$0.00,$20.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/22/2025,Retail,Retail (Venmo),$0.00,$40.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/7/2025,Retail,Retail (Venmo),$15.48,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/14/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,"$5,008.70",1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/7/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$114.99,$0.00,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/7/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$114.99,$0.00,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/4/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,$411.96,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/4/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,$229.98,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/6/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,$307.96,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/6/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,$171.98,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/8/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$66.99,$0.00,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/8/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$114.99,$0.00,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/8/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$114.99,$0.00,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+8/8/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$114.99,$0.00,1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+9/1/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,"$1,250.00",1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+9/24/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,"$2,400.30",1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+9/24/2025,Vacation,ROYAL CARIBBEAN CRUIS MIAMI FL,$0.00,"$3,126.95",1,royal caribbean,,FALSE,,,,,,,,,,,,,,,,,
+2/6/2025,Restaurant,Sam'S Club,$0.00,$30.79,2,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+1/17/2025,Restaurant,SAM'S CLUB 006979 ANKENY IA,$0.00,$82.84,1,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+4/17/2025,Restaurant,SAM'S CLUB 006979 ANKENY IA,$12.78,$0.00,1,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+4/11/2025,Restaurant,SAM'S CLUB 006979 ANKENY IA,$0.00,$55.97,1,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+4/19/2025,Restaurant,SAM'S CLUB 006979 ANKENY IA,$0.00,$17.54,1,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+5/15/2025,Restaurant,SAM'S CLUB 006979 ANKENY IA,$0.00,$3.35,1,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+7/11/2025,Restaurant,SAM'S CLUB 006979 ANKENY IA,$0.00,$36.29,1,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+4/13/2025,Restaurant,Sams Club Sam'S Club,$0.00,$21.92,2,sam's club,,FALSE,,,,,,,,,,,,,,,,,
+4/16/2025,Groceries,SAMS CLUB.COM 006279 BENTONVILLE AR,$0.00,$90.39,1,sams club.com,,FALSE,,,,,,,,,,,,,,,,,
+4/24/2025,Groceries,SAMS CLUB.COM 006279 BENTONVILLE AR,$0.00,$86.28,1,sams club.com,,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Groceries,SAMS CLUB.COM 006279 BENTONVILLE AR,$0.00,$97.76,1,sams club.com,,FALSE,,,,,,,,,,,,,,,,,
+10/3/2025,Groceries,SAMS CLUB.COM 006279 BENTONVILLE AR,$0.00,$37.88,1,sams club.com,,FALSE,,,,,,,,,,,,,,,,,
+10/3/2025,Groceries,SAMS CLUB.COM 006279 BENTONVILLE AR,$0.00,$51.24,1,sams club.com,,FALSE,,,,,,,,,,,,,,,,,
+9/27/2025,Groceries,"SAMS CLUB.COM 006279 BENTONVILLE AR
+ , CLOVERDALE TANGY SSG, COLESLAW,
+ MM SHR-W MOZ PT SKM, MM CHK CHED
+ SHARP, COSMIC CRISP APPLE, MM",$0.00,$64.41,1,sams club.com,,FALSE,,,,,,,,,,,,,,,,,
+4/10/2025,Groceries,"SAMS CLUB.COM 006279 BENTONVILLE AR
+ , PORK B/I BOSTON BUTT,
+ CLEMENTINE/MANDARIN, 16OZ DELI
+ CONTAINER, 8OZ DELI CONTAINER, REY
+ FOIL STND250 2PK, MM HALF STEAM PAN,
+ HALF STEAMTABLE LID",$0.00,$195.71,1,sams club.com,,FALSE,,,,,,,,,,,,,,,,,
+7/3/2025,Groceries,Samsclub #6436,$0.00,$65.97,2,samsclub,,FALSE,,,,,,,,,,,,,,,,,
+10/16/2025,Groceries,SAMSCLUB #6979,$0.00,$1.67,5,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+10/16/2025,Groceries,SAMSCLUB #6979,$0.00,$11.70,5,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Groceries,Samsclub #6979,$0.00,$3.57,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Groceries,Samsclub #6979,$0.00,$89.85,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/19/2025,Groceries,Samsclub #6979,$0.00,$270.39,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/30/2025,Groceries,Samsclub #6979,$0.00,$10.46,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/30/2025,Groceries,Samsclub #6979,$0.00,$3.56,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/6/2025,Groceries,Samsclub #6979,$0.00,$16.41,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+6/16/2025,Groceries,Samsclub #6979,$0.00,$12.98,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+7/1/2025,Groceries,Samsclub #6979,$0.00,$7.64,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+7/28/2025,Groceries,Samsclub #6979,$0.00,$149.63,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+8/23/2025,Groceries,Samsclub #6979,$0.00,$11.46,2,samsclub #6979,,FALSE,,,,,,,,,,,,,,,,,
+10/13/2025,Groceries,SAMSCLUB.COM,$0.00,$13.27,5,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+10/10/2025,Groceries,SAMSCLUB.COM,$0.00,$11.64,5,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+10/10/2025,Groceries,SAMSCLUB.COM,$0.00,$235.08,5,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+1/14/2025,Groceries,Samsclub.Com,$0.00,$66.28,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+1/26/2025,Groceries,Samsclub.Com,$0.00,$58.36,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+2/10/2025,Groceries,Samsclub.Com,$0.00,$61.07,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+2/13/2025,Groceries,Samsclub.Com,$0.00,$16.56,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+2/24/2025,Groceries,Samsclub.Com,$0.00,$42.49,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/8/2025,Groceries,Samsclub.Com,$0.00,$6.89,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/10/2025,Groceries,Samsclub.Com,$0.00,$50.22,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/28/2025,Groceries,Samsclub.Com,$0.00,$116.24,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/15/2025,Groceries,Samsclub.Com,$0.00,$40.61,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+3/24/2025,Groceries,Samsclub.Com,$0.00,$88.17,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+3/25/2025,Groceries,Samsclub.Com,$0.00,$11.85,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+3/27/2025,Groceries,Samsclub.Com,$0.00,$38.76,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+4/9/2025,Groceries,Samsclub.Com,$0.00,$57.85,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+5/12/2025,Groceries,Samsclub.Com,$0.00,$38.75,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+5/14/2025,Groceries,Samsclub.Com,$0.00,$52.92,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+5/15/2025,Groceries,Samsclub.Com,$10.48,$0.00,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+5/26/2025,Groceries,Samsclub.Com,$0.00,$72.90,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Groceries,Samsclub.Com,$0.00,$9.02,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+7/9/2025,Groceries,Samsclub.Com,$0.00,$19.64,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+8/11/2025,Groceries,Samsclub.Com,$0.00,$46.87,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+9/1/2025,Groceries,Samsclub.Com,$0.00,$64.06,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+9/3/2025,Groceries,Samsclub.Com,$0.00,$59.57,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+9/15/2025,Groceries,Samsclub.Com,$0.00,$28.14,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+9/22/2025,Groceries,Samsclub.Com,$0.00,$105.38,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+9/22/2025,Groceries,Samsclub.Com,$0.00,$37.78,2,samsclub.com,,FALSE,,,,,,,,,,,,,,,,,
+2/17/2025,Vacation,SAYLORVILLE,$150.00,$0.00,1,saylorville,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/23/2025,Vacation,SAYLORVILLECHURCH.COM DES MOINES IA,$0.00,$150.00,1,saylorville,,FALSE,,,,,,,,,,,,,,,,,
+4/11/2025,Clothing,SCHEELS DES MOINES DES MOINES IA,$0.00,$42.76,1,scheels,,FALSE,,,,,,,,,,,,,,,,,
+6/28/2025,Clothing,SCHEELS DES MOINES DES MOINES IA,$0.00,$142.31,1,scheels,,FALSE,,,,,,,,,,,,,,,,,
+10/9/2025,Transportation,SHADE TREE AUTO - ANKE,$0.00,$114.26,5,shade tree auto,,FALSE,,,,,,,,,,,,,,,,,
+5/2/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$5.34,$0.00,1,shein,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/2/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$13.44,$0.00,1,shein,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/2/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$13.27,$0.00,1,shein,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/2/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$13.43,$0.00,1,shein,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/2/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$17.77,$0.00,1,shein,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/17/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$0.00,$341.68,1,shein,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/27/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$0.00,$40.89,1,shein,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/8/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$34.35,$0.00,1,shein,,FALSE,,,,,,,,,,,,,,,,,
+4/11/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$0.00,$170.79,1,shein,,FALSE,,,,,,,,,,,,,,,,,
+8/5/2025,Clothing,"SHEINUSSERVICES,LLC KENT DE",$96.60,$0.00,1,shein,,FALSE,,,,,,,,,,,,,,,,,
+6/6/2025,Vacation,SHORE EXCURSIONS GROUP,$0.00,"$1,295.00",1,shore excursions,,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Restaurant,SLIM CHICKENS 16201 ANKENY IA,$0.00,$50.92,1,slim chickens,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/26/2025,Vacation,SNOW.COM/VAIL RESORTS,$0.00,$239.95,1,snow.com,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Restaurant,Sonic Drive In #4871,$0.00,$6.34,2,sonic,,FALSE,,,,,,,,,,,,,,,,,
+6/26/2025,Sports,Sports (Venmo),$0.00,$100.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/9/2025,Subscriptions,SPOTIFY P3961C93C6 NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,
+2/7/2025,Subscriptions,SPOTIFY USA NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,
+5/7/2025,Subscriptions,SPOTIFY USA NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,
+6/7/2025,Subscriptions,SPOTIFY USA NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,
+7/7/2025,Subscriptions,SPOTIFY USA NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,
+9/7/2025,Subscriptions,SPOTIFY USA NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,
+10/7/2025,Subscriptions,SPOTIFY USA NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,
+3/7/2025,Subscriptions,SPOTIFY USA NEW YORK NY,$0.00,$21.19,1,spotify,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/7/2025,Sports,SQ *ANKENY JAGUARS SHO ANKENY IA,$0.00,$5.50,1,ankeny jaguars,,FALSE,,,,,,,,,,,,,,,,,
+9/17/2025,Health,Sq *Balanced Health &,$0.00,$85.60,2,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+1/13/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$60.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+2/13/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$48.15,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+5/22/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$60.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+5/28/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$60.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+6/6/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$60.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$60.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+10/7/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$65.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+7/16/2025,Health,SQ *BALANCED HEALTH & GOSQ.COM IA,$0.00,$60.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/9/2025,Health,"SQ *BALANCED HEALTH & GOSQ.COM IA
+ REGULAR PURCHASES",$0.00,$120.00,1,balanced health,,FALSE,,,,,,,,,,,,,,,,,
+3/18/2025,Restaurant,SQ *BIG HEAD BURGER WATERLOO IA,$0.00,$26.07,1,big head burger,,FALSE,,,,,,,,,,,,,,,,,
+3/2/2025,Restaurant,Sq *Chocolaterie Stam,$0.00,$5.08,2,chocolaterie stam,,FALSE,,,,,,,,,,,,,,,,,
+2/16/2025,Entertainment,Sq *Civic Center,$0.00,$6.00,2,civic center,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/19/2025,Restaurant,SQ *CORNBRED BARBECUE AMES IA,$0.00,$22.47,1,cornbred barbecue,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/13/2025,Restaurant,SQ *MISFIT ISLAND CAFE SITKA AK,$0.00,$7.50,1,misfit island cafe,,FALSE,,,,,,,,,,,,,,,,,
+8/14/2025,Vacation,SQ *SKAGWAY MERCANTILE SKAGWAY AK,$0.00,$27.28,1,skagway mercantile,,FALSE,,,,,,,,,,,,,,,,,
+8/18/2025,Restaurant,"SQ *VICTORIA KEBAB ON VICTORIA BC
+ CA DOLLAR",$0.00,$12.00,1,victoria kebab,,FALSE,,,,,,,,,,,,,,,,,
+8/13/2025,Retail,SQ *WINTERSONG SITKA AK,$0.00,$8.48,1,wintersong,,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Vacation,SSV BRECKENRIDGE SPORT BRECKENRIDGE CO,$0.00,$138.83,1,breckenridge sport,,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Restaurant,STAR DRUG STORE GALVESTON TX,$0.00,$19.36,1,star drug store,,FALSE,,,,,,,,,,,,,,,,,
+4/5/2025,Restaurant,STARBUCKS STORE 51248 ANKENY IA,$0.00,$25.00,1,starbucks,,FALSE,,,,,,,,,,,,,,,,,
+3/11/2025,Retail,Store,$0.00,$7.48,2,store,,FALSE,,,,,,,,,,,,,,,,,
+2/13/2025,Housing,SWIMMING POOL SUPPLY C GRIMES IA,$0.00,$133.64,1,swimming pool supply,,FALSE,,,,,,,,,,,,,,,,,
+2/28/2025,Health,SWP*UNITYPOINT HEALTH MOLINE IL,$0.00,$26.40,1,unitypoint,,FALSE,,,,,,,,,,,,,,,,,
+6/4/2025,Health,SWP*UNITYPOINT HEALTH MOLINE IL,$0.00,"$1,240.79",1,unitypoint,,FALSE,,,,,,,,,,,,,,,,,
+7/24/2025,Health,SWP*UNITYPOINT HEALTH MOLINE IL,$0.00,$60.28,1,unitypoint,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/9/2025,Clothing,TARGET,$0.00,$0.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Clothing,TARGET,$0.00,$0.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Clothing,TARGET,$0.00,$0.94,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Giving,TARGET,$0.00,$0.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Giving,TARGET,$0.00,$0.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Giving,TARGET,$0.00,$0.94,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Groceries,TARGET,$0.00,$3.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Groceries,TARGET,$0.00,$3.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Groceries,TARGET,$0.00,$6.61,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Housing,TARGET,$0.00,$1.00,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Housing,TARGET,$0.00,$1.00,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Housing,TARGET,$0.00,$1.89,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Retail,TARGET,$0.00,$0.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Retail,TARGET,$0.00,$0.50,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Retail,TARGET,$0.00,$0.94,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Toiletries,TARGET,$0.00,$4.00,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/9/2025,Toiletries,TARGET,$0.00,$4.00,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Toiletries,TARGET,$0.00,$7.55,1,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/17/2025,Clothing,Target T- 2135 Se Dela,$0.00,$0.32,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/17/2025,Giving,Target T- 2135 Se Dela,$0.00,$0.32,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/17/2025,Groceries,Target T- 2135 Se Dela,$0.00,$2.22,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/17/2025,Housing,Target T- 2135 Se Dela,$0.00,$0.64,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/17/2025,Retail,Target T- 2135 Se Dela,$0.00,$0.32,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/17/2025,Toiletries,Target T- 2135 Se Dela,$0.00,$2.54,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/23/2025,Clothing,Target T-1767 2135 Se,$0.00,$0.67,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Clothing,Target T-1767 2135 Se,$0.00,$1.09,2,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Giving,Target T-1767 2135 Se,$0.00,$0.67,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Giving,Target T-1767 2135 Se,$0.00,$1.09,2,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Groceries,Target T-1767 2135 Se,$0.00,$4.67,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Groceries,Target T-1767 2135 Se,$0.00,$7.63,2,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Housing,Target T-1767 2135 Se,$0.00,$1.33,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Housing,Target T-1767 2135 Se,$0.00,$2.18,2,target,target,FALSE,,,,,,,,,,,,,,,,,
+9/6/2025,Retail,Target T-1767 2135 Se,$0.00,$1.09,2,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Retail,Target T-1767 2135 Se,$0.00,$0.67,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Toiletries,Target T-1767 2135 Se,$0.00,$8.72,2,target,target,FALSE,,,,,,,,,,,,,,,,,
+2/23/2025,Toiletries,Target T-1767 2135 Se,$0.00,$5.33,2,target,target,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/3/2025,Giving,TEAMUP - FUNDRAISER FARGO ND,$0.00,$25.00,1,teamup,,FALSE,,,,,,,,,,,,,,,,,
+8/13/2025,Restaurant,THE CELLAR SITKA AK,$0.00,$7.41,1,the cellar,,FALSE,,,,,,,,,,,,,,,,,
+4/28/2025,Restaurant,THE CHARTER PATAGON SEATTLE WA,$0.00,$34.78,1,charter patagon,,TRUE,,,,,,,,,,,,,,,,,FALSE
+4/11/2025,Clothing,THE CHILDRENS PLACE 17 W DES MOINES IA,$28.59,$0.00,1,the childrens place,,FALSE,,,,,,,,,,,,,,,,,
+7/28/2025,Housing,THE HOME DEPOT #2107 ANKENY IA,$0.00,$15.67,1,home depot,,FALSE,,,,,,,,,,,,,,,,,
+8/9/2025,Housing,THE HOME DEPOT #2115 URBANDALE IA,$15.67,$0.00,1,home depot,,FALSE,,,,,,,,,,,,,,,,,
+2/26/2025,Clothing,Thechildrensplace.Com,$0.00,$35.58,2,thechildrensplace,,FALSE,,,,,,,,,,,,,,,,,
+6/9/2025,Clothing,Tj Maxx #853 2010 Se D,$0.00,$36.03,2,tj maxx,,FALSE,,,,,,,,,,,,,,,,,
+4/24/2025,Toiletries,Toiletries (Venmo),$86.28,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Toiletries,Toiletries (Venmo),$39.54,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/24/2025,Toiletries,Toiletries (Venmo),$24.26,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/8/2025,Toiletries,Toiletries (Venmo),$0.00,$20.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/9/2025,Toiletries,Toiletries (Venmo),$30.56,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/16/2025,Transportation,Transportation (Venmo),$0.00,$10.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/1/2025,Vacation,TST* GRAND SUPERIOR GR TWO HARBORS MN,$0.00,$15.18,1,grand superior,,FALSE,,,,,,,,,,,,,,,,,
+5/10/2025,Restaurant,TST*AMERICANA DES MOINES IA,$0.00,$37.00,1,americana,,FALSE,,,,,,,,,,,,,,,,,
+6/14/2025,Entertainment,TST*BACKPOCKET PIN AND JOHNSTON IA,$0.00,$38.10,1,backpocket,,FALSE,,,,,,,,,,,,,,,,,
+6/14/2025,Restaurant,TST*BANDIT BURRITO JOHNSTON IA,$0.00,$46.28,1,bandit burrito,,FALSE,,,,,,,,,,,,,,,,,
+4/27/2025,Restaurant,TST*BANDIT BURRITO JOHNSTON IA,$0.00,$34.23,1,bandit burrito,,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/3/2025,Restaurant,TST*BUFFALO PHILS WISCONSIN DEL WI,$0.00,$67.32,1,buffalo phil,,FALSE,,,,,,,,,,,,,,,,,
+7/5/2025,Restaurant,TST*BUFFALO PHILS WISCONSIN DEL WI,$0.00,$64.39,1,buffalo phil,,FALSE,,,,,,,,,,,,,,,,,
+9/1/2025,Restaurant,TST*BURGER SHED - ALTO ALTOONA IA,$0.00,$63.50,1,burger shed,,FALSE,,,,,,,,,,,,,,,,,
+2/16/2025,Restaurant,Tst*Iowa Taproom,$0.00,$19.80,2,iowa taproom,,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/19/2025,Restaurant,TST*SIAM TABLE ANKENY IA,$0.00,$13.73,1,siam table,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/6/2025,Restaurant,Tst*Smokey Ds Bbq - 2N,$0.00,$2.63,2,smokey d,,FALSE,,,,,,,,,,,,,,,,,
+9/13/2025,Restaurant,TST*SMOKEY DS BBQ - 2N DES MOINES IA,$0.00,$59.06,1,smokey d,,FALSE,,,,,,,,,,,,,,,,,
+8/11/2025,Vacation,UBER,$0.00,$21.70,1,uber,,FALSE,,,,,,,,,,,,,,,,,
+8/12/2025,Vacation,UBER,$0.00,$48.51,1,uber,,FALSE,,,,,,,,,,,,,,,,,
+8/10/2025,Vacation,UBER TRIP* TRIP SAN FRANCISCO CA,$0.00,$10.00,1,uber trip,,FALSE,,,,,,,,,,,,,,,,,
+4/10/2025,Restaurant,UEP*HOKKAIDO RAMEN HOU ANKENY IA,$0.00,$65.67,1,uep*hokkaido ramen,,FALSE,,,,,,,,,,,,,,,,,
+2/15/2025,Restaurant,UEP*HOKKAIDO RAMEN HOU ANKENY IA,$0.00,$50.03,1,uep*hokkaido ramen,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/30/2025,Health,Unitypoint Health Epic,$0.00,$25.00,2,unitypoint,,FALSE,,,,,,,,,,,,,,,,,
+4/28/2025,Health,UNITYPOINT HEALTH EPIC WDM IA,$0.00,"$4,719.00",1,unitypoint,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/22/2025,Health,Uph Dm Ank Pharm Wil E,$0.00,$10.00,2,uph dm ank pharm,,FALSE,,,,,,,,,,,,,,,,,
+4/10/2025,Health,Uph Dm Ank Pharm Wil E,$0.00,$30.00,2,uph dm ank pharm,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,Utilities (Venmo),$125.74,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,
+,Utilities,Utilities (Venmo),$131.45,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,
+3/19/2025,Utilities,Utilities (Venmo),$131.15,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/19/2025,Utilities,Utilities (Venmo),$136.51,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/7/2025,Utilities,Utilities (Venmo),$142.42,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/7/2025,Utilities,Utilities (Venmo),$136.51,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/15/2025,Utilities,Utilities (Venmo),$153.06,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/15/2025,Utilities,Utilities (Venmo),$139.92,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/1/2025,Vacation,Vacation (Venmo),$220.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/19/2025,Vacation,Vacation (Venmo),$0.00,$151.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/30/2025,Vacation,Vacation (Venmo),$7.95,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/30/2025,Vacation,Vacation (Venmo),$0.00,$33.46,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/31/2025,Vacation,Vacation (Venmo),$0.00,$15.48,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/31/2025,Vacation,Vacation (Venmo),$0.00,$33.16,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/31/2025,Vacation,Vacation (Venmo),$0.00,$15.44,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/11/2025,Vacation,Vacation (Venmo),$334.09,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/11/2025,Vacation,Vacation (Venmo),$378.00,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/15/2025,Vacation,Vacation (Venmo),$334.09,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Vacation,Vacation (Venmo),$262.15,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/21/2025,Vacation,Vacation (Venmo),$655.38,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/4/2025,Vacation,Vacation (Venmo),$641.94,$0.00,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/6/2025,Vacation,Vacation (Venmo),$0.00,$169.96,3,venmo,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/19/2025,Transportation,VIOC GR0003 ANKENY IA,$0.00,$111.70,1,vioc,,FALSE,,,,,,,,,,,,,,,,,
+7/18/2025,Transportation,VIOC GR0003 ANKENY IA,$0.00,$95.39,1,vioc,,FALSE,,,,,,,,,,,,,,,,,FALSE
+2/6/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN,$0.00,$122.80,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+5/6/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$245.60,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+6/6/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$122.80,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$70.00,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$10.00,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+7/3/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$11.40,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+9/10/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$131.80,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+10/6/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$131.80,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,
+3/6/2025,Vacation,VSI*LAKEANNBAPTISTCAM LAKE ANN MI,$0.00,$122.80,1,lake ann,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/30/2025,Clothing,Wal-Mart #0504 G,$0.00,$0.05,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/30/2025,Giving,Wal-Mart #0504 G,$0.00,$0.05,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/30/2025,Groceries,Wal-Mart #0504 G,$0.00,$0.34,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/30/2025,Housing,Wal-Mart #0504 G,$0.00,$0.10,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/30/2025,Retail,Wal-Mart #0504 G,$0.00,$0.05,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/30/2025,Toiletries,Wal-Mart #0504 G,$0.00,$0.39,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/23/2025,Clothing,Wal-Mart #0892,$0.00,$0.16,2,wal-mart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+4/9/2025,Clothing,Wal-Mart #0892,$0.00,$0.77,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Clothing,Wal-Mart #0892,$0.00,$1.98,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Clothing,Wal-Mart #0892,$0.00,$2.54,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Clothing,Wal-Mart #0892,$0.00,$0.11,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Clothing,Wal-Mart #0892,$0.00,$1.08,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/23/2025,Giving,Wal-Mart #0892,$0.00,$0.16,2,wal-mart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+4/9/2025,Giving,Wal-Mart #0892,$0.00,$0.77,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Giving,Wal-Mart #0892,$0.00,$1.98,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Giving,Wal-Mart #0892,$0.00,$2.54,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Giving,Wal-Mart #0892,$0.00,$0.11,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Giving,Wal-Mart #0892,$0.00,$1.08,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/23/2025,Groceries,Wal-Mart #0892,$0.00,$1.10,2,wal-mart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+4/9/2025,Groceries,Wal-Mart #0892,$0.00,$5.37,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Groceries,Wal-Mart #0892,$0.00,$13.86,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Groceries,Wal-Mart #0892,$0.00,$17.77,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Groceries,Wal-Mart #0892,$0.00,$0.74,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Groceries,Wal-Mart #0892,$0.00,$7.58,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/9/2025,Housing,Wal-Mart #0892,$0.00,$1.54,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Housing,Wal-Mart #0892,$0.00,$3.96,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Housing,Wal-Mart #0892,$0.00,$5.08,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Housing,Wal-Mart #0892,$0.00,$0.21,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/23/2025,Housing,Wal-Mart #0892,$0.00,$0.32,2,wal-mart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+8/26/2025,Housing,Wal-Mart #0892,$0.00,$2.17,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/9/2025,Retail,Wal-Mart #0892,$0.00,$0.77,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Retail,Wal-Mart #0892,$0.00,$1.98,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Retail,Wal-Mart #0892,$0.00,$2.54,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Retail,Wal-Mart #0892,$0.00,$0.11,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Retail,Wal-Mart #0892,$0.00,$1.08,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/23/2025,Retail,Wal-Mart #0892,$0.00,$0.16,2,wal-mart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+4/9/2025,Toiletries,Wal-Mart #0892,$0.00,$6.14,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/21/2025,Toiletries,Wal-Mart #0892,$0.00,$15.84,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Toiletries,Wal-Mart #0892,$0.00,$20.31,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/20/2025,Toiletries,Wal-Mart #0892,$0.00,$0.84,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Toiletries,Wal-Mart #0892,$0.00,$8.67,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/23/2025,Toiletries,Wal-Mart #0892,$0.00,$1.26,2,wal-mart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+3/3/2025,Clothing,Wal-Mart #2764,$0.00,$0.17,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Giving,Wal-Mart #2764,$0.00,$0.17,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Groceries,Wal-Mart #2764,$0.00,$1.17,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Housing,Wal-Mart #2764,$0.00,$0.33,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Retail,Wal-Mart #2764,$0.00,$0.17,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Toiletries,Wal-Mart #2764,$0.00,$1.33,2,wal-mart,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/15/2025,Health,WALGREENS #7454 ANKENY IA,$0.00,$7.66,1,walgreens,,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Clothing,WALMART 000504 GALVESTON TX,$0.00,$3.34,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Giving,WALMART 000504 GALVESTON TX,$0.00,$3.34,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Groceries,WALMART 000504 GALVESTON TX,$0.00,$23.41,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Housing,WALMART 000504 GALVESTON TX,$0.00,$6.69,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Retail,WALMART 000504 GALVESTON TX,$0.00,$3.34,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/28/2025,Toiletries,WALMART 000504 GALVESTON TX,$0.00,$26.75,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/27/2025,Clothing,WALMART 000892 ANKENY IA,$0.00,$0.61,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/30/2025,Clothing,WALMART 000892 ANKENY IA,$0.00,$1.20,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/29/2025,Clothing,WALMART 000892 ANKENY IA,$0.00,$1.47,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/9/2025,Clothing,WALMART 000892 ANKENY IA,$0.00,$0.29,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Giving,WALMART 000892 ANKENY IA,$0.00,$1.20,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/27/2025,Giving,WALMART 000892 ANKENY IA,$0.00,$0.61,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/29/2025,Giving,WALMART 000892 ANKENY IA,$0.00,$1.47,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/9/2025,Giving,WALMART 000892 ANKENY IA,$0.00,$0.29,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Groceries,WALMART 000892 ANKENY IA,$0.00,$8.43,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/29/2025,Groceries,WALMART 000892 ANKENY IA,$0.00,$10.26,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/9/2025,Groceries,WALMART 000892 ANKENY IA,$0.00,$2.03,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/27/2025,Groceries,WALMART 000892 ANKENY IA,$0.00,$4.26,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/30/2025,Housing,WALMART 000892 ANKENY IA,$0.00,$2.41,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/29/2025,Housing,WALMART 000892 ANKENY IA,$0.00,$2.93,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/9/2025,Housing,WALMART 000892 ANKENY IA,$0.00,$0.58,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/27/2025,Housing,WALMART 000892 ANKENY IA,$0.00,$1.22,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/30/2025,Retail,WALMART 000892 ANKENY IA,$0.00,$1.20,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/29/2025,Retail,WALMART 000892 ANKENY IA,$0.00,$1.47,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/9/2025,Retail,WALMART 000892 ANKENY IA,$0.00,$0.29,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/27/2025,Retail,WALMART 000892 ANKENY IA,$0.00,$0.61,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/30/2025,Toiletries,WALMART 000892 ANKENY IA,$0.00,$9.63,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/29/2025,Toiletries,WALMART 000892 ANKENY IA,$0.00,$11.72,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/9/2025,Toiletries,WALMART 000892 ANKENY IA,$0.00,$2.32,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/27/2025,Toiletries,WALMART 000892 ANKENY IA,$0.00,$4.86,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Clothing,WALMART 001491 INDIANOLA IA,$0.00,$2.20,1,walmart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Giving,WALMART 001491 INDIANOLA IA,$0.00,$2.20,1,walmart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Groceries,WALMART 001491 INDIANOLA IA,$0.00,$15.39,1,walmart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Housing,WALMART 001491 INDIANOLA IA,$0.00,$4.40,1,walmart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Retail,WALMART 001491 INDIANOLA IA,$0.00,$2.20,1,walmart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Toiletries,WALMART 001491 INDIANOLA IA,$0.00,$17.58,1,walmart,walmart,TRUE,,,,,,,,,,,,,,,,,FALSE
+6/30/2025,Clothing,WALMART 002764 ALTOONA IA,$0.00,$1.92,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Giving,WALMART 002764 ALTOONA IA,$0.00,$1.92,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Groceries,WALMART 002764 ALTOONA IA,$0.00,$13.41,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Housing,WALMART 002764 ALTOONA IA,$0.00,$3.83,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Retail,WALMART 002764 ALTOONA IA,$0.00,$1.92,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Toiletries,WALMART 002764 ALTOONA IA,$0.00,$15.33,1,walmart,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Clothing,Walmart.Com,$0.00,$2.23,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/8/2025,Clothing,WALMART.COM,$0.00,$13.06,5,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/20/2025,Clothing,Walmart.Com,$0.00,$2.54,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/21/2025,Clothing,Walmart.Com,$0.00,$2.22,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Clothing,Walmart.Com,$0.00,$2.11,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/3/2025,Clothing,Walmart.Com,$0.00,$1.92,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/18/2025,Clothing,Walmart.Com,$0.00,$1.99,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Giving,WALMART.COM,$0.00,$13.06,5,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Giving,Walmart.Com,$0.00,$2.23,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Giving,Walmart.Com,$0.00,$2.54,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/21/2025,Giving,Walmart.Com,$0.00,$2.22,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Giving,Walmart.Com,$0.00,$2.11,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/3/2025,Giving,Walmart.Com,$0.00,$1.92,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/18/2025,Giving,Walmart.Com,$0.00,$1.99,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Groceries,WALMART.COM,$0.00,$91.42,5,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/21/2025,Groceries,Walmart.Com,$0.00,$15.56,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Groceries,Walmart.Com,$0.00,$15.63,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Groceries,Walmart.Com,$0.00,$17.80,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/30/2025,Groceries,Walmart.Com,$0.00,$14.79,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/3/2025,Groceries,Walmart.Com,$0.00,$13.44,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/18/2025,Groceries,Walmart.Com,$0.00,$13.91,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Housing,WALMART.COM,$0.00,$26.12,5,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/21/2025,Housing,Walmart.Com,$0.00,$4.45,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Housing,Walmart.Com,$0.00,$4.23,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Housing,Walmart.Com,$0.00,$4.47,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Housing,Walmart.Com,$0.00,$5.09,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/3/2025,Housing,Walmart.Com,$0.00,$3.84,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/18/2025,Housing,Walmart.Com,$0.00,$3.97,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/8/2025,Retail,WALMART.COM,$0.00,$13.06,5,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/21/2025,Retail,Walmart.Com,$0.00,$2.22,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Retail,Walmart.Com,$0.00,$2.11,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/3/2025,Retail,Walmart.Com,$0.00,$1.92,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/18/2025,Retail,Walmart.Com,$0.00,$1.99,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Retail,Walmart.Com,$0.00,$2.23,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Retail,Walmart.Com,$0.00,$2.54,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+10/8/2025,Toiletries,WALMART.COM,$0.00,$104.48,5,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/21/2025,Toiletries,Walmart.Com,$0.00,$17.79,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Toiletries,Walmart.Com,$0.00,$16.90,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/3/2025,Toiletries,Walmart.Com,$0.00,$15.36,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+9/18/2025,Toiletries,Walmart.Com,$0.00,$15.90,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Toiletries,Walmart.Com,$0.00,$17.86,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/20/2025,Toiletries,Walmart.Com,$0.00,$20.34,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/25/2025,Clothing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$0.21,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Clothing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$3.04,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Clothing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$2.97,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Clothing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$6.29,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/5/2025,Clothing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$3.97,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/25/2025,Giving,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$0.21,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Giving,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$3.04,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Giving,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$2.97,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Giving,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$6.29,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/5/2025,Giving,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$3.97,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/25/2025,Groceries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$1.48,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Groceries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$21.29,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Groceries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$20.77,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Groceries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$44.00,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/5/2025,Groceries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$27.79,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/25/2025,Housing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$0.42,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Housing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$6.08,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Housing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$5.94,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Housing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$12.57,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/5/2025,Housing,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$7.94,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/25/2025,Retail,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$0.21,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Retail,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$3.04,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Retail,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$2.97,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Retail,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$6.29,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/5/2025,Retail,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$3.97,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+,Retail,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.53,$0.00,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/25/2025,Toiletries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$1.70,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/23/2025,Toiletries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$24.33,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Toiletries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$23.74,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/10/2025,Toiletries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$50.28,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+10/5/2025,Toiletries,"WALMART.COM 800-966-6546 BENTONVILLE AR
+ , Walmart.Com Purchase",$0.00,$31.76,1,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Clothing,Walmart.Com 8009256278,$0.00,$1.12,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+2/5/2025,Clothing,Walmart.Com 8009256278,$0.00,$2.56,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/3/2025,Clothing,Walmart.Com 8009256278,$0.00,$1.89,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Giving,Walmart.Com 8009256278,$0.00,$1.12,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+2/5/2025,Giving,Walmart.Com 8009256278,$0.00,$2.56,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/3/2025,Giving,Walmart.Com 8009256278,$0.00,$1.89,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Groceries,Walmart.Com 8009256278,$0.00,$7.86,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+2/5/2025,Groceries,Walmart.Com 8009256278,$0.00,$17.95,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/3/2025,Groceries,Walmart.Com 8009256278,$0.00,$13.25,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Housing,Walmart.Com 8009256278,$0.00,$2.25,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+2/5/2025,Housing,Walmart.Com 8009256278,$0.00,$5.13,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/3/2025,Housing,Walmart.Com 8009256278,$0.00,$3.79,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Retail,Walmart.Com 8009256278,$0.00,$1.12,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+2/5/2025,Retail,Walmart.Com 8009256278,$0.00,$2.56,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/3/2025,Retail,Walmart.Com 8009256278,$0.00,$1.89,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/20/2025,Toiletries,Walmart.Com 8009256278,$0.00,$8.99,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+2/5/2025,Toiletries,Walmart.Com 8009256278,$0.00,$20.52,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+4/3/2025,Toiletries,Walmart.Com 8009256278,$0.00,$15.14,2,walmart.com,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/23/2025,Sports,WEB AUTHORIZED PMT ankenyjrfootball,$0.00,$240.00,5,ankenyjrfootball,,FALSE,,,,,,,,,,,,,,,,,FALSE
+3/31/2025,Education,WEB AUTHORIZED PMT BB TUITION MGMT,$0.00,$31.30,5,bb tuition mgmt,,FALSE,,,,,,,,,,,,,,,,,
+5/6/2025,Education,WEB AUTHORIZED PMT BB TUITION MGMT,$0.00,$150.00,5,bb tuition mgmt,,FALSE,,,,,,,,,,,,,,,,,
+2/11/2025,Utilities,WEB AUTHORIZED PMT CINERGY METRONET,$0.00,$58.68,5,cinergy metronet,,FALSE,,,,,,,,,,,,,,,,,
+3/13/2025,Utilities,WEB AUTHORIZED PMT Cinergy Metronet,$0.00,$58.68,5,cinergy metronet,,FALSE,,,,,,,,,,,,,,,,,
+4/10/2025,Utilities,WEB AUTHORIZED PMT Cinergy Metronet,$0.00,$58.68,5,cinergy metronet,,FALSE,,,,,,,,,,,,,,,,,
+5/13/2025,Utilities,WEB AUTHORIZED PMT Cinergy Metronet,$0.00,$58.68,5,cinergy metronet,,FALSE,,,,,,,,,,,,,,,,,
+6/10/2025,Utilities,WEB AUTHORIZED PMT Cinergy Metronet,$0.00,$58.68,5,cinergy metronet,,FALSE,,,,,,,,,,,,,,,,,
+7/11/2025,Utilities,WEB AUTHORIZED PMT Cinergy Metronet,$0.00,$58.68,5,cinergy metronet,,FALSE,,,,,,,,,,,,,,,,,
+7/28/2025,Education,WEB AUTHORIZED PMT ISave 529 ACH,$0.00,"$4,260.00",5,isave 529,,FALSE,,,,,,,,,,,,,,,,,
+8/11/2025,Utilities,WEB AUTHORIZED PMT Metro Fibernet L,$0.00,$71.18,5,metro fibernet,,FALSE,,,,,,,,,,,,,,,,,
+9/10/2025,Utilities,WEB AUTHORIZED PMT Metro Fibernet L,$0.00,$7.84,5,metro fibernet,,FALSE,,,,,,,,,,,,,,,,,
+10/14/2025,Utilities,WEB AUTHORIZED PMT Metro Fibernet L,$0.00,$58.68,5,metro fibernet,,FALSE,,,,,,,,,,,,,,,,,
+1/30/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$192.12,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$184.73,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+4/2/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$194.00,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+5/30/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$123.70,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+7/2/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$150.57,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+7/30/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$168.04,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+9/29/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$138.97,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,
+5/2/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$155.98,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/28/2025,Utilities,WEB AUTHORIZED PMT MIDAMERICAN,$0.00,$162.80,5,midamerican,,FALSE,,,,,,,,,,,,,,,,,FALSE
+1/13/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$295.53,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+1/14/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$35.00,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+1/17/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$52.49,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+1/28/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$5.29,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+1/29/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$3.17,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+2/18/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$5.93,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+2/18/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$5.93,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$3.17,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+3/31/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$3.17,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+4/9/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+5/29/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+6/2/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$15.89,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$190.79,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+6/18/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$12.71,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+6/24/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$1.05,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+6/30/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$15.89,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+7/29/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$2.18,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+8/11/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$3.17,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+8/18/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$47.65,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+8/22/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+9/2/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$35.00,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+9/22/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$12.71,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+9/22/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+9/23/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$15.89,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+9/25/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$13.77,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+9/29/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,
+4/28/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$4.23,5,paypal,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/29/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$3.17,5,paypal,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/29/2025,Entertainment,WEB AUTHORIZED PMT PAYPAL,$0.00,$10.59,5,paypal,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/5/2025,Insurance,WEB AUTHORIZED PMT PENN MUTUAL LIFE,$0.00,$415.10,5,penn mutual life,,FALSE,,,,,,,,,,,,,,,,,
+6/5/2025,Insurance,WEB AUTHORIZED PMT PENN MUTUAL LIFE,$0.00,$678.40,5,penn mutual life,,FALSE,,,,,,,,,,,,,,,,,
+2/19/2025,Taxes,WEB AUTHORIZED PMT Polk County Trea,$0.00,$363.30,5,polk county trea,,FALSE,,,,,,,,,,,,,,,,,
+2/28/2025,Taxes,WEB AUTHORIZED PMT Polk County Trea,$0.00,"$2,620.30",5,polk county trea,,FALSE,,,,,,,,,,,,,,,,,
+9/3/2025,Taxes,WEB AUTHORIZED PMT Polk County Trea,$0.00,"$2,676.30",5,polk county trea,,FALSE,,,,,,,,,,,,,,,,,
+7/22/2025,Taxes,WEB AUTHORIZED PMT Polk County Trea,$0.00,$197.30,5,polk county trea,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/28/2025,Clothing,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$45.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/2/2025,Clothing,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$65.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/8/2025,Clothing,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$100.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/8/2025,Clothing,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$150.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/8/2025,Giving,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$60.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Giving,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$200.00,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/17/2025,Giving,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$325.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/29/2025,Housing,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$240.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/15/2025,Restaurant,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$100.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Restaurant,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$75.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/3/2025,Transportation,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$500.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/3/2025,Transportation,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$500.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/3/2025,Transportation,WEB AUTHORIZED PMT RAISERIGHT,$0.00,$500.29,5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+9/29/2025,Vacation,WEB AUTHORIZED PMT RAISERIGHT,$0.00,"$6,700.29",5,raiseright,,FALSE,,,,,,,,,,,,,,,,,FALSE
+5/9/2025,Housing,WEB AUTHORIZED PMT ROOF IOWA LLC,$0.00,$371.00,5,roof iowa,,FALSE,,,,,,,,,,,,,,,,,
+2/3/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+3/3/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+4/1/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+6/2/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+7/1/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+8/1/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+9/2/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+10/1/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,
+5/1/2025,Housing,WEB AUTHORIZED PMT US BANK HOME MTG,$0.00,$896.81,5,us bank home mtg,,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/3/2025,Insurance,WEB AUTHORIZED PMT USAA P&C,$0.00,$840.56,5,usaa p&c,,FALSE,,,,,,,,,,,,,,,,,
+5/2/2025,Insurance,WEB AUTHORIZED PMT USAA P&C,$0.00,"$1,961.56",5,usaa p&c,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/29/2025,Education,WEB AUTHORIZED PMT USSF Learning Ce,$0.00,$63.00,5,ussf learning,,FALSE,,,,,,,,,,,,,,,,,
+3/12/2025,Entertainment,WELLS FARGO ARENA DES MOINES IA,$0.00,$10.70,1,wells fargo arena,,FALSE,,,,,,,,,,,,,,,,,
+7/2/2025,Restaurant,Wendy'S 10669,$0.00,$7.35,2,wendy,,FALSE,,,,,,,,,,,,,,,,,
+7/2/2025,Restaurant,Wendy'S 10669,$0.00,$3.52,2,wendy,,FALSE,,,,,,,,,,,,,,,,,
+7/19/2025,Groceries,WHEATSFIELD COOPERATIV AMES IA,$0.00,$17.65,1,wheatsfield,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/15/2025,Clothing,Wm Superc 1002 Se Nati,$0.00,$0.21,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/1/2025,Clothing,Wm Superc 1002 Se Nati,$0.00,$3.70,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Clothing,Wm Superc 1002 Se Nati,$0.00,$2.08,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Clothing,Wm Superc 1002 Se Nati,$0.00,$1.38,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/2/2025,Clothing,Wm Superc 1002 Se Nati,$0.00,$1.36,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/15/2025,Giving,Wm Superc 1002 Se Nati,$0.00,$0.21,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/1/2025,Giving,Wm Superc 1002 Se Nati,$0.00,$3.70,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Giving,Wm Superc 1002 Se Nati,$0.00,$2.08,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Giving,Wm Superc 1002 Se Nati,$0.00,$1.38,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/2/2025,Giving,Wm Superc 1002 Se Nati,$0.00,$1.36,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/15/2025,Groceries,Wm Superc 1002 Se Nati,$0.00,$1.47,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/1/2025,Groceries,Wm Superc 1002 Se Nati,$0.00,$25.88,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Groceries,Wm Superc 1002 Se Nati,$0.00,$14.57,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Groceries,Wm Superc 1002 Se Nati,$0.00,$9.63,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/2/2025,Groceries,Wm Superc 1002 Se Nati,$0.00,$9.51,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/1/2025,Housing,Wm Superc 1002 Se Nati,$0.00,$7.39,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Housing,Wm Superc 1002 Se Nati,$0.00,$4.16,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Housing,Wm Superc 1002 Se Nati,$0.00,$2.75,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/15/2025,Housing,Wm Superc 1002 Se Nati,$0.00,$0.42,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/2/2025,Housing,Wm Superc 1002 Se Nati,$0.00,$2.72,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/1/2025,Retail,Wm Superc 1002 Se Nati,$0.00,$3.70,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Retail,Wm Superc 1002 Se Nati,$0.00,$2.08,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Retail,Wm Superc 1002 Se Nati,$0.00,$1.38,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/2/2025,Retail,Wm Superc 1002 Se Nati,$0.00,$1.36,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/15/2025,Retail,Wm Superc 1002 Se Nati,$0.00,$0.21,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+6/1/2025,Toiletries,Wm Superc 1002 Se Nati,$0.00,$29.57,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/17/2025,Toiletries,Wm Superc 1002 Se Nati,$0.00,$16.65,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Toiletries,Wm Superc 1002 Se Nati,$0.00,$11.00,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+8/2/2025,Toiletries,Wm Superc 1002 Se Nati,$0.00,$10.87,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/15/2025,Toiletries,Wm Superc 1002 Se Nati,$0.00,$1.68,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/5/2025,Clothing,Wm Superc 130 Commerce,$0.00,$0.54,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/5/2025,Giving,Wm Superc 130 Commerce,$0.00,$0.54,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/5/2025,Groceries,Wm Superc 130 Commerce,$0.00,$3.80,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/5/2025,Housing,Wm Superc 130 Commerce,$0.00,$1.09,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/5/2025,Retail,Wm Superc 130 Commerce,$0.00,$0.54,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+7/5/2025,Toiletries,Wm Superc 130 Commerce,$0.00,$4.35,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Clothing,Wm Superc Wal-Mart Sup,$0.00,$0.65,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Giving,Wm Superc Wal-Mart Sup,$0.00,$0.65,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Groceries,Wm Superc Wal-Mart Sup,$0.00,$4.52,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Housing,Wm Superc Wal-Mart Sup,$0.00,$1.29,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Retail,Wm Superc Wal-Mart Sup,$0.00,$0.65,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Toiletries,Wm Superc Wal-Mart Sup,$0.00,$5.16,2,wm superc,walmart,FALSE,,,,,,,,,,,,,,,,,
+,Retail,Wm Supercenter #892,$25.38,$0.00,2,wm supercenter,walmart,FALSE,,,,,,,,,,,,,,,,,
+1/15/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,
+3/15/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,
+4/15/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,
+5/23/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,
+6/23/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,
+8/26/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,
+2/15/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/23/2025,Health,WW INT'L-DIGITAL,$0.00,$10.60,1,ww int'l,,FALSE,,,,,,,,,,,,,,,,,FALSE
+7/31/2025,Health,WWW.CROWN-CLEANERS.COM WEST DES MOIN IA,$0.00,$19.07,1,ww,,FALSE,,,,,,,,,,,,,,,,,
+7/31/2025,Health,WWW.CROWN-CLEANERS.COM WEST DES MOIN IA,$0.00,$64.76,1,ww,,FALSE,,,,,,,,,,,,,,,,,
+3/7/2025,Clothing,Www.Kohls.Com #0873,$0.00,$18.02,2,kohls,,FALSE,,,,,,,,,,,,,,,,,FALSE
+4/21/2025,Clothing,WWW.KOHLS.COM #0873 MIDDLETOWN OH,$0.00,$134.48,1,kohls,,FALSE,,,,,,,,,,,,,,,,,
+8/1/2025,Clothing,WWW.KOHLS.COM #0873 MIDDLETOWN OH,$0.00,$35.00,1,kohls,,FALSE,,,,,,,,,,,,,,,,,
+3/29/2025,Restaurant,YAGAS CAFE GALVESTON TX,$0.00,$15.98,1,yagas cafe,,FALSE,,,,,,,,,,,,,,,,,
+3/7/2025,Education,YMCA OF GREATER DES MO DES MOINES IA,$0.00,$105.00,1,ymca,,FALSE,,,,,,,,,,,,,,,,,FALSE
+8/14/2025,Vacation,"YUKON SUSPENSION BRIDG WHITEHORSE YT
+ CA DOLLAR",$0.00,$8.15,1,yukon suspension,,FALSE,,,,,,,,,,,,,,,,,
+6/11/2025,Vacation,ZELLE INSTANT PMT FROM Peter Fouad Fanous            USBaTzqnDPpy,$333.09,$0.00,5,zelle instant,,FALSE,,,,,,,,,,,,,,,,,
+8/11/2025,Vacation,ZELLE INSTANT PMT TO Peter Fanous                  USBECL7nUTAX,$0.00,$50.00,5,zelle instant,,FALSE,,,,,,,,,,,,,,,,,
+8/11/2025,Vacation,ZELLE INSTANT PMT TO Peter Fanous                  USBLe7gnUTBj,$0.00,$50.00,5,zelle instant,,FALSE,,,,,,,,,,,,,,,,,
+,Retail,,$0.00,$5.82,1,,,FALSE,,,,,,,,,,,,,,,,,
+,Retail,,$0.00,$10.60,1,,,FALSE,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE
+,,,,,,,,,,,,,,,,,,,,,,,,,FALSE

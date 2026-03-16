@@ -1,0 +1,284 @@
+Keyword,Example Description,Suggested Budget Label,Notes,Delete
+abebooks,AB* ABEBOOKS.CO,Retail,Books,FALSE
+adjustment-purchases,ADJUSTMENT-PURCHASES,Transfers,Card adjustment,FALSE
+adobe,ADOBE,Subscriptions,software,FALSE
+adventureland park,ADVENTURELAND PARK,Entertainment,Theme park,FALSE
+affordable company,AFFORDABLE COMPANY LEWISVILLE TX,Retail,General retail (verify),FALSE
+agave azteca,AGAVE AZTECA OMAHA NE,Restaurant,Dining out,FALSE
+airport parking,KECK AIRPORT PARKING DES MOINES IA,Transportation,Airport parking,FALSE
+aldi,ALDI 72035 ANKENY IA,Groceries,groceries,FALSE
+amazon,AMAZON / AMAZON PRIME,Subscriptions,online purchases,FALSE
+amazon mktpl,AMAZON MKTPL*...,Retail,Amazon marketplace,FALSE
+amazon.com,Amazon.com*...,Retail,Amazon retail,FALSE
+americana,TST*AMERICANA,Restaurant,restaurant,FALSE
+ames chiropractic,AMES CHIROPRACTIC & WC,Health,chiropractic,FALSE
+amigo mexican,Amigo Mexican Restaura,Restaurant,Restaurant,FALSE
+ankeny hardware,ANKENY HARDWARE,Housing,hardware,FALSE
+ankeny jaguars,SQ *ANKENY JAGUARS SHO ANKENY IA,Sports,School/Spirit wear,FALSE
+ankeny sanitation,ANKENY SANITATION ANKENY IA,Utilities,Trash,FALSE
+ankenyjrfootball,WEB AUTHORIZED PMT ankenyjrfootball,Sports,Sports/activities,FALSE
+apple services,Apple Services,Subscriptions,App Store/iCloud/Media,FALSE
+b-bops,B-BOPS,Restaurant,fast Restaurant,FALSE
+backpocket,TST*BACKPOCKET PIN AND JOHNSTON IA,Entertainment,Arcade/Restaurant,FALSE
+balanced health,BALANCED HEALTH,Health,wellness,FALSE
+bandit burrito,TST*BANDIT BURRITO JOHNSTON IA,Restaurant,Dining out,FALSE
+bb tuition mgmt,WEB AUTHORIZED PMT BB TUITION MGMT,Education,Tuition management,FALSE
+beeline,BEELINE + BLUE,Retail,printing,FALSE
+big head burger,BIG HEAD BURGER,Restaurant,restaurant,FALSE
+bookemon,BOOKEMON,Retail,Photo book / publishing,FALSE
+bountiful life,BOUNTIFUL LIFE HEALTH,Health,wellness,TRUE
+breckenridge sport,SSV BRECKENRIDGE SPORT BRECKENRIDGE CO,Vacation,Ski rental/retail,FALSE
+buc-ee's,BUC-EE'S #33 TEXAS CITY TX,Vacation,Travel fuel/Restaurant,FALSE
+buffalo phil,BUFFALO PHILS,Restaurant,restaurant,FALSE
+burger shed,BURGER SHED,Restaurant,restaurant,FALSE
+butchart gardens,BUTCHART GARDENS,Vacation,Attraction (CAD),FALSE
+c fresh market,C FRESH MARKET DES MOINES IA,Groceries,Groceries,FALSE
+cancun grill,CANCUN GRILL,Restaurant,restaurant,FALSE
+capital one,WEB AUTHORIZED PMT CAPITAL ONE,Transfers,Credit card payment,TRUE
+capital orthopaedics,Capital Orthopaedics,Health,Medical,FALSE
+caseys,CASEYS / KUM&GO / KWIK STAR,Transportation,fuel,FALSE
+cedar valley medical,CEDAR VALLEY MEDICAL,Health,medical,TRUE
+central iowa hospital,CENTRAL IOWA HOSPITAL,Health,medical,TRUE
+central iowa orthodont,CENTRAL IOWA ORTHODONT ANKENY IA,Health,Orthodontics,FALSE
+charleys philly,Charleys Philly Steaks,Restaurant,Dining out,FALSE
+charter patagon,THE CHARTER PATAGON SEATTLE WA,Restaurant,Dining out,FALSE
+chase credit crd,ELECTRONIC WITHDRAWAL CHASE CREDIT CRD,Transfers,Credit card payment,TRUE
+chatgpt,OPENAI *CHATGPT,Subscriptions,software,FALSE
+check,CHECK,Transfers,Manual check (categorize when payee known),FALSE
+chick-fil-a,CHICK-FIL-A #03303 ANKENY IA,Restaurant,Restaurant,FALSE
+chocolaterie stam,Sq *Chocolaterie Stam,Restaurant,Dessert / chocolate shop,FALSE
+cinemark,CINEMARK 1132 BOXCON ALTOONA IA,Entertainment,"Movies (if concessions, keep Restaurant)",FALSE
+cinergy metronet,WEB AUTHORIZED PMT CINERGY METRONET,Utilities,Internet,FALSE
+city of ankeny,CITY OF ANKENY - AQUAT,Entertainment,swim passes,FALSE
+city-market,CITY-MARKET BRECKENRIDGE,Vacation,groceries,FALSE
+civic center,Sq *Civic Center,Entertainment,Performing arts tickets,FALSE
+cleverbridge,cleverbridge Inc.,Subscriptions,"Software subscriptions (e.g., utilities, AV)",FALSE
+coldstone,Coldstone,Restaurant,Dessert,FALSE
+compass,COMPASSION INTERNATION,Giving,charity,FALSE
+compassion,COMPASSION INTERNATION COLORADO SPRI CO,Giving,Charity,FALSE
+cornbred barbecue,SQ *CORNBRED BARBECUE AMES IA,Restaurant,Restaurant,FALSE
+culvers,CULVERS N ANKENY,Restaurant,eating out,FALSE
+culvers n ankeny,Culvers N Ankeny,Restaurant,Dining out,FALSE
+customer withdrawal,CUSTOMER WITHDRAWAL,Transfers,ATM/branch cash withdrawal,FALSE
+daylight donuts,Daylight Donuts,Restaurant,Treats / breakfast,FALSE
+daylight donuts,DAYLIGHT DONUTS,Restaurant,Breakfast,FALSE
+des moines perf. arts,DES MOINES PERF. ARTS DES MOINES IA,Entertainment,Theater,FALSE
+designed 2 move,DESIGNED 2 MOVE CHIROP,Health,chiropractic,FALSE
+district 36,DISTRICT 36 WINE BAR,Restaurant,dining out,FALSE
+do cpr,DO CPR ANKENY IA,Education,Training/Certification,FALSE
+doc* iowa derm,IOWA DERM CLINIC,Health,dermatologist,FALSE
+doc*iowa derm,DOC*IOWA DERM CLINIC ANKENY IA,Health,Dermatology,FALSE
+dollar tree,DOLLAR TREE,Retail,misc retail,FALSE
+dollartree,DOLLARTREE BOONE IA,Retail,Discount retail,FALSE
+doordash,DOORDASH,Restaurant,delivery,FALSE
+drive with cops,DRIVE WITH COPS,Sports,event,FALSE
+dsm parking,DSM PARKING,Transportation,parking,FALSE
+dsm parking tiba,DSM PARKING TIBA DES MOINES IA,Transportation,Parking,FALSE
+dumpling,DUMPLING EMPIRE,Restaurant,restaurant,FALSE
+dumpling empire,DUMPLING EMPIRE OMAHA NE,Restaurant,Dining out,FALSE
+dunhams,DUNHAMS 288 AMES IA,Retail,Sporting goods,FALSE
+dylan industries,"Dylan Industries, Inc.",Unknown,Review; assign once purpose known,FALSE
+eg*trvl,EG*TRVL73123044821297,Vacation,Travel booking,FALSE
+electronic deposit,ELECTRONIC DEPOSIT VENMO / PAYPAL / LPL / ADP,Transfers,Treat as Income if payroll/interest; otherwise Transfers,FALSE
+electronic deposit adp totalsource,ELECTRONIC DEPOSIT ADP TOTALSOURCE,Income,Payroll - Chris,FALSE
+electronic deposit lpl,ELECTRONIC DEPOSIT LPL,Transfers,Investment income/transfer,FALSE
+electronic deposit qube,ELECTRONIC DEPOSIT Qube,Transfers,Movement from Qube,FALSE
+electronic deposit raker rhodes,ELECTRONIC DEPOSIT RAKER RHODES ENG,Income,Payroll - Annie,FALSE
+electronic withdrawal lpl,ELECTRONIC WITHDRAWAL LPL,Transfers,Investment contribution,FALSE
+electronic withdrawal qube,ELECTRONIC WITHDRAWAL Qube,Transfers,Movement to Qube,TRUE
+enterprise,ENTERPRISE RENT-A-CAR,Transportation,travel,FALSE
+etsy,ETSY.COM,Retail,gifts,FALSE
+fareway,Fareway,Groceries,groceries,FALSE
+fishingbooker,FISHINGBOOKE*WATERSEDG NORFOLK VA,Vacation,Excursion / charter,FALSE
+fleet farm,FLEET FARM,Housing,tools,FALSE
+fleet farm,FLEET FARM 3300 ANKENY IA,Housing,Tools/outdoor,FALSE
+focus family eye,FOCUS FAMILY EYE CARE,Health,vision,FALSE
+focus family eye,FOCUS FAMILY EYE CARE ALTOONA IA,Health,Vision,FALSE
+gdp*the creamery,GDP*THE CREAMERY POLK CITY IA,Restaurant,Ice cream,FALSE
+gdp*uptown dairy,Gdp*Uptown Dairy,Restaurant,Ice cream,FALSE
+glacier canyon,GLACIER CANYON LODGE,Vacation,travel,FALSE
+glacier canyon,GLACIER CANYON LODGE WISCONSIN DEL WI,Vacation,Hotel,FALSE
+glacier canyon ecomm,GLACIER CANYON ECOMM WISCONSIN DEL WI,Vacation,Hotel (e-comm),FALSE
+go fund me,GOFNDME* SUPPORT GAGE SAN DIEGO CA,Giving,GoFundMe donation,FALSE
+gofndme,GOFNDME* SUPPORT GAGE SAN DIEGO CA,Giving,GoFundMe donation,FALSE
+gracies,GRACIES GALVESTON TX,Restaurant,restaurant,FALSE
+gracies,GRACIES GALVESTON TX,Restaurant,Dining out,FALSE
+grand superior,TST* GRAND SUPERIOR GR TWO HARBORS MN,Vacation,Lodging,FALSE
+grand view christian,Grand View Christian School Association,Education,School tuition/fees,FALSE
+grandview christian,GRANDVIEW CHRISTIAN SC,Education,school tuition,FALSE
+gvcsa,GVCSA,Education,Acronym catch-all,FALSE
+h mart,H MART SEATTLE WA,Restaurant,Groceries (travel),FALSE
+hidalgo mexican,Hidalgo Mexican Bar,Restaurant,Dining out,FALSE
+hilton,HILTON HOTELS,Vacation,hotel,FALSE
+hobby lobby,HOBBY LOBBY,Retail,Crafts,FALSE
+hobbylobby,Hobbylobby,Retail,Crafts,FALSE
+home depot,HOMEDEPOT.COM / THE HOME DEPOT,Housing,home improvement,FALSE
+homedepot.com,HOMEDEPOT.COM,Housing,Home improvement,FALSE
+hp *instant ink,HP *INSTANT INK,Subscriptions,Printing subscription,FALSE
+hp instant ink,HP *INSTANT INK,Subscriptions,printing,FALSE
+hy-vee,HY-VEE ANKENY / JOHNSTON,Restaurant,groceries,FALSE
+hy-vee johnston,HY-VEE JOHNSTON FFE 75 JOHNSTON IA,Restaurant,Groceries,FALSE
+i love pad thai,I LOVE PAD THAI II OMAHA NE,Restaurant,Dining out,FALSE
+in *the shredder,IN *THE SHREDDER,Housing,Shredding/services,FALSE
+interest paid this period,INTEREST PAID THIS PERIOD,Income,Interest earned,FALSE
+internet banking transfer,INTERNET/MOBILE BANKING TRANSFER WITHDRAWAL 6139,Transfers,Internal account transfer,TRUE
+iowa ent center,IOWA ENT CENTER,Health,ENT specialist,FALSE
+iowa events center,IOWA EVENTS CENTER TIX,Entertainment,Tickets,FALSE
+iowa radiology,IOWA RADIOLOGY,Health,medical,FALSE
+iowa radiology,IOWA RADIOLOGY WDM IA,Health,Medical imaging,FALSE
+iowa rush soccer,JFI*IOWA RUSH SOCCER C ANKENY IA,Sports,Sports fees,FALSE
+iowa taproom,Tst*Iowa Taproom,Restaurant,Dining out,FALSE
+irs,ELECTRONIC WITHDRAWAL IRS,Taxes,Federal tax payment,FALSE
+isave 529,WEB AUTHORIZED PMT ISave 529 ACH,Education,529 college savings,FALSE
+j's smokehouse,J'S SMOKEHOUSE RALSTON NE,Restaurant,Dining out,FALSE
+jethro,Jethro`S Lakehouse,Restaurant,Dining out,FALSE
+jewelry,LS BEL PRI JEWELRY,Retail,jewelry,FALSE
+jfi* iowa rush,JFI*IOWA RUSH SOCCER,Education,sports,FALSE
+jimmy johns,Jimmy Johns - 3287,Restaurant,Dining out,FALSE
+jostens,JOSTENS INC.,Other,Yearbook/class items,FALSE
+keck parking,KECK PARKING DES MOINES IA,Transportation,Parking,FALSE
+keystone church,KEYSTONE CHURCH ANKENY IA,Giving,Tithe/Church,FALSE
+kohl's,KOHL'S / WWW.KOHLS.COM #0873,Clothing,Department store,FALSE
+kohls,Kohls 0623,Clothing,Department store,FALSE
+kum&go,KUM&GO 0022R GRINNELL GRINNELL IA,Transportation,Fuel,FALSE
+kwik star,KWIK STAR #1057 ANKENY IA,Transportation,Fuel,FALSE
+kwik trip,KWIK TRIP #117 DULUTH MN,Transportation,Fuel,FALSE
+lake ann,VSI*LAKEANNBAPTISTCAM,Vacation,camp,FALSE
+laking,LAKINGSCONFECTIONARY GALVESTON TX,Restaurant,Candy / treats (travel),FALSE
+lowes,LOWES,Housing,home improvement,FALSE
+ls bel pri jewelry,LS BEL PRI JEWELRY AND GALVESTON TX,Retail,Jewelry,FALSE
+ls bike country,LS BIKE COUNTRY,Retail,Bike/gear (could be Transportation),FALSE
+ls dungeons gate,LS DUNGEONS GATE ANKENY IA,Entertainment,Hobby/games,FALSE
+mai pho,MAI PHO VIETNAMESE RES CEDAR RAPIDS IA,Restaurant,Dining out,FALSE
+main street cafe,Main Street Cafe & Bak,Restaurant,Dining out,FALSE
+maritime communication,MARITIME COMMUNICATION MELBOURNE FL,Vacation,Cruise internet/phone,FALSE
+mercari,Mercari*888-325-2168,Clothing,Marketplace,FALSE
+metro fibernet,WEB AUTHORIZED PMT Metro Fibernet L,Utilities,Internet,FALSE
+metronet,METRONET,Utilities,internet,FALSE
+michael’s,MICHAELS STORES,Retail,crafts,FALSE
+michaels,MICHAELS STORES 3733 ANKENY IA,Retail,Crafts,FALSE
+microsoft,Microsoft Corporation,Subscriptions,Office/OneDrive/Xbox sub,FALSE
+midamerican,WEB AUTHORIZED PMT MIDAMERICAN / MIDAMERICAN ENERGY,Utilities,Electric/Gas,FALSE
+misfit island cafe,SQ *MISFIT ISLAND CAFE SITKA AK,Restaurant,Dining out,FALSE
+mnhuntfish,RAO MNHUNTFISH VEHICLE DNR.STATE.MN. MN,Entertainment,Hunt/Fish license (recreation),FALSE
+mobile banking transfer withdrawal,MOBILE BANKING TRANSFER WITHDRAWAL 6139,Transfers,Internal transfer,TRUE
+mobile check deposit,MOBILE CHECK DEPOSIT,Transfers,Paper check deposit,FALSE
+monthly maintenance fee,MONTHLY MAINTENANCE FEE,Banking,Bank fee,TRUE
+napa store,NAPA STORE 3124005,Transportation,Auto parts,FALSE
+nike,NIKE,Clothing,apparel,FALSE
+nike,Nike Altoona 263,Clothing,Apparel / shoes,FALSE
+nike.com,NIKE.COM,Clothing,Apparel,FALSE
+official sports,OFFICIAL SPORTS INTERN WARSAW IN,Education,Sports gear,FALSE
+old school pinball,OLD SCHOOL PINBALL,Entertainment,recreation,FALSE
+olive garden,Olive Garden Zk 002183,Restaurant,Dining out,FALSE
+online passport fees,ONLINE PASSPORT FEES CHARLESTON SC,Vacation,Passport,FALSE
+openai *chatgpt,OPENAI *CHATGPT SUBSCR SAN FRANCISCO CA,Subscriptions,Software,FALSE
+orca,ORCA,Retail,gear,FALSE
+orchard,STAR DRUG STORE,Restaurant,restaurant,FALSE
+pad thai,I LOVE PAD THAI,Restaurant,restaurant,FALSE
+panera,PANERA BREAD,Restaurant,coffee/lunch,FALSE
+panera bread,Panera Bread #203220,Restaurant,Dining out / coffee,FALSE
+panera sip club,PANERA SIP CLUB 203220,Subscriptions,Panera subscription,FALSE
+park hyatt,PARK HYATT BVR CRK,Vacation,hotel,FALSE
+parking,Park / Parking,Transportation,Parking (generic),FALSE
+parkway pizza,PARKWAY PIZZA -NORTHEA MINNEAPOLIS MN,Restaurant,Restaurant,FALSE
+parkwhiz,PARKWHIZ / KECK PARKING / DSM PARKING,Transportation,parking,FALSE
+parkwhiz,"PARKWHIZ, INC. CHICAGO IL",Transportation,Parking,FALSE
+paypal,Paypal Inc.,Entertainment,Payment platform / pass-through,FALSE
+penn mutual life,WEB AUTHORIZED PMT PENN MUTUAL LIFE,Insurance,Life insurance,FALSE
+pizza ranch,PIZZA RANCH,Restaurant,eating out,FALSE
+polk county trea,WEB AUTHORIZED PMT Polk County Trea,Taxes,County taxes/vehicle,FALSE
+projectexpedition,PROJECTEXPEDITION TOUR,Vacation,excursions,FALSE
+qdoba,QDOBA 2964 NORTH PLATTE NE,Restaurant,eating out,FALSE
+qt,QT 541 DES MOINES IA,Transportation,fuel,FALSE
+qustodio,QUSTODIO,Subscriptions,parental control app,FALSE
+qustodio,QUSTODIO,Subscriptions,Parental control app (move to Tech if needed),FALSE
+raiseright,WEB AUTHORIZED PMT RAISERIGHT,Transfers,Scrip/gift cards,FALSE
+raisin canes,RAISING CANES,Restaurant,restaurant,FALSE
+raising canes,RAISING CANES 0235 OMAHA NE,Restaurant,Dining out,FALSE
+rasmussen lawn care,RASMUSSEN LAWN CARE ANKENY IA,Housing,Lawn care / yard,FALSE
+reatatravelstop,REATATRAVELSTOP-STERLI STERLING CO,Vacation,Travel stop,FALSE
+red chillez,RED CHILLEZ INDIAN CUI,Restaurant,restaurant,FALSE
+reversed sales tax,REVERSED SALES TAX,Banking,Tax reversal,TRUE
+roof iowa,WEB AUTHORIZED PMT ROOF IOWA LLC,Housing,Home repair,FALSE
+royal caribbean,ROYAL CARIBBEAN CRUIS,Vacation,cruise,FALSE
+royal caribbean,ROYAL CARIBBEAN CRUIS MIAMI FL,Vacation,Cruise,FALSE
+rsm lawn,RASMUSSEN LAWN CARE ANKENY IA,Housing,Lawn care,FALSE
+sales tax,SALES TAX,Banking,Tax on bank fees,TRUE
+sam’s,SAM'S CLUB 006979 ANKENY IA,Restaurant,bulk groceries,FALSE
+sam's club,Sam'S Club,Restaurant,Bulk groceries,FALSE
+sams club mc,WEB AUTHORIZED PMT SAMS CLUB MC,Transfers,Credit card payment,TRUE
+sams club.com,Sams Club.Com,Groceries,Bulk groceries,FALSE
+sams club.com,SAMS CLUB.COM 006279 BENTONVILLE AR,Groceries,Online/club order,FALSE
+samsclub,Samsclub.Com / Samsclub #6979,Groceries,Bulk groceries,FALSE
+samsclub #6979,SAMSCLUB #6979,Groceries,Club - groceries,FALSE
+samsclub.com,SAMSCLUB.COM,Groceries,Club - online groceries,FALSE
+sanitation,ANKENY SANITATION,Utilities,trash,FALSE
+saylorville,SAYLORVILLE CHURCH,Vacation,church,FALSE
+scheels,SCHEELS,Clothing,sporting goods,FALSE
+scheels,SCHEELS DES MOINES DES MOINES IA,Clothing,Sporting goods,FALSE
+shade tree auto,SHADE TREE AUTO - ANKE,Transportation,Auto repair,FALSE
+shein,SHEINUSSERVICES,Clothing,clothing,FALSE
+shore excursions,SHORE EXCURSIONS GROUP,Vacation,Cruise excursion,FALSE
+siam table,SIAM TABLE,Restaurant,restaurant,FALSE
+skagway mercantile,SQ *SKAGWAY MERCANTILE SKAGWAY AK,Vacation,Souvenirs / retail,FALSE
+slim chickens,SLIM CHICKENS 16201 ANKENY IA,Restaurant,Restaurant,FALSE
+smjexq-ussf lc,SMJEXQ-USSF LC,Education,Soccer fees (deposit/withdrawal),FALSE
+smokey d,TST*SMOKEY DS BBQ - 2N DES MOINES IA,Restaurant,Dining out,FALSE
+smokey d’s,SMOKEY DS BBQ,Restaurant,eating out,FALSE
+smokey row,Py *Smokey Row Ankeny,Restaurant,Coffee shop,FALSE
+snow.com,SNOW.COM/VAIL RESORTS,Vacation,ski trip,FALSE
+sonic,Sonic Drive In,Restaurant,Fast Restaurant,FALSE
+splitwise,ELECTRONIC WITHDRAWAL SPLITWISE,Vacation,P2P settle-up via Splitwise,FALSE
+spotify,SPOTIFY,Subscriptions,music,FALSE
+star drug store,STAR DRUG STORE GALVESTON TX,Restaurant,Dining out,FALSE
+starbucks,STARBUCKS STORE,Restaurant,coffee,FALSE
+store,Store,Retail,Generic retail (review),FALSE
+swimming pool supply,SWIMMING POOL SUPPLY C GRIMES IA,Housing,Pool supplies / home maint,FALSE
+target,Target T-1767,Grocery,Groceries / household (adjust as needed),FALSE
+teamup,TEAMUP FUNDRAISER,Giving,fundraiser,FALSE
+the cellar,THE CELLAR SITKA AK,Restaurant,Dining out,FALSE
+the childrens place,THE CHILDRENS PLACE,Clothing,Kids apparel,FALSE
+the creamery,Gdp*The Creamery,Restaurant,Ice cream,FALSE
+thechildrensplace,Thechildrensplace.Com,Clothing,Kids clothing,FALSE
+tj maxx,Tj Maxx #853,Clothing,Clothing / home goods,FALSE
+tozo,TOZO,Retail,"Electronics/accessories (earbuds, chargers)",FALSE
+tru green,TRUGREEN / RASMUSSEN LAWN,Housing,lawn,FALSE
+u.s. bank *3795,U.S. Bank *3795,Transfers,Internal transfer / funding,FALSE
+ua fh des moines,Ua Fh Des Moines,Retail,Review / unclear payee,FALSE
+uber,UBER TRIP,Vacation,rideshare,FALSE
+uber,UBER,Vacation,Rideshare,FALSE
+uber trip,UBER TRIP* TRIP SAN FRANCISCO CA,Vacation,Rideshare,FALSE
+ubereats,UBER,Restaurant,delivery,FALSE
+uep*hokkaido ramen,UEP*HOKKAIDO RAMEN HOU ANKENY IA,Restaurant,Dining out,FALSE
+unitypoint,UNITYPOINT HEALTH,Health,medical,FALSE
+uph dm ank pharm,Uph Dm Ank Pharm Wil E,Health,Pharmacy,FALSE
+us bank home mtg,WEB AUTHORIZED PMT US BANK HOME MTG,Housing,Mortgage,FALSE
+usaa p&c,WEB AUTHORIZED PMT USAA P&C,Insurance,Auto/Home P&C,FALSE
+ussf learning,WEB AUTHORIZED PMT USSF Learning Ce,Education,Coaching/education,FALSE
+valve,Valve Corp.,Entertainment,Steam / PC games & DLC,FALSE
+venmo,WEB AUTHORIZED PMT VENMO,Transfers,P2P payment (categorize at source if detail exists),FALSE
+verizon,VERIZON,Utilities,phone,FALSE
+verizon wireless,ELECTRONIC WITHDRAWAL VERIZON WIRELESS,Utilities,Cell service,FALSE
+victoria kebab,SQ *VICTORIA KEBAB ON VICTORIA BC,Restaurant,Dining out (CAD),FALSE
+vioc,VIOC OIL CHANGE,Transportation,car maintenance,FALSE
+vioc,VIOC GR0003 ANKENY IA,Transportation,Oil change / service,FALSE
+wal-mart,Wal-Mart #0504,Groceries,Groceries / household,FALSE
+walgreens,WALGREENS,Health,pharmacy,FALSE
+walmart,Walmart / Walmart.com,Retail,groceries & household,FALSE
+walmart.com,WALMART.COM 800-966,Retail,online retail,FALSE
+warner media direct,"Warner Media Direct, LLC",Subscriptions,Max/HBO subscription,FALSE
+paypal,WEB AUTHORIZED PMT PAYPAL,Transfers,Pass-through to PayPal,FALSE
+wells fargo arena,WELLS FARGO ARENA DES MOINES IA,Entertainment,Arena tickets,FALSE
+wendy,Wendy's 10669,Restaurant,Fast Restaurant,FALSE
+wheatsfield,WHEATSFIELD COOPERATIV AMES IA,Groceries,Groceries,FALSE
+wintersong,SQ *WINTERSONG SITKA AK,Retail,Gift shop / retail,FALSE
+wm superc,Wm Superc 1002 Se Nati,Retail,Walmart Supercenter (groceries),FALSE
+wm supercenter,Wm Supercenter #892,Retail,Groceries / household,FALSE
+ww,WW INT'L-DIGITAL,Health,weight loss,FALSE
+ww int'l,WW INT'L-DIGITAL,Health,Weight loss subscription,FALSE
+yagas,YAGAS CAFE GALVESTON TX,Restaurant,restaurant,FALSE
+yagas cafe,YAGAS CAFE GALVESTON TX,Restaurant,Dining out,FALSE
+ymca,YMCA OF GREATER DES MO DES MOINES IA,Education,Programs/membership,FALSE
+yukon suspension,YUKON SUSPENSION BRIDG WHITEHORSE YT,Vacation,Attraction (CAD),FALSE
+zelle instant,ZELLE INSTANT PMT FROM/TO ...,Vacation,Peer-to-peer transfer,FALSE
