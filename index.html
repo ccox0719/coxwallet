@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Flip 7</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0f;--surface:#141417;--surface2:#1c1c21;
+  --border:#2a2a32;--border-bright:#3d3d4a;
+  --text:#f0ede8;--text-dim:#7a7880;--text-faint:#3a383f;
+  --gold:#e8c96d;--gold-dim:#6b5a25;--gold-bg:#1a1608;
+  --red:#e05252;--red-dim:#5c2222;--red-bg:#160c0c;
+  --green:#52c47a;--green-dim:#1d5234;--green-bg:#0a1610;
+  --blue:#6ab0e8;--blue-dim:#254a6b;--blue-bg:#090f18;
+  --r:12px;--r-lg:20px;--r-xl:28px;
+}
+html,body{height:100%;width:100%;overflow-x:hidden}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px 16px 40px}
+body::before{content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;opacity:0.6}
+
+.screen{display:none;width:100%;max-width:560px;flex-direction:column;align-items:center;gap:20px}
+.screen.active{display:flex}
+
+/* SETUP */
+.logo-wrap{text-align:center;padding:8px 0 4px}
+.logo{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,10vw,5rem);font-weight:900;
+  letter-spacing:-0.03em;line-height:1;
+  background:linear-gradient(135deg,#f0ede8 30%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo span{font-style:italic}
+.tagline{font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-dim);margin-top:6px}
+.card-preview{display:flex;gap:6px;justify-content:center;margin-top:12px}
+.preview-card{width:36px;height:52px;border-radius:6px;border:1px solid var(--border-bright);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+  color:var(--text-dim);background:var(--surface2);animation:float 3s ease-in-out infinite}
+.preview-card:nth-child(2){animation-delay:-.5s}
+.preview-card:nth-child(3){animation-delay:-1s;color:var(--gold);border-color:var(--gold-dim)}
+.preview-card:nth-child(4){animation-delay:-1.5s}.preview-card:nth-child(5){animation-delay:-2s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+.panel{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:24px;display:flex;flex-direction:column;gap:18px}
+.lbl{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
+.player-list{display:flex;flex-direction:column;gap:8px}
+.player-row{display:flex;gap:8px;align-items:center;animation:slideIn 0.2s ease-out}
+@keyframes slideIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+.player-row input{flex:1;padding:11px 14px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.85rem;color:var(--text);outline:none;transition:border-color 0.15s}
+.player-row input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(232,201,109,0.08)}
+.player-row input::placeholder{color:var(--text-faint)}
+.icon-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:transparent;
+  color:var(--text-dim);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;flex-shrink:0}
+.icon-btn:hover{border-color:var(--red);color:var(--red);background:var(--red-bg)}
+.add-btn{padding:9px 14px;border:1px dashed var(--border);border-radius:var(--r);
+  background:transparent;font-family:'Syne',sans-serif;font-size:0.72rem;letter-spacing:0.06em;
+  color:var(--text-dim);cursor:pointer;align-self:flex-start;transition:all 0.15s}
+.add-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-bg)}
+.sep{height:1px;background:var(--border)}
+.setting-row{display:flex;align-items:center;gap:12px}
+.setting-row label{font-size:0.8rem;color:var(--text-dim);flex:1}
+.setting-row input[type=number]{width:74px;padding:9px 12px;background:var(--surface2);border:1px solid var(--border);
+  border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.9rem;color:var(--text);text-align:center;outline:none}
+.setting-row input[type=number]:focus{border-color:var(--gold)}
+.start-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--gold) 0%,#c9a84c 100%);
+  color:#0d0d0f;border:none;border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.85rem;
+  font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;
+  transition:all 0.2s;box-shadow:0 4px 20px rgba(232,201,109,0.2)}
+.start-btn:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(232,201,109,0.3)}
+.start-btn:active{transform:scale(0.98)}
+.rules-toggle{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-faint);cursor:pointer;border:none;background:none;font-family:'Syne',sans-serif;padding:4px;transition:color 0.15s}
+.rules-toggle:hover{color:var(--text-dim)}
+.rules-box{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:22px;font-size:0.72rem;line-height:1.8;color:var(--text-dim);display:none}
+.rules-box.open{display:block}
+.rules-box h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:10px}
+.rules-box strong{color:var(--gold)}
+.rules-box ul{margin-left:16px;margin-top:4px}
+.rules-box li{margin-bottom:3px}
+
+/* GAME */
+.game-header{display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 2px}
+.round-badge{display:flex;align-items:baseline;gap:6px}
+.round-label-sm{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-dim)}
+.round-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--text);line-height:1}
+.deck-badge{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;transition:all 0.3s}
+.deck-badge.pop{animation:deckPop 0.35s ease}
+@keyframes deckPop{0%{transform:scale(1)}50%{transform:scale(1.14);border-color:var(--gold-dim)}100%{transform:scale(1)}}
+
+.score-strip{width:100%;display:flex;gap:7px;overflow-x:auto;padding:2px 2px 4px;scrollbar-width:none}
+.score-strip::-webkit-scrollbar{display:none}
+.score-pill{display:flex;flex-direction:column;align-items:center;gap:1px;
+  padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:var(--surface);
+  min-width:68px;transition:all 0.3s;flex-shrink:0}
+.score-pill.sp-active{border-color:var(--gold);background:var(--gold-bg);
+  box-shadow:0 0 0 1px var(--gold-dim),0 4px 16px rgba(232,201,109,0.14);transform:scale(1.05)}
+.score-pill.sp-bust{border-color:var(--red-dim);background:var(--red-bg);opacity:0.6}
+.score-pill.sp-done{border-color:var(--green-dim);background:var(--green-bg)}
+.pill-name{font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);
+  white-space:nowrap;max-width:66px;overflow:hidden;text-overflow:ellipsis}
+.pill-score{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text);line-height:1}
+.pill-status{font-size:0.5rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:1px}
+.ps-flip{color:var(--gold)}.ps-bank{color:var(--green)}.ps-bust{color:var(--red)}
+
+.turn-card{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);
+  padding:20px 22px;display:flex;align-items:center;justify-content:space-between;
+  position:relative;overflow:hidden;transition:border-color 0.4s,box-shadow 0.4s}
+.turn-card::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 0% 50%,rgba(232,201,109,0.06) 0%,transparent 60%);pointer-events:none}
+.turn-name{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700}
+.turn-sub{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);margin-top:2px}
+.total-label{font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim)}
+.total-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;line-height:1;
+  display:inline-block;transition:color 0.3s}
+.total-num.t-bust{color:var(--red)}.total-num.t-gold{color:var(--gold)}
+.total-num.jump{animation:numJump 0.4s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes numJump{0%{transform:scale(1)}45%{transform:scale(1.35)}100%{transform:scale(1)}}
+
+.hand-wrap{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);
+  padding:18px;min-height:128px;display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start;position:relative}
+.empty-hand{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-faint)}
+.card{width:58px;height:86px;border-radius:8px;border:1.5px solid var(--border-bright);
+  background:var(--surface2);display:flex;flex-direction:column;align-items:center;
+  justify-content:center;position:relative;box-shadow:0 2px 8px rgba(0,0,0,0.4)}
+.card-val{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--text);line-height:1}
+.card-corner{position:absolute;top:4px;left:5px;font-size:0.48rem;color:var(--text-faint);font-family:'Syne',sans-serif}
+.card.cn-blue{border-color:var(--blue-dim);background:var(--blue-bg)}.card.cn-blue .card-val{color:var(--blue)}
+.card.cn-gold{border-color:var(--gold-dim);background:var(--gold-bg)}.card.cn-gold .card-val{color:var(--gold)}
+.card.cn-mod{border-color:var(--green-dim);background:var(--green-bg)}.card.cn-mod .card-val{font-size:1.2rem;color:var(--green)}
+.card.cn-sc{border-color:var(--blue-dim);background:var(--blue-bg);width:68px}
+.card.cn-sc .card-val{font-family:'Syne',sans-serif;font-size:0.55rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--blue);text-align:center;padding:0 4px;line-height:1.4}
+.card.cn-flip7{border-color:var(--gold);box-shadow:0 0 16px rgba(232,201,109,0.45)}.card.cn-flip7 .card-val{color:var(--gold)}
+.card.new-card{animation:cardLand 0.45s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes cardLand{0%{transform:translateY(-20px) scale(0.75) rotate(-5deg);opacity:0}65%{transform:translateY(3px) scale(1.04);opacity:1}100%{transform:none;opacity:1}}
+
+.status-bar{width:100%;border-radius:var(--r);padding:14px 18px;text-align:center;
+  font-family:'Playfair Display',serif;font-size:1.2rem;
+  transform:translateY(6px);opacity:0;transition:opacity 0.3s,transform 0.3s;pointer-events:none}
+.status-bar.sb-show{opacity:1;transform:none}
+.status-bar.sb-bust{background:var(--red-bg);border:1px solid var(--red-dim);color:var(--red)}
+.status-bar.sb-bank{background:var(--green-bg);border:1px solid var(--green-dim);color:var(--green)}
+.status-bar.sb-flip7{background:var(--gold-bg);border:1px solid var(--gold-dim);color:var(--gold)}
+
+.btn-row{display:flex;gap:10px;width:100%}
+.btn-flip{flex:2;padding:16px;background:linear-gradient(135deg,var(--gold),#c9a84c);
+  color:#0d0d0f;border:none;border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.82rem;
+  font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;
+  transition:all 0.18s;box-shadow:0 4px 16px rgba(232,201,109,0.18)}
+.btn-flip:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,201,109,0.3)}
+.btn-flip:active:not(:disabled){transform:scale(0.97)}
+.btn-flip:disabled{background:var(--surface2);color:var(--text-faint);box-shadow:none;cursor:default}
+.btn-bank{flex:1;padding:16px;background:transparent;color:var(--text-dim);
+  border:1.5px solid var(--border-bright);border-radius:var(--r);font-family:'Syne',sans-serif;
+  font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.18s}
+.btn-bank:hover:not(:disabled){border-color:var(--green);color:var(--green);background:var(--green-bg)}
+.btn-bank:active:not(:disabled){transform:scale(0.97)}
+.btn-bank:disabled{opacity:0.3;cursor:default}
+
+/* OVERLAYS — shared base */
+.overlay{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:16px;z-index:500;
+  opacity:0;pointer-events:none;transition:opacity 0.25s;backdrop-filter:blur(8px)}
+.overlay.ov-open{opacity:1;pointer-events:all}
+@keyframes burstIn{from{transform:scale(0.5) rotate(-15deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* REVEAL overlay */
+#ovReveal{background:rgba(13,13,15,0.93)}
+.rv-label{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-dim);animation:fadeUp 0.3s ease 0.05s both}
+.flip-scene{width:130px;height:190px;perspective:700px}
+.flip-card{width:100%;height:100%;position:relative;transform-style:preserve-3d}
+.flip-card.do-flip{animation:flip3d 0.55s cubic-bezier(0.4,0,0.2,1) both}
+@keyframes flip3d{0%{transform:rotateY(-180deg) scale(0.85)}100%{transform:rotateY(0deg) scale(1)}}
+.fc-face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.fc-back{background:var(--surface2);border:2px solid var(--border-bright);transform:rotateY(180deg)}
+.fc-back::after{content:'7';font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;
+  color:var(--text-faint);font-style:italic}
+.fc-front{background:var(--surface);border:2px solid var(--border-bright)}
+.fc-front.ft-gold{border-color:var(--gold-dim);background:var(--gold-bg)}
+.fc-front.ft-blue{border-color:var(--blue-dim);background:var(--blue-bg)}
+.fc-front.ft-green{border-color:var(--green-dim);background:var(--green-bg)}
+.fc-front.ft-action{border-color:var(--blue-dim);background:var(--blue-bg)}
+.rv-val{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;line-height:1;
+  animation:fadeUp 0.35s cubic-bezier(0.34,1.56,0.64,1) 0.55s both}
+.rv-val.vc-gold{color:var(--gold)}.rv-val.vc-blue{color:var(--blue)}.rv-val.vc-green{color:var(--green)}
+.rv-val.rv-action{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;text-align:center;padding:0 10px;line-height:1.5}
+.rv-sublabel{font-family:'Syne',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  animation:fadeUp 0.35s ease 0.6s both}
+.rv-sublabel.vc-gold{color:var(--gold)}.rv-sublabel.vc-blue{color:var(--blue)}.rv-sublabel.vc-green{color:var(--green)}
+.rv-result{font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;text-align:center;
+  animation:fadeUp 0.35s ease 0.72s both}
+.rv-result.rr-safe{color:var(--green)}.rv-result.rr-bust{color:var(--red)}.rv-result.rr-flip7{color:var(--gold)}.rv-result.rr-action{color:var(--blue)}.rv-result.rr-mod{color:var(--green)}
+.rv-delta{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);
+  animation:fadeUp 0.35s ease 0.8s both}
+.rv-continue{padding:14px 40px;background:linear-gradient(135deg,var(--gold),#c9a84c);
+  color:#0d0d0f;border:none;border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.82rem;
+  font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;
+  animation:fadeUp 0.35s ease 0.88s both;transition:all 0.18s;box-shadow:0 4px 20px rgba(232,201,109,0.2)}
+.rv-continue:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(232,201,109,0.35)}
+
+/* BUST overlay */
+#ovBust{background:rgba(22,12,12,0.96)}
+.bust-icon{font-size:4rem;animation:burstIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.1s both}
+.bust-title{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:var(--red);font-style:italic;
+  animation:burstIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;text-align:center}
+.bust-zero{font-family:'Playfair Display',serif;font-size:6rem;font-weight:900;
+  background:linear-gradient(135deg,var(--red),#8b1c1c);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp 0.4s ease 0.35s both;line-height:1}
+.bust-sub{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);animation:fadeUp 0.4s ease 0.5s both}
+.ov-btn{padding:14px 36px;background:var(--surface2);color:var(--text-dim);border:1px solid var(--border-bright);
+  border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.8rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.18s}
+.ov-btn.bust-btn{border-color:var(--red-dim);animation:fadeUp 0.4s ease 0.65s both}
+.ov-btn.bust-btn:hover{border-color:var(--red);color:var(--red)}
+
+/* BANK overlay */
+#ovBank{background:rgba(10,22,16,0.95)}
+.bank-icon{font-size:3.2rem;animation:burstIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.1s both}
+.bank-title{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:var(--green);font-style:italic;
+  animation:burstIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;text-align:center}
+.bank-pts{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:var(--green);
+  animation:fadeUp 0.4s ease 0.35s both;line-height:1}
+.bank-lbl{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--green-dim);animation:fadeUp 0.4s ease 0.5s both}
+.ov-btn.bank-btn{border-color:var(--green-dim);animation:fadeUp 0.4s ease 0.65s both;margin-top:4px}
+.ov-btn.bank-btn:hover{border-color:var(--green);color:var(--green)}
+
+/* FLIP7 overlay */
+#ovFlip7{background:rgba(26,22,8,0.97)}
+.f7-title{font-family:'Playfair Display',serif;font-size:3.2rem;font-weight:900;
+  background:linear-gradient(135deg,#f0ede8,var(--gold));-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;font-style:italic;text-align:center;
+  animation:burstIn 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.1s both}
+.f7-sub{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-dim);animation:fadeUp 0.4s ease 0.45s both}
+.f7-score{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:var(--gold);
+  animation:burstIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;line-height:1}
+.f7-bonus-lbl{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-dim);animation:fadeUp 0.4s ease 0.55s both}
+.ov-btn.f7-btn{background:linear-gradient(135deg,var(--gold),#c9a84c);color:#0d0d0f;border:none;
+  animation:fadeUp 0.4s ease 0.7s both;margin-top:4px}
+.ov-btn.f7-btn:hover{box-shadow:0 4px 18px rgba(232,201,109,0.3)}
+.confetti-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.cp{position:absolute;width:8px;height:8px;border-radius:2px;
+  animation:cfFall var(--d,2s) ease-in var(--dl,0s) forwards}
+@keyframes cfFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+/* PASS overlay */
+#ovPass{background:var(--bg)}
+.pass-wobble{font-size:2.4rem;color:var(--text-faint);animation:wobble 1.4s ease-in-out infinite alternate}
+@keyframes wobble{from{transform:rotate(-12deg)}to{transform:rotate(12deg)}}
+.pass-lbl{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim)}
+.pass-name{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;
+  background:linear-gradient(135deg,#f0ede8,var(--gold));-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;text-align:center}
+.pass-ready{padding:16px 40px;background:linear-gradient(135deg,var(--gold),#c9a84c);
+  color:#0d0d0f;border:none;border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.85rem;
+  font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.18s;
+  box-shadow:0 4px 20px rgba(232,201,109,0.2);margin-top:8px}
+.pass-ready:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(232,201,109,0.35)}
+
+/* TARGET popup */
+#ovTarget{background:rgba(0,0,0,0.8);z-index:520}
+.tgt-box{background:var(--surface);border:1px solid var(--border-bright);border-radius:var(--r-xl);
+  padding:28px;width:100%;max-width:380px;display:flex;flex-direction:column;gap:14px;
+  transform:scale(0.95);transition:transform 0.2s}
+#ovTarget.ov-open .tgt-box{transform:none}
+.tgt-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--text)}
+.tgt-sub{font-size:0.7rem;color:var(--text-dim);line-height:1.5}
+.tgt-list{display:flex;flex-direction:column;gap:8px}
+.tgt-btn{padding:12px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);
+  font-family:'Syne',sans-serif;font-size:0.82rem;color:var(--text);cursor:pointer;
+  text-align:left;transition:all 0.15s;display:flex;align-items:center;justify-content:space-between}
+.tgt-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-bg)}
+.tgt-score{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text-dim)}
+
+/* ROUND MODAL */
+#ovRound{background:rgba(0,0,0,0.8);z-index:530;align-items:center;justify-content:center}
+.rnd-box{background:var(--surface);border:1px solid var(--border-bright);border-radius:var(--r-xl);
+  padding:28px;width:100%;max-width:420px;display:flex;flex-direction:column;gap:16px;
+  transform:translateY(14px);transition:transform 0.25s}
+#ovRound.ov-open .rnd-box{transform:none}
+.rnd-title{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--text)}
+.rnd-title em{color:var(--gold);font-style:italic}
+.rnd-list{display:flex;flex-direction:column;gap:8px}
+.rnd-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
+  border-radius:var(--r);background:var(--surface2);border:1px solid var(--border);
+  animation:slideIn 0.25s ease both}
+.rnd-row.rr-win{background:var(--gold-bg);border-color:var(--gold-dim)}
+.rnd-row.rr-bust{background:var(--red-bg);border-color:var(--red-dim);opacity:0.7}
+.rnd-left{display:flex;flex-direction:column;gap:2px}
+.rnd-name{font-size:0.82rem;font-weight:600;color:var(--text)}
+.rnd-earned{font-size:0.65rem;color:var(--text-dim)}
+.rnd-total{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text)}
+.rnd-row.rr-win .rnd-total{color:var(--gold)}
+.rnd-go{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),#c9a84c);
+  color:#0d0d0f;border:none;border-radius:var(--r);font-family:'Syne',sans-serif;font-size:0.82rem;
+  font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.15s}
+.rnd-go:hover{box-shadow:0 4px 18px rgba(232,201,109,0.25)}
+
+/* WINNER */
+.trophy{font-size:4rem;line-height:1;margin-bottom:8px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.win-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,8vw,3.2rem);font-weight:900;
+  background:linear-gradient(135deg,#f0ede8,var(--gold));-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;text-align:center}
+.win-sub{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dim);margin-top:8px}
+.final-list{width:100%;display:flex;flex-direction:column;gap:8px}
+.replay-btn{width:100%;padding:16px;background:var(--surface2);color:var(--text-dim);
+  border:1px solid var(--border-bright);border-radius:var(--r);font-family:'Syne',sans-serif;
+  font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.15s}
+.replay-btn:hover{border-color:var(--text-dim);color:var(--text)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);
+  background:var(--surface2);border:1px solid var(--border-bright);border-radius:var(--r);
+  padding:10px 20px;font-size:0.75rem;color:var(--text-dim);letter-spacing:0.06em;
+  transition:transform 0.3s;z-index:700;white-space:nowrap;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+.ng-btn{
+  width:32px;height:32px;border-radius:50%;border:1px solid var(--border-bright);
+  background:transparent;color:var(--text-faint);font-size:0.9rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all 0.18s;flex-shrink:0;
+  font-family:'Syne',sans-serif;
+}
+.ng-btn:hover{border-color:var(--red-dim);color:var(--red);background:var(--red-bg)}
+
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-bright);border-radius:2px}
+</style>
+</head>
+<body>
+
+<!-- SETUP -->
+<div id="setup" class="screen active">
+  <div class="logo-wrap">
+    <div class="logo">Flip <span>7</span></div>
+    <div class="tagline">Push Your Luck · Pass &amp; Play</div>
+    <div class="card-preview">
+      <div class="preview-card">3</div><div class="preview-card">9</div>
+      <div class="preview-card" style="color:var(--gold);border-color:var(--gold-dim)">7</div>
+      <div class="preview-card">11</div><div class="preview-card">5</div>
+    </div>
+  </div>
+  <div class="panel">
+    <div><div class="lbl">Players</div>
+      <div class="player-list" id="playerList"></div>
+      <button class="add-btn" id="addPlayerBtn" style="margin-top:10px">+ Add Player</button>
+    </div>
+    <div class="sep"></div>
+    <div><div class="lbl">Settings</div>
+      <div class="setting-row"><label>Points to win</label>
+        <input type="number" id="targetScore" value="200" min="50" max="999" step="10"></div>
+    </div>
+    <button class="start-btn" id="startBtn">Deal the Cards</button>
+  </div>
+  <button class="rules-toggle" id="rulesToggle">How to Play ▾</button>
+  <div class="rules-box" id="rulesBox">
+    <h4>Flip 7 — Official Rules</h4>
+    <p><strong>Deck:</strong> Numbers 0–12 where count = value (twelve 12s, one 1, one 0), plus Score Modifiers (+2,+4,+6,+8,+8,+10,×2) and Action cards.</p>
+    <p style="margin-top:8px"><strong>Each Round:</strong> Dealer deals one card to every player, then players take turns clockwise choosing to <strong>Flip</strong> or <strong>Bank</strong>.</p>
+    <p style="margin-top:8px"><strong>Bust:</strong> Draw a duplicate number = 0 points for the round.</p>
+    <p style="margin-top:8px"><strong>Flip 7:</strong> Collect 7 different numbers → round ends for all. Everyone who hasn't busted banks. Flip 7 player gets +15 bonus.</p>
+    <p style="margin-top:8px"><strong>Action Cards:</strong></p>
+    <ul>
+      <li><strong>Freeze</strong> — Forces a target active player to bank.</li>
+      <li><strong>Flip Three</strong> — Forces a target active player to flip 3 cards.</li>
+      <li><strong>Second Chance</strong> — Held in hand, saves you from one bust.</li>
+    </ul>
+    <p style="margin-top:8px"><strong>Score Modifiers:</strong> +cards add flat points; ×2 doubles your number total first.</p>
+    <p style="margin-top:8px"><strong>Win:</strong> First to 200 points wins.</p>
+  </div>
+</div>
+
+<!-- GAME -->
+<div id="game" class="screen">
+  <div class="game-header" style="width:100%">
+    <div class="round-badge"><div class="round-label-sm">Round</div><div class="round-num" id="roundNum">1</div></div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="deck-badge" id="deckBadge">94 cards</div>
+      <button class="ng-btn" id="newGameBtn" title="New Game">✕</button>
+    </div>
+  </div>
+  <div class="score-strip" id="scoreStrip"></div>
+  <div class="turn-card" id="turnCard">
+    <div><div class="turn-name" id="turnName">—</div><div class="turn-sub" id="turnSub">Your turn</div></div>
+    <div style="text-align:right"><div class="total-label">Hand Total</div><div class="total-num" id="totalNum">0</div></div>
+  </div>
+  <div class="hand-wrap" id="handWrap"><div class="empty-hand">No cards yet</div></div>
+  <div class="status-bar" id="statusBar"></div>
+  <div class="btn-row">
+    <button class="btn-flip" id="btnFlip">↑ Flip</button>
+    <button class="btn-bank" id="btnBank">Bank</button>
+  </div>
+</div>
+
+<!-- WINNER -->
+<div id="winnerScreen" class="screen">
+  <div style="text-align:center;width:100%">
+    <div class="trophy">🏆</div>
+    <div class="win-title" id="winTitle">Player</div>
+    <div class="win-sub">wins the game</div>
+  </div>
+  <div class="final-list" id="finalList"></div>
+  <button class="replay-btn" id="replayBtn">Play Again</button>
+</div>
+
+<!-- REVEAL overlay -->
+<div class="overlay" id="ovReveal">
+  <div class="rv-label" id="rvLabel">You drew</div>
+  <div class="flip-scene">
+    <div class="flip-card" id="flipCard">
+      <div class="fc-face fc-front" id="fcFront">
+        <div class="rv-val" id="rvVal"></div>
+        <div class="rv-sublabel" id="rvSub"></div>
+      </div>
+      <div class="fc-face fc-back"></div>
+    </div>
+  </div>
+  <div class="rv-result" id="rvResult"></div>
+  <div class="rv-delta" id="rvDelta"></div>
+  <button class="rv-continue" id="rvContinue">Continue</button>
+</div>
+
+<!-- BUST overlay -->
+<div class="overlay" id="ovBust">
+  <div class="bust-icon">💀</div>
+  <div class="bust-title">Busted!</div>
+  <div class="bust-zero">0</div>
+  <div class="bust-sub">Better luck next round</div>
+  <button class="ov-btn bust-btn" id="bustNext">Pass the phone →</button>
+</div>
+
+<!-- BANK overlay -->
+<div class="overlay" id="ovBank">
+  <div class="bank-icon">🏦</div>
+  <div class="bank-title">Banked!</div>
+  <div class="bank-pts" id="bankPts">0</div>
+  <div class="bank-lbl">points secured</div>
+  <button class="ov-btn bank-btn" id="bankNext">Pass the phone →</button>
+</div>
+
+<!-- FLIP7 overlay -->
+<div class="overlay" id="ovFlip7">
+  <div class="confetti-wrap" id="confettiWrap"></div>
+  <div class="f7-title">Flip 7!</div>
+  <div class="f7-sub">Seven unique numbers collected</div>
+  <div class="f7-score" id="f7Score">0</div>
+  <div class="f7-bonus-lbl">total score including +15 bonus · round ends for all</div>
+  <button class="ov-btn f7-btn" id="f7Next">See Round Results</button>
+</div>
+
+<!-- PASS overlay -->
+<div class="overlay" id="ovPass">
+  <div class="pass-wobble">↩</div>
+  <div class="pass-lbl">Hand the device to</div>
+  <div class="pass-name" id="passName">Player</div>
+  <button class="pass-ready" id="passReady">I'm ready →</button>
+</div>
+
+<!-- TARGET overlay -->
+<div class="overlay" id="ovTarget">
+  <div class="tgt-box">
+    <div class="tgt-title" id="tgtTitle">Choose a player</div>
+    <div class="tgt-sub" id="tgtSub"></div>
+    <div class="tgt-list" id="tgtList"></div>
+  </div>
+</div>
+
+<!-- ROUND MODAL -->
+<div class="overlay" id="ovRound">
+  <div class="rnd-box">
+    <div class="rnd-title">End of Round <em id="rndNum">1</em></div>
+    <div class="rnd-list" id="rndList"></div>
+    <button class="rnd-go" id="rndGo">Next Round</button>
+  </div>
+</div>
+
+<!-- NEW GAME CONFIRM overlay -->
+<div class="overlay" id="ovNewGame" style="z-index:610">
+  <div class="tgt-box" style="gap:18px">
+    <div class="tgt-title" style="font-family:'Playfair Display',serif;font-size:1.5rem">New Game?</div>
+    <div class="tgt-sub">This will end the current game and all scores will be lost.</div>
+    <div style="display:flex;gap:10px;width:100%">
+      <button class="ov-btn" id="ngCancel" style="flex:1;border-color:var(--border-bright)">Cancel</button>
+      <button class="ov-btn" id="ngConfirm" style="flex:1;border-color:var(--red-dim);color:var(--red);background:var(--red-bg)">End Game</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════
+//  DECK
+// ══════════════════════════════════════════
+function buildDeck(){
+  const c=[];
+  for(let n=0;n<=12;n++) for(let i=0;i<(n===0?1:n);i++) c.push({t:'num',v:n});
+  [2,4,6,8,8,10].forEach(v=>c.push({t:'mod',v,lbl:'+'+v}));
+  c.push({t:'mod',v:'x2',lbl:'×2'});
+  for(let i=0;i<3;i++) c.push({t:'act',n:'Second Chance'});
+  for(let i=0;i<3;i++) c.push({t:'act',n:'Flip Three'});
+  for(let i=0;i<2;i++) c.push({t:'act',n:'Freeze'});
+  return shuffle(c);
+}
+function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=0|Math.random()*(i+1);[r[i],r[j]]=[r[j],r[i]];}return r;}
+
+// ══════════════════════════════════════════
+//  STATE  — single source of truth
+// ══════════════════════════════════════════
+const S={
+  target:200, round:1,
+  players:[],   // [{name, total}]
+  deck:[],
+  rd:[],        // round data per player: {nums[], mods[], sc, status, score}
+  cur:0,        // current player index
+  busy:false    // true while any overlay is open — blocks all button presses
+};
+
+function newRD(){return{nums:[],mods:[],sc:false,status:'active',score:0};}
+function calcScore(rd){
+  let s=rd.nums.reduce((a,v)=>a+v,0),b=0,x=false;
+  rd.mods.forEach(m=>m.v==='x2'?x=true:b+=m.v);
+  return(x?s*2:s)+b;
+}
+
+// ══════════════════════════════════════════
+//  OVERLAY MANAGER  — one at a time, clean
+// ══════════════════════════════════════════
+function showOv(id){document.getElementById(id).classList.add('ov-open');}
+function hideOv(id){document.getElementById(id).classList.remove('ov-open');}
+function hideAll(){
+  ['ovReveal','ovBust','ovBank','ovFlip7','ovPass','ovTarget','ovRound']
+    .forEach(id=>document.getElementById(id).classList.remove('ov-open'));
+  S.busy=false;
+}
+
+// ══════════════════════════════════════════
+//  DEAL PHASE
+// ══════════════════════════════════════════
+function dealInitial(players,cb){
+  let i=0;
+  function next(){
+    if(i>=players.length){cb();return;}
+    const card=S.deck.pop();
+    if(!card){cb();return;}
+    if(card.t==='act'){
+      toast(players[i].name+' got: '+card.n+'!');
+      resolveAction(card,i,()=>{i++;next();});
+    } else {
+      applyCard(card,i);
+      i++;next();
+    }
+  }
+  next();
+}
+
+// ══════════════════════════════════════════
+//  APPLY CARD — pure state mutation, returns result string
+// ══════════════════════════════════════════
+function applyCard(card,idx){
+  const rd=S.rd[idx];
+  if(rd.status!=='active') return 'skip';
+  if(card.t==='num'){
+    if(rd.nums.includes(card.v)){
+      if(rd.sc){rd.sc=false;toast(S.players[idx].name+"'s Second Chance saved them!");return 'saved';}
+      rd.status='busted';rd.score=0;return 'bust';
+    }
+    rd.nums.push(card.v);
+    if(rd.nums.length===7){
+      rd.status='flip7';rd.score=calcScore(rd)+15;
+      S.rd.forEach((r,i)=>{if(i!==idx&&r.status==='active'){r.status='banked';r.score=calcScore(r);}});
+      return 'flip7';
+    }
+    return 'safe';
+  }
+  if(card.t==='mod'){rd.mods.push(card);return 'mod';}
+  if(card.t==='act'&&card.n==='Second Chance'){rd.sc=true;return 'sc';}
+  return 'safe';
+}
+
+function resolveAction(card,srcIdx,cb){
+  if(card.n==='Second Chance'){S.rd[srcIdx].sc=true;cb();return;}
+  const targets=S.players.map((p,i)=>({p,i})).filter(t=>S.rd[t.i].status==='active');
+  if(targets.length===0){cb();return;}
+  if(targets.length===1){execAction(card,targets[0].i);cb();return;}
+  // show target picker
+  S.busy=true;
+  document.getElementById('tgtTitle').textContent=card.n;
+  document.getElementById('tgtSub').textContent=
+    card.n==='Freeze'?'Force a player to bank immediately.':'Force a player to flip 3 more cards.';
+  const list=document.getElementById('tgtList');list.innerHTML='';
+  targets.forEach(({p,i})=>{
+    const btn=document.createElement('button');btn.className='tgt-btn';
+    btn.innerHTML=`<span>${p.name}</span><span class="tgt-score">${calcScore(S.rd[i])}</span>`;
+    btn.onclick=()=>{hideOv('ovTarget');execAction(card,i);S.busy=false;cb();};
+    list.appendChild(btn);
+  });
+  showOv('ovTarget');
+}
+
+function execAction(card,idx){
+  const rd=S.rd[idx];if(rd.status!=='active')return;
+  if(card.n==='Freeze'){rd.status='banked';rd.score=calcScore(rd);toast(S.players[idx].name+' frozen — '+rd.score+' pts banked');}
+  else if(card.n==='Flip Three'){
+    for(let i=0;i<3&&S.deck.length>0&&rd.status==='active';i++) applyCard(S.deck.pop(),idx);
+    toast(S.players[idx].name+' flipped 3!');
+  }
+}
+
+// ══════════════════════════════════════════
+//  REVEAL ANIMATION — no cloneNode trickery
+// ══════════════════════════════════════════
+function showReveal(card,result,onDone){
+  S.busy=true;
+
+  // Reset the flip card by toggling the animation class
+  const fc=document.getElementById('flipCard');
+  fc.classList.remove('do-flip');
+  // Force reflow then re-add
+  void fc.offsetWidth;
+  fc.classList.add('do-flip');
+
+  // Style the front face
+  const front=document.getElementById('fcFront');
+  const val=document.getElementById('rvVal');
+  const sub=document.getElementById('rvSub');
+  const res=document.getElementById('rvResult');
+  const delta=document.getElementById('rvDelta');
+
+  front.className='fc-face fc-front';
+  val.className='rv-val';
+  val.style.fontSize='';
+  sub.className='rv-sublabel';
+  sub.textContent='';
+  res.textContent='';
+  delta.textContent='';
+  document.getElementById('rvLabel').textContent='You drew';
+
+  if(card.t==='num'){
+    const tier=card.v<=4?'blue':card.v<=8?'':'gold';
+    if(tier){front.classList.add('ft-'+tier);val.classList.add('vc-'+tier);}
+    val.textContent=card.v;
+    if(result==='bust'){res.className='rv-result rr-bust';res.textContent='Busted!';delta.textContent='0 points this round';}
+    else if(result==='flip7'){res.className='rv-result rr-flip7';res.textContent='Flip 7!';delta.textContent='+15 bonus!';}
+    else if(result==='saved'){res.className='rv-result rr-safe';res.textContent='Second Chance!';delta.textContent='Duplicate discarded';}
+    else{res.className='rv-result rr-safe';res.textContent='Safe!';delta.textContent='Hand total: '+calcScore(S.rd[S.cur]);}
+  } else if(card.t==='mod'){
+    front.classList.add('ft-green');val.classList.add('vc-green');
+    val.textContent=card.lbl;sub.classList.add('vc-green');sub.textContent='Modifier';
+    res.className='rv-result rr-mod';res.textContent='Score bonus!';
+    delta.textContent='Hand total: '+calcScore(S.rd[S.cur]);
+  } else {
+    front.classList.add('ft-action');val.classList.add('rv-action','vc-blue');
+    val.textContent=card.n;sub.classList.add('vc-blue');sub.textContent='Action Card';
+    res.className='rv-result rr-action';
+    res.textContent=card.n==='Second Chance'?'Held in hand!':'Choose your target!';
+  }
+
+  showOv('ovReveal');
+  document.getElementById('rvContinue').onclick=()=>{
+    hideOv('ovReveal');
+    S.busy=false;
+    onDone();
+  };
+}
+
+// ══════════════════════════════════════════
+//  PLAYER ACTIONS
+// ══════════════════════════════════════════
+document.getElementById('btnFlip').onclick=function(){
+  if(S.busy)return;
+  const rd=S.rd[S.cur];
+  if(!rd||rd.status!=='active')return;
+  if(S.deck.length===0){toast('Deck empty!');return;}
+  S.busy=true;
+
+  const card=S.deck.pop();
+  updateDeckBadge();
+
+  if(card.t==='act'){
+    showReveal(card,'action',()=>{
+      resolveAction(card,S.cur,()=>{
+        const rdNow=S.rd[S.cur];
+        if(rdNow.status!=='active') showOutcome(rdNow.status,rdNow.score);
+        else advance();
+      });
+    });
+    return;
+  }
+
+  const result=applyCard(card,S.cur);
+  showReveal(card,result,()=>{
+    const rdNow=S.rd[S.cur];
+    if(result==='bust')       showOutcome('busted',0);
+    else if(result==='flip7') showOutcome('flip7',rdNow.score);
+    else advance();  // safe/mod/saved — rotate to next player
+  });
+};
+
+document.getElementById('btnBank').onclick=function(){
+  if(S.busy)return;
+  const rd=S.rd[S.cur];
+  if(!rd||rd.status!=='active'||rd.nums.length===0)return;
+  S.busy=true;
+  rd.status='banked';rd.score=calcScore(rd);
+  renderGame();
+  showOutcome('banked',rd.score);
+};
+
+// ══════════════════════════════════════════
+//  OUTCOME OVERLAYS
+// ══════════════════════════════════════════
+function showOutcome(status,score){
+  S.busy=false; // overlay button is now the gate — clear busy so pass screen works after
+  if(status==='busted'){
+    showOv('ovBust');
+    document.getElementById('bustNext').onclick=()=>{hideOv('ovBust');advance();};
+  } else if(status==='banked'){
+    document.getElementById('bankPts').textContent=score;
+    showOv('ovBank');
+    document.getElementById('bankNext').onclick=()=>{hideOv('ovBank');advance();};
+  } else if(status==='flip7'){
+    document.getElementById('f7Score').textContent=score;
+    spawnConfetti();showOv('ovFlip7');
+    document.getElementById('f7Next').onclick=()=>{hideOv('ovFlip7');endRound();};
+  }
+}
+
+// ══════════════════════════════════════════
+//  ADVANCE TO NEXT PLAYER
+// ══════════════════════════════════════════
+function advance(){
+  S.busy=false; // always clear before deciding what to show next
+  saveGame();
+  const allDone=S.rd.every(r=>r.status!=='active');
+  if(allDone){endRound();return;}
+  // Find next active player clockwise from current
+  let next=-1;
+  for(let i=1;i<=S.players.length;i++){
+    const n=(S.cur+i)%S.players.length;
+    if(S.rd[n].status==='active'){next=n;break;}
+  }
+  if(next===-1){endRound();return;}
+  // Show pass screen — player hands device to next person
+  document.getElementById('passName').textContent=S.players[next].name;
+  S.busy=true; // keep busy while pass screen is up
+  showOv('ovPass');
+  document.getElementById('passReady').onclick=()=>{
+    hideOv('ovPass');
+    S.cur=next;
+    S.busy=false;
+    saveGame();
+    renderGame();
+  };
+}
+
+// ══════════════════════════════════════════
+//  ROUND END
+// ══════════════════════════════════════════
+function endRound(){
+  S.busy=false;
+  saveGame(); // scores persist before modal
+  S.players.forEach((p,i)=>{p.total+=S.rd[i].score;});
+  document.getElementById('rndNum').textContent=S.round;
+  const list=document.getElementById('rndList');list.innerHTML='';
+  const sorted=[...S.players.map((p,i)=>({name:p.name,total:p.total,earned:S.rd[i].score,status:S.rd[i].status}))]
+    .sort((a,b)=>b.total-a.total);
+  const lead=sorted[0].total;
+  sorted.forEach((p,si)=>{
+    const row=document.createElement('div');
+    row.style.animationDelay=(si*0.07)+'s';
+    row.className='rnd-row'+(p.total===lead?' rr-win':'')+(p.status==='busted'?' rr-bust':'');
+    const tag=p.status==='busted'?' (busted)':p.status==='flip7'?' (Flip 7! +15)':'';
+    row.innerHTML=`<div class="rnd-left"><div class="rnd-name">${p.name}${p.total===lead?' 🏆':''}</div>`+
+      `<div class="rnd-earned">+${p.earned} this round${tag}</div></div>`+
+      `<div class="rnd-total">${p.total}</div>`;
+    list.appendChild(row);
+  });
+  const winner=S.players.find(p=>p.total>=S.target);
+  const go=document.getElementById('rndGo');
+  if(winner){
+    go.textContent='See Final Results';
+    go.onclick=()=>{hideOv('ovRound');showWinner(winner);};
+  } else {
+    go.textContent='Start Next Round →';
+    go.onclick=()=>{
+      hideOv('ovRound');
+      S.round++;
+      if(S.deck.length<15) S.deck=[...S.deck,...buildDeck()];
+      startRound();
+    };
+  }
+  showOv('ovRound');
+}
+
+function showWinner(w){
+  showScreen('winnerScreen');
+  document.getElementById('winTitle').textContent=w.name;
+  const fl=document.getElementById('finalList');fl.innerHTML='';
+  [...S.players].sort((a,b)=>b.total-a.total).forEach((p,i)=>{
+    const row=document.createElement('div');
+    row.className='rnd-row'+(i===0?' rr-win':'');
+    row.innerHTML=`<div class="rnd-name">${p.name}</div><div class="rnd-total">${p.total}</div>`;
+    fl.appendChild(row);
+  });
+}
+
+// ══════════════════════════════════════════
+//  RENDER
+// ══════════════════════════════════════════
+function renderGame(){
+  const p=S.players[S.cur];
+  const rd=S.rd[S.cur];
+  document.getElementById('roundNum').textContent=S.round;
+  document.getElementById('turnName').textContent=p.name;
+
+  const score=calcScore(rd);
+  const tn=document.getElementById('totalNum');
+  const prev=parseInt(tn.textContent)||0;
+  tn.textContent=score;
+  tn.className='total-num'+(rd.status==='busted'?' t-bust':rd.status==='flip7'?' t-gold':'');
+  if(score!==prev&&score>0){tn.classList.remove('jump');void tn.offsetWidth;tn.classList.add('jump');}
+
+  const sub=document.getElementById('turnSub');
+  sub.textContent=rd.status==='active'
+    ?rd.nums.length+' card'+(rd.nums.length!==1?'s':'')+(rd.sc?' · 2nd Chance held':'')
+    :'Turn complete';
+
+  // Score strip
+  const strip=document.getElementById('scoreStrip');strip.innerHTML='';
+  S.players.forEach((pl,i)=>{
+    const r=S.rd[i];
+    const pill=document.createElement('div');
+    const cls=i===S.cur?'sp-active':r.status==='busted'?'sp-bust':r.status!=='active'?'sp-done':'';
+    pill.className='score-pill '+(cls||'');
+    const stl=r.status==='busted'?'bust':r.status!=='active'?'banked':'flip';
+    const stc='ps-'+(r.status==='busted'?'bust':r.status!=='active'?'bank':'flip');
+    pill.innerHTML=`<div class="pill-name">${pl.name}</div><div class="pill-score">${pl.total}</div>`+
+      `<div class="pill-status ${stc}">${stl}</div>`;
+    strip.appendChild(pill);
+  });
+
+  // Hand
+  const hw=document.getElementById('handWrap');hw.innerHTML='';
+  const total=rd.nums.length+rd.mods.length+(rd.sc?1:0);
+  if(total===0){hw.innerHTML='<div class="empty-hand">No cards yet</div>';}
+  else{
+    if(rd.sc) hw.appendChild(mkCard('cn-sc',false,'','2nd Chance'));
+    rd.nums.forEach((v,i)=>{
+      const tier=v<=4?'cn-blue':v<=8?'':v<=12?'cn-gold':'';
+      const is7=rd.nums.length===7;
+      const cls=(tier+(is7?' cn-flip7':'')).trim();
+      hw.appendChild(mkCard(cls, i===rd.nums.length-1, '#'+(i+1), v));
+    });
+    rd.mods.forEach((m,i)=>{
+      hw.appendChild(mkCard('cn-mod', i===rd.mods.length-1, '', m.lbl));
+    });
+  }
+
+  // Status bar
+  const sb=document.getElementById('statusBar');
+  sb.className='status-bar';
+  if(rd.status==='busted'){sb.className='status-bar sb-bust sb-show';sb.textContent='Busted — 0 points this round';}
+  else if(rd.status==='flip7'){sb.className='status-bar sb-flip7 sb-show';sb.textContent='Flip 7! Score: '+score;}
+  else if(rd.status==='banked'){sb.className='status-bar sb-bank sb-show';sb.textContent='Banked — '+score+' points secured';}
+
+  // Buttons — only active when not busy and player is still active
+  const canAct=!S.busy&&rd.status==='active';
+  document.getElementById('btnFlip').disabled=!canAct||S.deck.length===0;
+  document.getElementById('btnBank').disabled=!canAct||rd.nums.length===0;
+}
+
+function mk(extraClass,isNew){
+  const d=document.createElement('div');
+  d.className='card '+(extraClass||'').trim()+(isNew?' new-card':'');
+  return d;
+}
+function mkCard(extraClass,isNew,corner,valText){
+  const d=mk(extraClass,isNew);
+  if(corner) d.innerHTML=`<span class="card-corner">${corner}</span>`;
+  d.innerHTML+=`<span class="card-val">${valText}</span>`;
+  return d;
+}
+
+function updateDeckBadge(){
+  const b=document.getElementById('deckBadge');
+  b.textContent=S.deck.length+' cards left';
+  b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
+}
+
+// ══════════════════════════════════════════
+//  GAME FLOW
+// ══════════════════════════════════════════
+function startRound(){
+  S.rd=S.players.map(()=>newRD());
+  S.cur=0;S.busy=false;
+  dealInitial(S.players,()=>{
+    // Find first active player
+    const first=S.rd.findIndex(r=>r.status==='active');
+    if(first===-1){endRound();return;}
+    S.cur=first;
+    renderGame();
+  });
+}
+
+function spawnConfetti(){
+  const w=document.getElementById('confettiWrap');w.innerHTML='';
+  const cols=['var(--gold)','var(--green)','var(--blue)','var(--red)','#f0ede8'];
+  for(let i=0;i<60;i++){
+    const p=document.createElement('div');p.className='cp';
+    p.style.cssText=`left:${Math.random()*100}%;top:${-10-Math.random()*30}px;`+
+      `background:${cols[0|Math.random()*cols.length]};--d:${1.5+Math.random()*2}s;`+
+      `--dl:${Math.random()*0.8}s;border-radius:${Math.random()>.5?'50%':'2px'};`+
+      `width:${6+Math.random()*8}px;height:${6+Math.random()*8}px`;
+    w.appendChild(p);
+  }
+}
+
+let toastT=null;
+function toast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2400);
+}
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+
+// ══════════════════════════════════════════
+//  PERSISTENCE
+// ══════════════════════════════════════════
+const SAVE_KEY = 'flip7_v1';
+
+function saveGame() {
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify({
+      target: S.target, round: S.round, cur: S.cur,
+      players: S.players, deck: S.deck, rd: S.rd
+    }));
+  } catch(e) {}
+}
+
+function clearSave() {
+  try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+}
+
+function loadSave() {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return false;
+    const snap = JSON.parse(raw);
+    if (!snap.players || !snap.deck || !snap.rd || snap.players.length < 2) return false;
+    S.target = snap.target || 200;
+    S.round  = snap.round  || 1;
+    S.cur    = snap.cur    || 0;
+    S.players = snap.players;
+    S.deck    = snap.deck;
+    S.rd      = snap.rd;
+    S.busy    = false;
+    return true;
+  } catch(e) { return false; }
+}
+
+// ══════════════════════════════════════════
+//  SETUP UI
+// ══════════════════════════════════════════
+let pCount=0;
+function addPlayer(name=''){
+  if(pCount>=8)return;pCount++;
+  const row=document.createElement('div');row.className='player-row';
+  row.innerHTML=`<input type="text" placeholder="Player ${pCount}" value="${name}" maxlength="16">`+
+    `<button class="icon-btn" onclick="removePlayer(this)">×</button>`;
+  document.getElementById('playerList').appendChild(row);
+  if(pCount>=8)document.getElementById('addPlayerBtn').style.display='none';
+}
+function removePlayer(btn){btn.closest('.player-row').remove();pCount--;document.getElementById('addPlayerBtn').style.display='';}
+
+addPlayer('Player 1');addPlayer('Player 2');
+
+document.getElementById('addPlayerBtn').onclick=()=>addPlayer();
+document.getElementById('startBtn').onclick=()=>{
+  const inputs=[...document.querySelectorAll('#playerList input')];
+  if(inputs.length<2){toast('Need at least 2 players');return;}
+  S.players=inputs.map((inp,i)=>({name:inp.value.trim()||'Player '+(i+1),total:0}));
+  S.target=parseInt(document.getElementById('targetScore').value)||200;
+  S.deck=buildDeck();S.round=1;S.busy=false;
+  clearSave();
+  showScreen('game');
+  startRound();
+};
+document.getElementById('rulesToggle').onclick=function(){
+  const b=document.getElementById('rulesBox');b.classList.toggle('open');
+  this.textContent=b.classList.contains('open')?'How to Play ▴':'How to Play ▾';
+};
+document.getElementById('replayBtn').onclick=()=>{
+  clearSave();
+  pCount=0;document.getElementById('playerList').innerHTML='';
+  addPlayer('Player 1');addPlayer('Player 2');showScreen('setup');
+};
+
+// ══════════════════════════════════════════
+//  NEW GAME BUTTON
+// ══════════════════════════════════════════
+document.getElementById('newGameBtn').onclick = () => {
+  showOv('ovNewGame');
+};
+document.getElementById('ngCancel').onclick = () => {
+  hideOv('ovNewGame');
+};
+document.getElementById('ngConfirm').onclick = () => {
+  hideOv('ovNewGame');
+  clearSave();
+  // Close any open overlays
+  ['ovReveal','ovBust','ovBank','ovFlip7','ovPass','ovTarget','ovRound'].forEach(id =>
+    document.getElementById(id).classList.remove('ov-open')
+  );
+  pCount = 0;
+  document.getElementById('playerList').innerHTML = '';
+  addPlayer('Player 1');
+  addPlayer('Player 2');
+  showScreen('setup');
+};
+
+// ══════════════════════════════════════════
+//  RESUME ON LOAD
+// ══════════════════════════════════════════
+(function resumeIfSaved(){
+  if (!loadSave()) return; // no save, stay on setup
+  // Restore game screen — player is at their turn, no overlays
+  showScreen('game');
+  renderGame();
+  // Show a resume banner via toast
+  toast('Game resumed — ' + S.players[S.cur].name + "'s turn");
+})();
+
+</script>
+</body>
+</html>
