@@ -1022,7 +1022,7 @@ button[title="Switch to dark mode"],
 .app-shell main [style*="#c47a3e"]:not(.ledger-envelope-tile):not(.ledger-envelope-tile *),
 .app-shell main [style*="#86efac"]:not(.ledger-envelope-tile):not(.ledger-envelope-tile *),
 .app-shell main [style*="#fca5a5"]:not(.ledger-envelope-tile):not(.ledger-envelope-tile *) {
-  color: var(--text-1) !important;
+  color: var(--text-2) !important;
   border-color: var(--glass-border) !important;
   background-image: none !important;
   box-shadow: none !important;
@@ -1087,12 +1087,12 @@ button[title="Switch to dark mode"],
 .app-shell main [class*=" bi-"],
 .app-shell main svg,
 .app-shell main svg * {
-  color: var(--text-1) !important;
-  stroke: var(--text-1) !important;
+  color: var(--text-2) !important;
+  stroke: var(--text-2) !important;
 }
 
 .app-shell main svg [fill]:not([fill="none"]) {
-  fill: var(--text-1) !important;
+  fill: var(--text-2) !important;
 }
 
 .app-shell main .pbar,
@@ -1106,7 +1106,7 @@ button[title="Switch to dark mode"],
 .app-shell main [style*="height:8"],
 .app-shell main [style*="height: 12"],
 .app-shell main [style*="height:12"] {
-  background: rgba(45, 41, 37, .10) !important;
+  background: rgba(90, 84, 77, .10) !important;
   background-image: none !important;
   box-shadow: none !important;
 }
@@ -1115,7 +1115,7 @@ button[title="Switch to dark mode"],
 .app-shell main [style*="width:"][style*="linear-gradient"]:not(.ledger-envelope-tile):not(.ledger-envelope-tile *),
 .app-shell main [style*="width:"][style*="var(--accent)"]:not(.ledger-envelope-tile):not(.ledger-envelope-tile *),
 .app-shell main [style*="width:"][style*="var(--accent2)"]:not(.ledger-envelope-tile):not(.ledger-envelope-tile *) {
-  background: var(--text-1) !important;
+  background: var(--text-2) !important;
   background-image: none !important;
   box-shadow: none !important;
 }
@@ -1137,14 +1137,14 @@ button[title="Switch to dark mode"],
 
 .ledger-envelope-tile {
   background: transparent !important;
-  border: 4px solid var(--text-1) !important;
-  border-left: 4px solid var(--text-1) !important;
+  border: 4px solid rgba(91, 85, 79, .55) !important;
+  border-left: 4px solid rgba(91, 85, 79, .55) !important;
   border-radius: 15px !important;
   box-shadow: none !important;
 }
 
 .ledger-envelope-tile > div > div:last-child > div > div {
-  background: rgba(45, 41, 37, .055) !important;
+  background: rgba(91, 85, 79, .055) !important;
 }
 
 /* Budget cards need room for their inline controls; let them wrap instead of clipping. */
