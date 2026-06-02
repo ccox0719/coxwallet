@@ -520,9 +520,22 @@ body::after {
 .nav-item,
 .bottom-nav-item {
   border-radius: 10px !important;
-  color: rgba(255, 250, 238, .70) !important;
+  color: rgba(255, 250, 238, .88) !important;
   font-size: .74rem !important;
   font-weight: 700 !important;
+}
+
+.nav-item {
+  background: rgba(255, 248, 232, .08) !important;
+  border: 1px solid rgba(255, 248, 232, .14) !important;
+}
+
+.nav-item .bi,
+.nav-item i,
+.nav-item svg,
+.nav-item [class^="bi-"]::before,
+.nav-item [class*=" bi-"]::before {
+  color: rgba(255, 248, 232, .92) !important;
 }
 
 .nav-item.active,
@@ -536,7 +549,16 @@ body::after {
 
 .nav-item:hover {
   color: #fff8e8 !important;
-  background: rgba(255, 248, 232, .10) !important;
+  background: rgba(255, 248, 232, .16) !important;
+  border-color: rgba(255, 248, 232, .28) !important;
+}
+
+.nav-item.active .bi,
+.nav-item.active i,
+.nav-item.active svg,
+.nav-item.active [class^="bi-"]::before,
+.nav-item.active [class*=" bi-"]::before {
+  color: #17382f !important;
 }
 
 .card,
