@@ -221,12 +221,10 @@ h3,
 .bottom-nav-item.active,
 .bottom-nav-item.more-active,
 .month-pill.active,
-.more-drawer-item.active,
-.btn-amber,
-.env-save-btn {
-  background: transparent !important;
+.more-drawer-item.active {
+  background: rgba(45, 41, 37, .08) !important;
   color: var(--text-1) !important;
-  border: 3px solid var(--border-strong) !important;
+  border: 3px solid transparent !important;
   border-radius: 10px !important;
   box-shadow: none !important;
 }
@@ -236,6 +234,8 @@ h3,
   background: transparent !important;
   color: var(--text-1) !important;
   border: 3px solid var(--border-strong) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
 }
 
 .nav-item.active,
@@ -243,12 +243,10 @@ h3,
 .bottom-nav-item.more-active,
 .month-pill.active,
 .more-drawer-item.active {
-  background: transparent !important;
-  color: var(--accent) !important;
+  background: rgba(45, 41, 37, .08) !important;
+  color: var(--text-1) !important;
   border-color: transparent !important;
-  text-decoration: underline;
-  text-underline-offset: 5px;
-  text-decoration-thickness: 1px;
+  text-decoration: none;
   box-shadow: none !important;
 }
 
@@ -264,7 +262,7 @@ h3,
 .month-pill:hover:not(.active),
 .more-drawer-item:hover,
 .btn-ghost:hover {
-  background: #f1eadf !important;
+  background: rgba(45, 41, 37, .055) !important;
   border-color: var(--border-strong) !important;
   color: var(--text-1) !important;
 }
