@@ -1,6 +1,10 @@
 -- ═══════════════════════════════════════════════════════════════════════════════
--- THE LEDGER — Complete Supabase Setup SQL
--- Run this entire file in: Supabase Dashboard → SQL Editor → New Query → Run
+-- THE LEDGER — Complete Supabase Setup SQL (DESTRUCTIVE)
+-- Run this only for first-time setup or intentional full reset.
+-- It drops app tables and deletes cloud data.
+--
+-- For normal schema updates without data loss, use:
+--   supabase-migrations-safe.sql
 -- ═══════════════════════════════════════════════════════════════════════════════
 
 -- ─── CLEAN SLATE (safe to re-run) ─────────────────────────────────────────────
@@ -23,9 +27,11 @@ CREATE TABLE transactions (
   type        TEXT            NOT NULL DEFAULT 'expense'
                               CHECK (type IN ('expense', 'income')),
   category    TEXT            NOT NULL DEFAULT 'other',
-  source      TEXT            NOT NULL DEFAULT 'manual'
-                              CHECK (source IN ('manual', 'csv')),
-  created_at  TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
+  source         TEXT            NOT NULL DEFAULT 'manual'
+                               CHECK (source IN ('manual', 'csv')),
+  split_group_id TEXT,
+  vendor_split_vendor_key TEXT,
+  created_at     TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
   PRIMARY KEY (id, user_id)
 );
 
@@ -53,6 +59,33 @@ CREATE POLICY "tx_delete"  ON transactions FOR DELETE  USING     (auth.uid() = u
 -- ─── 2. TAX ITEMS ─────────────────────────────────────────────────────────────
 -- NOTE: "group" is a reserved word in PostgreSQL, so we use "grp".
 --       The app maps grp <-> group transparently on every read/write.
+
+CREATE TABLE envelope_entries (
+  id          TEXT            NOT NULL,
+  user_id     UUID            NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  date        TEXT            NOT NULL,
+  category    TEXT            NOT NULL DEFAULT 'other',
+  description TEXT            NOT NULL DEFAULT '',
+  amount      NUMERIC(12, 2)  NOT NULL DEFAULT 0 CHECK (amount >= 0),
+  type        TEXT            NOT NULL DEFAULT 'expense'
+                              CHECK (type IN ('expense', 'income')),
+  source      TEXT            NOT NULL DEFAULT 'envelope',
+  created_at  TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
+  updated_at  TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (id, user_id)
+);
+
+CREATE INDEX idx_envelope_user_date
+  ON envelope_entries (user_id, date DESC);
+
+ALTER TABLE envelope_entries ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "envelope_select" ON envelope_entries FOR SELECT  USING     (auth.uid() = user_id);
+CREATE POLICY "envelope_insert" ON envelope_entries FOR INSERT  WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "envelope_update" ON envelope_entries FOR UPDATE  USING     (auth.uid() = user_id)
+                                                            WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "envelope_delete" ON envelope_entries FOR DELETE  USING     (auth.uid() = user_id);
+
 
 CREATE TABLE tax_items (
   id          TEXT        NOT NULL,
@@ -93,9 +126,13 @@ CREATE TABLE user_settings (
   income                NUMERIC(12, 2) NOT NULL DEFAULT 9664 CHECK (income >= 0),
   budgets               JSONB          NOT NULL DEFAULT '{}',
   keywords              JSONB          NOT NULL DEFAULT '{}',
+  manual_review_keywords JSONB         NOT NULL DEFAULT '[]',
   envelope_category_ids JSONB          NOT NULL DEFAULT '[]',
+  envelope_entries      JSONB          NOT NULL DEFAULT '[]',
   sub_budgets           JSONB          NOT NULL DEFAULT '{}',
   kids_data             JSONB          NOT NULL DEFAULT '[]',
+  vendor_matrix         JSONB          NOT NULL DEFAULT '{}',
+  travel_days           JSONB          NOT NULL DEFAULT '[]',
   updated_at            TIMESTAMPTZ    NOT NULL DEFAULT NOW()
 );
 

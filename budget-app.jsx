@@ -142,9 +142,31 @@ function createSupabaseClient(projectUrl, apiKey) {
 
 const supabase = createSupabaseClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+function toAppNumber(value, fallback = 0) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+function normalizeMoneyMap(map) {
+  return Object.fromEntries(
+    Object.entries(map || {}).map(([key, value]) => [key, toAppNumber(value)])
+  );
+}
+
+function normalizeTransactionRows(rows) {
+  return (Array.isArray(rows) ? rows : []).map(tx => ({
+    ...tx,
+    amount: toAppNumber(tx?.amount),
+    date: tx?.date || now.toISOString().slice(0,10),
+    type: tx?.type || "expense",
+    category: tx?.category || "other",
+    source: tx?.source || "manual",
+  }));
+}
+
 // ─── Categories ───────────────────────────────────────────────────────────────
 const CATEGORIES = [
-  { id: "groceries",      label: "Groceries",      icon: "cart3",                color: "#065f46" },
+  { id: "groceries",      label: "Groceries",      icon: "cart3",                color: "#054d38" },
   { id: "restaurant",     label: "Restaurant",     icon: "cup-hot",              color: "#0f766e" },
   { id: "housing",        label: "Housing",        icon: "house-door",           color: "#92400e" },
   { id: "transportation", label: "Transportation", icon: "truck",                color: "#1e40af" },
@@ -152,9 +174,9 @@ const CATEGORIES = [
   { id: "health",         label: "Health",         icon: "heart-pulse",          color: "#be123c" },
   { id: "entertainment",  label: "Entertainment",  icon: "controller",           color: "#b45309" },
   { id: "savings",        label: "Savings",        icon: "piggy-bank",           color: "#134e4a" },
-  { id: "retail",         label: "Retail",         icon: "bag",                  color: "#7c3aed" },
+  { id: "retail",         label: "Retail",         icon: "bag",                  color: "#5b21b6" },
   { id: "giving",         label: "Giving",         icon: "gift",                 color: "#0369a1" },
-  { id: "clothing",       label: "Clothing",       icon: "scissors",             color: "#9333ea" },
+  { id: "clothing",       label: "Clothing",       icon: "scissors",             color: "#6d28d9" },
   { id: "subscriptions",  label: "Subscriptions",  icon: "phone",                color: "#0e7490" },
   { id: "sports",         label: "Sports",         icon: "trophy",               color: "#16a34a" },
   { id: "education",      label: "Education",      icon: "book",                 color: "#ca8a04" },
@@ -302,10 +324,38 @@ function normalizeSubBudgets(subBudgets) {
 const DEFAULT_ENVELOPE_CATEGORY_IDS = MONTHLY_BUDGET_CATS.map(c => c.id);
 
 function normalizeEnvelopeCategoryIds(ids) {
-  if (!Array.isArray(ids) || ids.length === 0) return DEFAULT_ENVELOPE_CATEGORY_IDS;
-  const validIds = new Set(DEFAULT_ENVELOPE_CATEGORY_IDS);
-  const normalized = ids.filter(id => validIds.has(id));
-  return normalized.length > 0 ? normalized : DEFAULT_ENVELOPE_CATEGORY_IDS;
+  if (!Array.isArray(ids)) return DEFAULT_ENVELOPE_CATEGORY_IDS;
+  const seen = new Set();
+  return ids
+    .map(id => String(id || "").trim())
+    .filter(Boolean)
+    .filter(id => {
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+}
+
+function getBudgetCategoryList(budgets) {
+  const baseBudgetIdSet = new Set(MONTHLY_BUDGET_CATS.map(c => c.id));
+  const customBudgetCats = Object.keys(budgets || {})
+    .filter(id => id !== "income" && !baseBudgetIdSet.has(id))
+    .sort((a,b) => a.localeCompare(b))
+    .map(id => ({
+      id,
+      label: id
+        .split(/[-_]+/)
+        .map(part => part ? part.charAt(0).toUpperCase() + part.slice(1) : "")
+        .join(" ")
+        .trim() || id,
+      icon: "dot",
+      color: "#6b7280",
+      isCustom: true,
+    }));
+  return [
+    ...MONTHLY_BUDGET_CATS.map(cat => ({ ...cat, isCustom:false })),
+    ...customBudgetCats,
+  ];
 }
 
 // ─── Kids Ledger ─────────────────────────────────────────────────────────────
@@ -370,13 +420,13 @@ const DEFAULT_KIDS = [
     history:[],
   },
   {
-    id:"kyden", name:"Kyden", icon:"person-fill", color:"#065f46",
+    id:"kyden", name:"Kyden", icon:"person-fill", color:"#054d38",
     balances:{ wallet:0, savings:0, christmas:0, tithe:0 },
     chores: makeDefaultChores(),
     history:[],
   },
   {
-    id:"elsie", name:"Elsie", icon:"person-fill", color:"#9333ea",
+    id:"elsie", name:"Elsie", icon:"person-fill", color:"#6d28d9",
     balances:{ wallet:0, savings:0, christmas:0, tithe:0 },
     chores: makeDefaultChores(),
     history:[],
@@ -543,6 +593,7 @@ function FinanceApp({ session }) {
 
   const [view,setView]                   = useState("envelopes");
   const [transactions,setTransactions]   = useState([]);
+  const [envelopeEntries,setEnvelopeEntries] = useState([]);
   const [budgets,setBudgets]             = useState(defaultBudgets);
   const [income,setIncome]               = useState(9664);
   const [keywords,setKeywords]           = useState(DEFAULT_KEYWORDS);
@@ -568,11 +619,13 @@ function FinanceApp({ session }) {
 
         if (settings) {
           if (settings.budgets && Object.keys(settings.budgets).length)
-            setBudgets(settings.budgets);
-          if (typeof settings.income === "number") setIncome(settings.income);
+            setBudgets({ ...defaultBudgets, ...normalizeMoneyMap(settings.budgets) });
+          if (settings.income !== undefined && settings.income !== null) setIncome(toAppNumber(settings.income, 9664));
           if (settings.keywords && Object.keys(settings.keywords).length)
             setKeywords(settings.keywords);
-          setEnvelopeCategoryIds(normalizeEnvelopeCategoryIds(settings.envelope_category_ids || []));
+          setEnvelopeCategoryIds(Array.isArray(settings.envelope_category_ids)
+            ? normalizeEnvelopeCategoryIds(settings.envelope_category_ids)
+            : DEFAULT_ENVELOPE_CATEGORY_IDS);
           setSubBudgets(normalizeSubBudgets(settings.sub_budgets || {}));
           if (Array.isArray(settings.kids_data) && settings.kids_data.length)
             setKids(normalizeKidsData(settings.kids_data));
@@ -595,8 +648,17 @@ function FinanceApp({ session }) {
         const { data: txData } = await supabase
           .from("transactions")
           .select("id, date, description, amount, type, category, source")
-          .eq("user_id", userId);
-        if (txData) setTransactions(txData);
+          .eq("user_id", userId)
+          .order("date", { ascending:false });
+        if (txData) setTransactions(normalizeTransactionRows(txData));
+
+        const { data: envelopeData, error: envelopeError } = await supabase
+          .from("envelope_entries")
+          .select("id, date, description, amount, type, category, source")
+          .eq("user_id", userId)
+          .order("date", { ascending:false });
+        if (envelopeData) setEnvelopeEntries(normalizeTransactionRows(envelopeData));
+        if (envelopeError?.status !== 404) console.error("loadEnvelopeEntries:", envelopeError);
 
         // ── Tax Items ──
         const { data: taxData } = await supabase
@@ -658,14 +720,14 @@ function FinanceApp({ session }) {
 
   const showToast=(msg)=>{setToast(msg);setTimeout(()=>setToast(null),2500);};
 
-  const monthTx = transactions.filter(t=>{
-    const d=new Date(t.date);
-    return d.getMonth()===selectedMonth&&d.getFullYear()===selectedYear;
-  }).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const monthTx = [...transactions].sort((a,b)=>new Date(b.date)-new Date(a.date));
 
   const expenses    = monthTx.filter(t=>t.type==="expense");
   const incomes     = monthTx.filter(t=>t.type==="income");
-  const envelopeTx  = monthTx.filter(t=>t.type==="expense" && t.source==="manual");
+  const legacyEnvelopeTx = monthTx.filter(t=>t.type==="expense" && t.source==="manual");
+  const envelopeTx  = (envelopeEntries.length ? envelopeEntries : legacyEnvelopeTx)
+    .filter(t=>t.type==="expense")
+    .sort((a,b)=>new Date(b.date)-new Date(a.date));
   const totalSpent  = expenses.reduce((s,t)=>s+t.amount,0);
   const totalIncome = incomes.reduce((s,t)=>s+t.amount,0)||income;
   const remaining   = totalIncome-totalSpent;
@@ -695,7 +757,11 @@ function FinanceApp({ session }) {
 
   function addTransactionDirect(catId, amount, description) {
     const newTx={id:genId(),date:now.toISOString().slice(0,10),category:catId,description,amount:parseFloat(amount),type:"expense",source:"manual"};
+    const newEnvelopeEntry={...newTx,source:"envelope"};
+    setEnvelopeEntries(prev=>[newEnvelopeEntry,...prev]);
     setTransactions(prev=>[newTx,...prev]);
+    supabase.from("envelope_entries").insert({ ...newEnvelopeEntry, user_id:userId })
+      .then(({ error })=>{ if (error?.status !== 404) console.error("addEnvelopeEntry:", error); });
     supabase.from("transactions").insert({ ...newTx, user_id:userId })
       .then(({ error })=>{ if (error) console.error("addTx:", error); });
     showToast(`${fmt(amount)} logged to ${CATEGORIES.find(c=>c.id===catId)?.label} ✓`);
@@ -741,6 +807,9 @@ function FinanceApp({ session }) {
 
   function deleteTransaction(id){
     setTransactions(prev=>prev.filter(t=>t.id!==id));
+    setEnvelopeEntries(prev=>prev.filter(t=>t.id!==id));
+    supabase.from("envelope_entries").delete().eq("id",id).eq("user_id",userId)
+      .then(({ error })=>{ if (error?.status !== 404) console.error("deleteEnvelopeEntry:", error); });
     supabase.from("transactions").delete().eq("id",id).eq("user_id",userId)
       .then(({ error })=>{ if (error) console.error("deleteTx:", error); });
     showToast("Deleted");
@@ -748,6 +817,9 @@ function FinanceApp({ session }) {
 
   function updateTransactionDesc(id, newDesc){
     setTransactions(prev=>prev.map(t=>t.id===id?{...t,description:newDesc}:t));
+    setEnvelopeEntries(prev=>prev.map(t=>t.id===id?{...t,description:newDesc}:t));
+    supabase.from("envelope_entries").update({ description:newDesc }).eq("id",id).eq("user_id",userId)
+      .then(({ error })=>{ if (error?.status !== 404) console.error("updateEnvelopeDesc:", error); });
     supabase.from("transactions").update({ description:newDesc }).eq("id",id).eq("user_id",userId)
       .then(({ error })=>{ if (error) console.error("updateDesc:", error); });
     showToast("Note updated ✓");
@@ -811,72 +883,196 @@ function FinanceApp({ session }) {
   if (!loaded) return null;
 
   return (
-    <div style={{minHeight:"100vh",background:"#faf7f2",fontFamily:"system-ui,sans-serif"}}>
+    <div className="app-shell" style={{minHeight:"100vh",fontFamily:"system-ui,sans-serif"}}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@300;400;500&display=swap');
-        *{box-sizing:border-box;margin:0;padding:0;}
+        *{box-sizing:border-box;margin:0;padding:0;min-width:0;}
         .pf{font-family:'Playfair Display',Georgia,serif;}
         .mono{font-family:'DM Mono',monospace;}
-        .btn{border:none;border-radius:6px;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:.04em;transition:all .15s;padding:8px 16px;}
-        .btn-amber{background:#b45309;color:#fef3c7;}
-        .btn-amber:hover{background:#92400e;}
-        .btn-ghost{background:transparent;color:#78716c;border:1.5px solid #d6d3d1;}
-        .btn-ghost:hover{border-color:#b45309;color:#b45309;}
-        .btn-sm{padding:5px 12px;font-size:0.72rem;}
-        .btn-del{background:none;border:none;color:#d6d3d1;cursor:pointer;font-size:0.85rem;padding:2px 5px;border-radius:4px;transition:color .15s;}
-        .btn-del:hover{color:#be123c;}
-        .nav-bar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e7e5e4;padding:0 4px;display:flex;align-items:center;overflow-x:auto;gap:0;}
-        .nav-item{padding:10px 14px;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:.06em;text-transform:uppercase;color:#a8a29e;border:none;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;background:transparent;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0;}
-        .nav-item.active{color:#b45309;border-bottom-color:#b45309;}
-        .nav-item:hover{color:#1c1917;}
+        :root{
+          --glass:rgba(255,255,255,.58);
+          --glass-strong:rgba(255,255,255,.74);
+          --glass-soft:rgba(255,255,255,.38);
+          --glass-border:rgba(255,255,255,.66);
+          --glass-highlight:rgba(255,255,255,.90);
+          --glass-rim:inset 0 1px 0 rgba(255,255,255,.84),inset 0 -1px 0 rgba(255,255,255,.14),inset 1px 0 0 rgba(255,255,255,.22),inset -1px 0 0 rgba(255,255,255,.22);
+          --text-1:#10201f;
+          --text-2:#2e4a47;
+          --text-3:#4a6660;
+          --text-muted:#6b6460;
+          --text-warm:#4a4440;
+          --border-warm:#d4cfc9;
+          --accent:#06684f;
+          --accent2:#1360a4;
+          --gold:#c9902e;
+          --over:#b4234a;
+          --shadow-soft:0 32px 80px rgba(0,0,0,.44),0 12px 32px rgba(0,0,0,.28);
+          --shadow-float:0 20px 52px rgba(0,0,0,.36),0 6px 18px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.84);
+        }
+        body{background:#0d1f1c;color:var(--text-1);}
+
+        /* ── Animated mesh background ── */
+        @keyframes meshDrift{
+          0%,100%{transform:scale(1.02) translate(0%,0%);}
+          33%    {transform:scale(1.06) translate(2%,-1.5%);}
+          66%    {transform:scale(1.03) translate(-1.5%,2%);}
+        }
+        .app-shell{
+          position:relative;
+          min-height:100vh;
+          width:100%;
+          max-width:100vw;
+          color:var(--text-1);
+          background:linear-gradient(145deg,#0d1f1c 0%,#0e1e2e 55%,#111824 100%);
+          overflow-x:hidden;
+        }
+        .app-shell::before{
+          content:"";
+          position:fixed;
+          inset:0;
+          z-index:0;
+          background:
+            radial-gradient(ellipse 70% 55% at 5% 10%,rgba(6,104,79,.50) 0%,transparent 62%),
+            radial-gradient(ellipse 58% 50% at 95% 8%,rgba(19,96,164,.38) 0%,transparent 56%),
+            radial-gradient(ellipse 45% 40% at 50% 95%,rgba(201,144,46,.22) 0%,transparent 52%),
+            radial-gradient(ellipse 36% 30% at 80% 65%,rgba(6,104,79,.18) 0%,transparent 46%);
+          animation:meshDrift 22s ease-in-out infinite;
+          filter:saturate(1.15) contrast(.96);
+        }
+        .app-shell::after{
+          content:"";
+          position:fixed;
+          inset:0;
+          z-index:0;
+          pointer-events:none;
+          background:
+            radial-gradient(circle at 15% 10%,rgba(6,104,79,.22),transparent 28%),
+            radial-gradient(circle at 88% 6%,rgba(19,96,164,.18),transparent 32%),
+            linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.18));
+          backdrop-filter:blur(4px);
+          -webkit-backdrop-filter:blur(4px);
+        }
+        .app-shell > style,.app-shell > input,.app-shell > .nav-bar,.app-shell > main,.app-shell > .toast{position:relative;z-index:1;}
+        .app-shell main{
+          width:min(1020px,calc(100% - 16px));
+          max-width:calc(100vw - 16px);
+          background:rgba(255,255,255,.12);
+          border:1px solid rgba(255,255,255,.22);
+          border-radius:28px 28px 0 0;
+          box-shadow:inset 0 1px 0 rgba(255,255,255,.30);
+          backdrop-filter:blur(2px);
+          -webkit-backdrop-filter:blur(2px);
+        }
+
+        /* ── Buttons ── */
+        .btn{border:none;border-radius:999px;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:.04em;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease,color .18s ease,filter .18s ease;padding:8px 18px;}
+        .btn:hover{transform:translateY(-1px);}
+        .btn-amber{background:linear-gradient(135deg,var(--gold),#e7b955 48%,var(--accent));color:#fff;box-shadow:0 12px 30px rgba(8,120,95,.24),0 4px 16px rgba(201,144,46,.22);}
+        .btn-amber:hover{filter:saturate(1.06) brightness(1.04);box-shadow:0 18px 42px rgba(8,120,95,.30),0 8px 22px rgba(201,144,46,.24);}
+        .btn-ghost{background:rgba(255,255,255,.36);color:var(--text-2);border:1.5px solid rgba(255,255,255,.58);backdrop-filter:blur(18px) saturate(1.16);-webkit-backdrop-filter:blur(18px) saturate(1.16);border-radius:999px;box-shadow:var(--glass-rim),0 8px 22px rgba(18,54,49,.08);}
+        .btn-ghost:hover{border-color:rgba(8,120,95,.44);color:var(--accent);background:rgba(255,255,255,.54);}
+        .btn-sm{padding:5px 13px;font-size:0.72rem;}
+        .btn-del{background:rgba(255,255,255,.26);border:1px solid rgba(255,255,255,.38);color:var(--text-3);cursor:pointer;font-size:0.85rem;padding:2px 5px;border-radius:7px;transition:all .15s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+        .btn-del:hover{color:var(--over);border-color:rgba(180,35,74,.28);background:rgba(255,255,255,.54);}
+
+        /* ── Nav ── */
+        .nav-bar{
+          position:sticky;top:0;z-index:50;
+          margin:12px auto 0;width:min(1060px,calc(100% - 16px));max-width:calc(100vw - 16px);border-radius:999px;
+          background:linear-gradient(135deg,rgba(255,255,255,.76),rgba(255,255,255,.52));
+          backdrop-filter:blur(40px) saturate(1.50);
+          -webkit-backdrop-filter:blur(40px) saturate(1.50);
+          border:1px solid rgba(255,255,255,.72);
+          box-shadow:0 24px 56px rgba(10,40,36,.20),0 8px 22px rgba(30,70,100,.12),var(--glass-rim);
+          padding:7px;display:flex;align-items:center;overflow-x:auto;gap:2px;
+        }
+        .nav-item{padding:12px 18px;cursor:pointer;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);border:1px solid transparent;border-radius:999px;transition:all .18s;white-space:nowrap;background:transparent;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0;}
+        .nav-item.active{color:#fff;border-color:rgba(255,255,255,.44);background:linear-gradient(135deg,rgba(6,104,79,.94),rgba(19,96,164,.86));box-shadow:0 10px 28px rgba(6,104,79,.32),inset 0 1px 0 rgba(255,255,255,.36);}
+        .nav-item:hover:not(.active){color:var(--accent);background:rgba(255,255,255,.44);border-color:rgba(255,255,255,.54);}
         .nav-label{display:none;}
-        @media (min-width: 768px){
-          .nav-bar{justify-content:center;overflow-x:visible;padding:0 12px;}
-          .nav-item{padding:11px 16px;}
+        @media(min-width:768px){
+          .nav-bar{justify-content:center;overflow-x:visible;padding:7px;}
+          .nav-item{padding:12px 20px;}
           .nav-label{display:inline;}
         }
-        .card{background:#fff;border:1px solid #e7e5e4;border-radius:10px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-        .pbar{background:#f5f0eb;border-radius:99px;height:5px;overflow:hidden;}
-        .pbar-fill{height:100%;border-radius:99px;transition:width .5s;}
-        input,select{width:100%;border:1.5px solid #d6d3d1;border-radius:6px;padding:9px 11px;font-family:'DM Mono',monospace;font-size:0.82rem;background:#faf7f2;color:#1c1917;outline:none;transition:border-color .15s;}
-        input:focus,select:focus{border-color:#b45309;background:#fff;}
-        label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:.07em;color:#78716c;display:block;margin-bottom:5px;text-transform:uppercase;}
-        .tx-row{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid #f5f0eb;}
+
+        /* ── Glass cards ── */
+        .card{
+          position:relative;
+          overflow:hidden;
+          width:100%;
+          max-width:100%;
+          background:linear-gradient(145deg,rgba(255,255,255,.70),rgba(255,255,255,.40));
+          border:1px solid rgba(255,255,255,.68);
+          border-radius:22px;padding:20px;
+          box-shadow:var(--shadow-soft);
+          backdrop-filter:blur(32px) saturate(1.20);
+          -webkit-backdrop-filter:blur(32px) saturate(1.20);
+        }
+        .card::before,.stat-card::before,.envelope-card::before,.tax-item::before{
+          content:"";position:absolute;inset:0 0 auto 0;height:44%;pointer-events:none;
+          background:linear-gradient(180deg,rgba(255,255,255,.42),rgba(255,255,255,0));
+          border-radius:inherit;z-index:0;
+        }
+        .card::after,.stat-card::after,.envelope-card::after,.tax-item::after{
+          content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+          box-shadow:var(--glass-rim);z-index:0;
+        }
+        .pbar{background:rgba(255,255,255,.44);border:1px solid rgba(255,255,255,.48);border-radius:99px;height:6px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(16,42,38,.10);}
+        .pbar-fill{height:100%;border-radius:99px;transition:width .5s;box-shadow:0 0 18px rgba(8,120,95,.28);}
+        input,select{width:100%;border:1.5px solid rgba(255,255,255,.58);border-radius:14px;padding:9px 12px;font-family:'DM Mono',monospace;font-size:0.82rem;background:rgba(255,255,255,.50);color:var(--text-1);outline:none;transition:border-color .15s,box-shadow .15s,background .15s;backdrop-filter:blur(16px) saturate(1.1);-webkit-backdrop-filter:blur(16px) saturate(1.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.68);}
+        input:focus,select:focus{border-color:rgba(8,120,95,.50);background:rgba(255,255,255,.76);box-shadow:0 0 0 4px rgba(8,120,95,.14),inset 0 1px 0 rgba(255,255,255,.76);}
+        label{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:.07em;color:var(--text-2);display:block;margin-bottom:5px;text-transform:uppercase;}
+        .tx-row{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.34);}
         .tx-row:last-child{border-bottom:none;}
-        .month-pill{cursor:pointer;padding:4px 11px;border-radius:99px;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:.03em;border:1.5px solid #e7e5e4;background:transparent;color:#78716c;transition:all .15s;}
-        .month-pill.active{background:#b45309;color:#fef3c7;border-color:#b45309;}
-        .month-pill:hover:not(.active){border-color:#b45309;color:#b45309;}
-        .cat-sel{border:1.5px solid #e7e5e4;border-radius:5px;padding:4px 8px;font-family:'DM Mono',monospace;font-size:0.72rem;background:#faf7f2;color:#1c1917;cursor:pointer;outline:none;}
-        .cat-sel:focus{border-color:#b45309;}
-        .stat-card{background:#fff;border-radius:10px;border:1px solid #e7e5e4;padding:16px;}
-        .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1c1917;color:#fef3c7;padding:10px 22px;border-radius:99px;font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:.05em;z-index:999;animation:fadeUp .2s ease;box-shadow:0 4px 20px rgba(0,0,0,.2);}
+        .month-pill{cursor:pointer;padding:5px 13px;border-radius:999px;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:.03em;border:1.5px solid rgba(255,255,255,.52);background:rgba(255,255,255,.32);color:var(--text-2);transition:all .15s;box-shadow:inset 0 1px 0 rgba(255,255,255,.54);backdrop-filter:blur(14px);}
+        .month-pill.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border-color:rgba(255,255,255,.28);box-shadow:0 10px 26px rgba(8,120,95,.24);}
+        .month-pill:hover:not(.active){border-color:rgba(8,120,95,.40);color:var(--accent);background:rgba(255,255,255,.50);}
+        .cat-sel{border:1.5px solid rgba(255,255,255,.52);border-radius:10px;padding:4px 8px;font-family:'DM Mono',monospace;font-size:0.72rem;background:rgba(255,255,255,.50);color:var(--text-1);cursor:pointer;outline:none;backdrop-filter:blur(14px);}
+        .cat-sel:focus{border-color:rgba(8,120,95,.50);}
+        .stat-card{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(255,255,255,.68),rgba(255,255,255,.38));border-radius:18px;border:1px solid rgba(255,255,255,.68);padding:16px;backdrop-filter:blur(28px) saturate(1.18);-webkit-backdrop-filter:blur(28px) saturate(1.18);box-shadow:var(--shadow-float);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
+        .stat-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.84);box-shadow:0 28px 64px rgba(13,45,37,.20),inset 0 1px 0 rgba(255,255,255,.88);}
+        .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(12,28,26,.82);color:#fff;padding:10px 24px;border-radius:99px;font-family:'DM Mono',monospace;font-size:0.78rem;letter-spacing:.05em;z-index:999;animation:fadeUp .2s ease;box-shadow:0 14px 36px rgba(0,0,0,.26),var(--glass-rim);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(24px) saturate(1.24);}
         @keyframes fadeUp{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-        .tag{border-radius:4px;padding:1px 6px;font-size:0.64rem;letter-spacing:.04em;font-family:'DM Mono',monospace;margin-left:5px;}
-        .tag-csv{background:#fef3c7;color:#92400e;}
-        .tag-manual{background:#f0fdf4;color:#166534;}
-        /* Envelope styles */
-        .envelope-card{background:#fff;border:1.5px solid #e7e5e4;border-radius:12px;padding:16px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
-        .envelope-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.09);border-color:#d6d3d1;}
-        .envelope-card.active{border-color:#b45309;box-shadow:0 0 0 3px rgba(180,83,9,.12);}
-        .envelope-card.over{border-color:#be123c;}
+        .tag{border-radius:5px;padding:1px 7px;font-size:0.64rem;letter-spacing:.04em;font-family:'DM Mono',monospace;margin-left:5px;}
+        .tag-csv{background:rgba(201,144,46,.18);color:#7a571b;border:1px solid rgba(201,144,46,.32);}
+        .tag-manual{background:rgba(8,120,95,.14);color:var(--accent);border:1px solid rgba(8,120,95,.24);}
+        .envelope-card{background:linear-gradient(145deg,rgba(14,32,30,.76),rgba(8,20,18,.62));border:1.5px solid rgba(255,255,255,.16);border-radius:18px;padding:16px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;backdrop-filter:blur(32px) saturate(1.22);-webkit-backdrop-filter:blur(32px) saturate(1.22);box-shadow:0 20px 52px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.12);}
+        .envelope-card:hover{transform:translateY(-3px);box-shadow:0 28px 64px rgba(0,0,0,.38);border-color:rgba(255,255,255,.28);}
+        .envelope-card.active{border-color:rgba(6,104,79,.72);box-shadow:0 0 0 4px rgba(6,104,79,.20),0 20px 52px rgba(0,0,0,.30);}
+        .envelope-card.over{border-color:rgba(180,35,74,.60);}
         .env-flap{position:absolute;top:0;left:0;right:0;height:28px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;}
-        /* Tax styles */
-        .tax-item{border:1px solid #f0ede8;border-radius:8px;padding:12px 14px;background:#fff;transition:all .15s;margin-bottom:8px;}
-        .tax-item:hover{border-color:#e7e5e4;box-shadow:0 1px 4px rgba(0,0,0,.06);}
-        .tax-status-btn{width:22px;height:22px;border-radius:50%;border:2px solid #d6d3d1;background:none;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:0.7rem;}
-        .tax-status-btn.ready{background:#16a34a;border-color:#16a34a;color:#fff;}
-        .tax-status-btn.na{background:#e7e5e4;border-color:#d6d3d1;color:#a8a29e;}
-        .group-pill{cursor:pointer;padding:4px 12px;border-radius:99px;font-family:'DM Mono',monospace;font-size:0.69rem;letter-spacing:.04em;border:1.5px solid #e7e5e4;background:transparent;color:#78716c;transition:all .15s;}
-        .group-pill.active{background:#1e40af;color:#dbeafe;border-color:#1e40af;}
-        .group-pill:hover:not(.active){border-color:#1e40af;color:#1e40af;}
-        .source-badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:.05em;border-radius:4px;padding:1px 6px;border:1px solid;}
-        .src-mail{background:#fef3c7;color:#92400e;border-color:#fde68a;}
-        .src-online{background:#dbeafe;color:#1e40af;border-color:#bfdbfe;}
-        .src-contact{background:#f0fdf4;color:#166534;border-color:#bbf7d0;}
-        .src-records{background:#f3f0ff;color:#6b21a8;border-color:#ddd6fe;}
-        /* Reconcile */
-        .match-ok{background:#f0fdf4;border-left:3px solid #16a34a;}
-        .match-flag{background:#fff7ed;border-left:3px solid #f59e0b;}
+        .tax-item{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.60);border-radius:16px;padding:12px 14px;background:linear-gradient(145deg,rgba(255,255,255,.66),rgba(255,255,255,.38));backdrop-filter:blur(24px) saturate(1.16);-webkit-backdrop-filter:blur(24px) saturate(1.16);transition:all .15s;margin-bottom:8px;box-shadow:var(--shadow-float);}
+        .tax-item:hover{border-color:rgba(255,255,255,.84);box-shadow:0 20px 48px rgba(13,45,37,.16),inset 0 1px 0 rgba(255,255,255,.82);}
+        .tax-status-btn{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.62);background:rgba(255,255,255,.30);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:0.7rem;backdrop-filter:blur(10px);}
+        .tax-status-btn.ready{background:var(--accent);border-color:rgba(255,255,255,.36);color:#fff;box-shadow:0 0 20px rgba(8,120,95,.32);}
+        .tax-status-btn.na{background:rgba(255,255,255,.28);border-color:rgba(255,255,255,.44);color:var(--text-3);}
+        .group-pill{cursor:pointer;padding:5px 13px;border-radius:99px;font-family:'DM Mono',monospace;font-size:0.69rem;letter-spacing:.04em;border:1.5px solid rgba(255,255,255,.52);background:rgba(255,255,255,.30);color:var(--text-2);transition:all .15s;backdrop-filter:blur(14px);}
+        .group-pill.active{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border-color:rgba(255,255,255,.30);box-shadow:0 10px 26px rgba(47,128,192,.22);}
+        .group-pill:hover:not(.active){border-color:rgba(47,128,192,.40);color:var(--accent2);background:rgba(255,255,255,.48);}
+        .source-badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:.05em;border-radius:5px;padding:2px 7px;border:1px solid;}
+        .src-mail{background:rgba(201,144,46,.16);color:#7a571b;border-color:rgba(201,144,46,.32);}
+        .src-online{background:rgba(47,128,192,.14);color:#1f6596;border-color:rgba(47,128,192,.28);}
+        .src-contact{background:rgba(8,120,95,.14);color:var(--accent);border-color:rgba(8,120,95,.26);}
+        .src-records{background:rgba(109,40,217,.18);color:#4a1490;border-color:rgba(109,40,217,.44);}
+        .match-ok{background:rgba(8,120,95,.08);border-left:3px solid var(--accent);}
+        .match-flag{background:rgba(201,144,46,.10);border-left:3px solid var(--gold);}
+        h1,h2,h3,p,span,button{text-rendering:geometricPrecision;}
+        .card h1,.card h2,.card h3,.stat-card p,.envelope-card p,.tax-item p{position:relative;z-index:1;}
+        img,svg,canvas,table{max-width:100%;}
+        button,input,select,textarea{max-width:100%;}
+        [style*="display: grid"],[style*="display:grid"]{max-width:100%;}
+        @media(max-width:767px){
+          .nav-bar{margin:8px auto 0;border-radius:22px;width:calc(100% - 16px);max-width:calc(100vw - 16px);padding:6px;}
+          .nav-item{padding:11px 12px;gap:6px;}
+          .app-shell main{width:calc(100% - 12px);max-width:calc(100vw - 12px);margin-top:10px!important;padding:12px 8px 72px!important;border-radius:22px 22px 0 0;}
+          .card{border-radius:18px;padding:14px!important;}
+          .stat-card,.envelope-card,.tax-item{border-radius:16px;padding:12px!important;}
+          .btn{padding:8px 13px;}
+          .btn-sm{padding:6px 10px;font-size:.68rem;}
+          .month-pill,.group-pill{padding:5px 10px;}
+          .toast{width:calc(100% - 32px);text-align:center;}
+        }
       `}</style>
 
       {/* Hidden file input — always available */}
@@ -886,12 +1082,9 @@ function FinanceApp({ session }) {
       <div className="nav-bar">
         {[
           ["envelopes","envelope-paper","Envelopes"],
-          ["dashboard","bar-chart","Dashboard"],
-          ["reconcile","arrow-repeat","Reconcile"],
           ["budgets","cash-stack","Budgets"],
-          ["tax","building","Tax"],
           ["kids","people-fill","Kids"],
-          ["keywords","key-fill","Keywords"],
+          ["tax","building","Tax"],
         ].map(([v,icon,label])=>(
           <button key={v} type="button" className={`nav-item ${view===v?"active":""}`} onClick={()=>setView(v)}>
             <Bi name={icon} style={{fontSize:"1rem"}} />
@@ -907,7 +1100,7 @@ function FinanceApp({ session }) {
           style={{
             padding:"10px 14px",cursor:"pointer",fontFamily:"'DM Mono',monospace",
             fontSize:"0.72rem",letterSpacing:".06em",textTransform:"uppercase",
-            color:"#a8a29e",border:"none",borderBottom:"2px solid transparent",
+            color:"#6b6460",border:"none",borderBottom:"2px solid transparent",
             background:"transparent",display:"flex",alignItems:"center",gap:6,flexShrink:0,
             transition:"all .15s",
           }}
@@ -917,14 +1110,14 @@ function FinanceApp({ session }) {
         </button>
       </div>
 
-      <main style={{maxWidth:1020,margin:"0 auto",padding:"12px 12px 80px"}}>
+      <main style={{maxWidth:1020,margin:"14px auto 0",padding:"18px 14px 80px"}}>
         {/* Month Picker — compact prev/next on envelopes, full strip elsewhere */}
-        {view !== "tax" && view !== "envelopes" && (
+        {false && view !== "tax" && view !== "envelopes" && (
           <div style={{display:"flex",flexDirection:"column",gap:6,marginBottom:20}}>
             <div style={{display:"flex",alignItems:"center",gap:8}}>
-              <button onClick={()=>setSelectedYear(y=>y-1)} style={{background:"none",border:"1px solid #e7e5e4",borderRadius:6,cursor:"pointer",fontSize:"0.85rem",color:"#78716c",padding:"3px 10px",lineHeight:1.4}}>‹ Prev</button>
+              <button onClick={()=>setSelectedYear(y=>y-1)} style={{background:"none",border:"1px solid #e7e5e4",borderRadius:6,cursor:"pointer",fontSize:"0.85rem",color:"#4a4440",padding:"3px 10px",lineHeight:1.4}}>‹ Prev</button>
               <span className="mono" style={{fontSize:"0.82rem",fontWeight:700,color:"#1c1917",minWidth:42,textAlign:"center"}}>{selectedYear}</span>
-              <button onClick={()=>setSelectedYear(y=>y+1)} disabled={selectedYear>=now.getFullYear()} style={{background:"none",border:"1px solid #e7e5e4",borderRadius:6,cursor:selectedYear>=now.getFullYear()?"not-allowed":"pointer",fontSize:"0.85rem",color:selectedYear>=now.getFullYear()?"#d4cfcb":"#78716c",padding:"3px 10px",lineHeight:1.4}}>Next ›</button>
+              <button onClick={()=>setSelectedYear(y=>y+1)} disabled={selectedYear>=now.getFullYear()} style={{background:"none",border:"1px solid #e7e5e4",borderRadius:6,cursor:selectedYear>=now.getFullYear()?"not-allowed":"pointer",fontSize:"0.85rem",color:selectedYear>=now.getFullYear()?"#d4cfcb":"#4a4440",padding:"3px 10px",lineHeight:1.4}}>Next ›</button>
             </div>
             <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
               {MONTHS.map((m,i)=>(
@@ -933,18 +1126,18 @@ function FinanceApp({ session }) {
             </div>
           </div>
         )}
-        {view === "envelopes" && (
+        {false && view === "envelopes" && (
           <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8}}>
-            <button onClick={()=>setSelectedMonth(m=>(m+11)%12)} style={{background:"none",border:"none",cursor:"pointer",fontSize:"1.1rem",color:"#a8a29e",padding:"2px 6px",lineHeight:1}}>‹</button>
-            <span className="mono" style={{fontSize:"0.72rem",letterSpacing:".1em",color:"#78716c",minWidth:36,textAlign:"center"}}>{MONTHS[selectedMonth]}</span>
-            <button onClick={()=>setSelectedMonth(m=>(m+1)%12)} style={{background:"none",border:"none",cursor:"pointer",fontSize:"1.1rem",color:"#a8a29e",padding:"2px 6px",lineHeight:1}}>›</button>
+            <button onClick={()=>setSelectedMonth(m=>(m+11)%12)} style={{background:"none",border:"none",cursor:"pointer",fontSize:"1.1rem",color:"#6b6460",padding:"2px 6px",lineHeight:1}}>‹</button>
+            <span className="mono" style={{fontSize:"0.72rem",letterSpacing:".1em",color:"#4a4440",minWidth:36,textAlign:"center"}}>{MONTHS[selectedMonth]}</span>
+            <button onClick={()=>setSelectedMonth(m=>(m+1)%12)} style={{background:"none",border:"none",cursor:"pointer",fontSize:"1.1rem",color:"#6b6460",padding:"2px 6px",lineHeight:1}}>›</button>
           </div>
         )}
 
         {/* ENVELOPES */}
         {view==="envelopes" && (
           <EnvelopesView
-            categories={MONTHLY_BUDGET_CATS}
+            categories={getBudgetCategoryList(budgets)}
             budgets={budgets}
             envelopeCategoryIds={envelopeCategoryIds}
             subBudgets={subBudgets}
@@ -1112,7 +1305,7 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
         id: `sub:${parentId}:${item.id}`,
         label: item.label,
         icon: "Sub",
-        color: (categories.find(c=>c.id===parentId)?.color || "#78716c"),
+        color: (categories.find(c=>c.id===parentId)?.color || "#4a4440"),
         budget: item.amount || 0,
         isSub:true,
         parentId,
@@ -1203,16 +1396,21 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
       <div style={{display:"flex",flexDirection:"column"}}>
         {/* Tap target */}
         <div
+          className="envelope-card"
           onClick={()=>openEnvelope(cat.id)}
           style={{
-            background: isOpen ? "#fffbf5" : "#fff",
-            border: `1.5px solid ${isOpen ? "#b45309" : over ? "#fca5a5" : "#e7e5e4"}`,
-            borderRadius: isOpen ? "12px 12px 0 0" : 12,
+            background: isOpen
+              ? "linear-gradient(145deg,rgba(255,255,255,.68),rgba(255,255,255,.40))"
+              : over
+                ? "linear-gradient(145deg,rgba(95,10,35,.86),rgba(55,8,24,.74))"
+                : undefined,
+            border: `1.5px solid ${isOpen ? "rgba(8,120,95,.48)" : over ? "rgba(180,35,74,.42)" : "rgba(255,255,255,.58)"}`,
+            borderRadius: isOpen ? "18px 18px 0 0" : 18,
             overflow: "hidden",
             cursor: "pointer",
             transition: "all .15s",
             userSelect: "none",
-            boxShadow: isOpen ? "0 2px 12px rgba(0,0,0,.07)" : "0 1px 3px rgba(0,0,0,.04)",
+            boxShadow: isOpen ? "0 20px 52px rgba(13,45,37,.18),inset 0 1px 0 rgba(255,255,255,.74)" : undefined,
           }}
         >
           {/* Thin accent bar at top — neutral unless over budget */}
@@ -1220,16 +1418,25 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
 
           <div style={{padding:"10px 11px 10px",display:"grid",gridTemplateColumns:"48px 1fr",alignItems:"center",columnGap:10}}>
             <span style={{display:"flex",alignItems:"center",justifyContent:"center",height:36}}>
-              <Bi name={cat.icon} style={{fontSize:"1.7rem",color:over?"#be123c":"#a8a29e",lineHeight:1}} />
+              <Bi name={cat.icon} style={{fontSize:"1.7rem",color:over?"#ff7096":"rgba(255,255,255,.90)",lineHeight:1}} />
             </span>
             <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:4,textAlign:"center"}}>
+              {over && (
+                <span className="mono" style={{
+                  fontSize:"0.48rem",fontWeight:700,letterSpacing:".12em",lineHeight:1,
+                  color:"#ffe4ea",background:"rgba(190,18,60,.42)",border:"1px solid rgba(255,228,234,.36)",
+                  borderRadius:999,padding:"2px 6px",textTransform:"uppercase",
+                }}>
+                  OVER
+                </span>
+              )}
               <p style={{
                 fontSize:"1.3rem",fontFamily:"'Playfair Display',serif",fontWeight:700,
-                color: over ? "#be123c" : "#1c1917", lineHeight:1,
+                color: over ? "#ff7096" : "#ffffff", lineHeight:1,
               }}>
-                {budget>0 ? fmt(Math.abs(left)) : "—"}
+                {budget>0 ? fmt(left) : "—"}
               </p>
-              <p style={{fontSize:"0.66rem",fontWeight:600,color:"#78716c",letterSpacing:"-.01em",lineHeight:1}}>{cat.label}</p>
+              <p style={{fontSize:"0.66rem",fontWeight:600,color:"rgba(255,255,255,.70)",letterSpacing:"-.01em",lineHeight:1}}>{cat.label}</p>
             </div>
           </div>
         </div>
@@ -1237,21 +1444,23 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
         {/* Spend form */}
         {isOpen && (
           <div style={{
-            background:"#fffbf5",border:"1.5px solid #b45309",borderTop:"none",
-            borderRadius:"0 0 12px 12px",padding:"10px 11px 12px",
-            boxShadow:"0 4px 12px rgba(0,0,0,.06)",
+            background:"linear-gradient(145deg,rgba(255,255,255,.68),rgba(255,255,255,.40))",border:"1.5px solid rgba(8,120,95,.48)",borderTop:"none",
+            borderRadius:"0 0 18px 18px",padding:"10px 11px 12px",
+            boxShadow:"0 20px 52px rgba(13,45,37,.18),inset 0 1px 0 rgba(255,255,255,.66)",
+            backdropFilter:"blur(28px) saturate(1.18)",
+            WebkitBackdropFilter:"blur(28px) saturate(1.18)",
           }}>
             {/* Title + balance detail — lives here when open */}
-            <div style={{marginBottom:10,paddingBottom:9,borderBottom:"1px solid #f0ece8"}}>
+            <div style={{marginBottom:10,paddingBottom:9,borderBottom:"1px solid rgba(255,255,255,.34)"}}>
               <div style={{display:"flex",alignItems:"baseline",justifyContent:"space-between",marginBottom:3}}>
-                <span style={{fontSize:"0.82rem",fontWeight:700,color:"#b45309",letterSpacing:"-.01em"}}>{cat.label}</span>
-                <span className="mono" style={{fontSize:"0.58rem",color:over?"#be123c":"#065f46",fontWeight:600}}>
+                <span style={{fontSize:"0.82rem",fontWeight:700,color:"#06684f",letterSpacing:"-.01em"}}>{cat.label}</span>
+                <span className="mono" style={{fontSize:"0.58rem",color:over?"#be123c":"#054d38",fontWeight:600}}>
                   {budget>0 ? (over ? `OVER ${fmt(spent-budget)}` : `${fmt(left)} left`) : "no budget"}
                 </span>
               </div>
               {budget>0 && (
                 <>
-                  <div style={{background:"#f0ece8",borderRadius:99,height:4,overflow:"hidden",marginBottom:3}}>
+                  <div style={{background:"rgba(255,255,255,.42)",borderRadius:99,height:5,overflow:"hidden",marginBottom:3,border:"1px solid rgba(255,255,255,.38)"}}>
                     <div style={{width:`${pct*100}%`,height:"100%",background:accentColor,borderRadius:99,transition:"width .4s"}} />
                   </div>
                   <p className="mono" style={{fontSize:"0.5rem",color:"#c9c5c0",textAlign:"right"}}>
@@ -1263,7 +1472,7 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
 
             {/* Amount */}
             <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:7}}>
-              <span style={{fontSize:"1.3rem",fontFamily:"'Playfair Display',serif",color:"#a8a29e",flexShrink:0,lineHeight:1}}>$</span>
+              <span style={{fontSize:"1.3rem",fontFamily:"'Playfair Display',serif",color:"#6b6460",flexShrink:0,lineHeight:1}}>$</span>
               <input
                 ref={amtRef}
                 type="number" inputMode="decimal" min="0" step="0.01"
@@ -1273,7 +1482,7 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
                 placeholder="0.00"
                 style={{
                   fontSize:"1.8rem",padding:"2px 4px",textAlign:"right",
-                  border:"none",borderBottom:"2px solid #b45309",borderRadius:0,
+                  border:"none",borderBottom:"2px solid rgba(8,120,95,.62)",borderRadius:0,
                   background:"transparent",fontFamily:"'DM Mono',monospace",
                   fontWeight:500,color:"#1c1917",outline:"none",width:"100%",
                 }}
@@ -1289,15 +1498,15 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
               placeholder="note (optional)"
               style={{
                 width:"100%",fontSize:"0.78rem",padding:"5px 8px",marginBottom:8,
-                border:"1px solid #e7e5e4",borderRadius:6,background:"#fff",
-                color:"#1c1917",outline:"none",fontFamily:"DM Mono,monospace",
+                border:"1px solid rgba(255,255,255,.52)",borderRadius:10,background:"rgba(255,255,255,.46)",
+                color:"#10201f",outline:"none",fontFamily:"DM Mono,monospace",backdropFilter:"blur(14px)",WebkitBackdropFilter:"blur(14px)",
                 boxSizing:"border-box",
               }}
             />
 
             {/* Last transaction — undo / edit note */}
             {lastTx && (
-              <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:8,padding:"5px 8px",background:"#f5f0eb",borderRadius:6}}>
+              <div style={{display:"flex",alignItems:"center",gap:5,marginBottom:8,padding:"5px 8px",background:"rgba(255,255,255,.34)",border:"1px solid rgba(255,255,255,.40)",borderRadius:10,backdropFilter:"blur(14px)",WebkitBackdropFilter:"blur(14px)"}}>
                 <div style={{flex:1,minWidth:0}}>
                   {editingTxId===lastTx.id ? (
                     <input
@@ -1312,8 +1521,8 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
                     />
                   ) : (
                     <>
-                      <p className="mono" style={{fontSize:"0.65rem",color:"#78716c",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{String(lastTx.description||"").replace(/^\[sub:[^\]]+\]\s*/,"")}</p>
-                      <p className="mono" style={{fontSize:"0.56rem",color:"#a8a29e"}}>{lastTx.date} · {fmt(lastTx.amount)}</p>
+                      <p className="mono" style={{fontSize:"0.65rem",color:"#4a4440",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{String(lastTx.description||"").replace(/^\[sub:[^\]]+\]\s*/,"")}</p>
+                      <p className="mono" style={{fontSize:"0.56rem",color:"#6b6460"}}>{lastTx.date} · {fmt(lastTx.amount)}</p>
                     </>
                   )}
                 </div>
@@ -1321,7 +1530,7 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
                   <button onClick={()=>saveEdit(lastTx.id)} style={{background:"#b45309",color:"#fff",border:"none",borderRadius:4,padding:"3px 8px",cursor:"pointer",fontFamily:"DM Mono,monospace",fontSize:"0.65rem",flexShrink:0}}>✓</button>
                 ) : (
                   <>
-                    <button onClick={e=>{e.stopPropagation();startEdit(lastTx);}} title="Edit note" style={{background:"none",border:"none",cursor:"pointer",fontSize:"0.85rem",padding:"2px",lineHeight:1,color:"#78716c",flexShrink:0}}><Bi name="pencil" /></button>
+                    <button onClick={e=>{e.stopPropagation();startEdit(lastTx);}} title="Edit note" style={{background:"none",border:"none",cursor:"pointer",fontSize:"0.85rem",padding:"2px",lineHeight:1,color:"#4a4440",flexShrink:0}}><Bi name="pencil" /></button>
                     <button onClick={e=>{e.stopPropagation();onDelete(lastTx.id);}} title="Undo last" style={{background:"none",border:"none",cursor:"pointer",fontSize:"0.85rem",padding:"2px",lineHeight:1,color:"#be123c",flexShrink:0}}>↩</button>
                   </>
                 )}
@@ -1333,9 +1542,10 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
               onClick={()=>handleSpend(cat.id)}
               style={{
                 width:"100%",padding:"13px",
-                background: parseFloat(spendAmt)>0?"#b45309":"#e7e5e4",
-                color: parseFloat(spendAmt)>0?"#fef3c7":"#a8a29e",
-                border:"none",borderRadius:8,cursor:"pointer",
+                background: parseFloat(spendAmt)>0?"linear-gradient(135deg,#c9902e,#e7b955 48%,#08785f)":"rgba(255,255,255,.38)",
+                color: parseFloat(spendAmt)>0?"#fff":"#78908a",
+                border:"1px solid rgba(255,255,255,.34)",borderRadius:999,cursor:"pointer",
+                boxShadow:parseFloat(spendAmt)>0?"0 12px 30px rgba(8,120,95,.22)":"none",
                 fontFamily:"DM Mono,monospace",fontSize:"0.9rem",letterSpacing:".08em",
                 fontWeight:500,transition:"all .15s",
               }}
@@ -1360,14 +1570,14 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
 
       {/* Single-line summary strip */}
       <div style={{display:"flex",alignItems:"center",gap:8,padding:"2px 0 4px"}}>
-        <span className="pf" style={{fontSize:"1.1rem",fontWeight:700,color:leftTotal<0?"#be123c":"#065f46",lineHeight:1}}>{fmt(leftTotal)}</span>
-        <span className="mono" style={{fontSize:"0.56rem",color:"#a8a29e",letterSpacing:".06em"}}>left · {month}</span>
+        <span className="pf" style={{fontSize:"1.1rem",fontWeight:700,color:leftTotal<0?"#be123c":"#054d38",lineHeight:1}}>{fmt(leftTotal)}</span>
+        <span className="mono" style={{fontSize:"0.56rem",color:"#6b6460",letterSpacing:".06em"}}>left · {month}</span>
         {envsOver>0 && <span className="mono" style={{fontSize:"0.56rem",color:"#be123c",letterSpacing:".05em",marginLeft:2}}>{envsOver} over budget</span>}
       </div>
 
       {budgetedCats.length === 0 && (
         <div className="card" style={{padding:"16px 18px"}}>
-          <p className="mono" style={{fontSize:"0.7rem",color:"#78716c",lineHeight:1.7}}>
+          <p className="mono" style={{fontSize:"0.7rem",color:"#4a4440",lineHeight:1.7}}>
             No budget categories are currently enabled for Envelopes. Open the Budgets tab and switch categories from `Fixed / Hidden` to `Envelope On`.
           </p>
         </div>
@@ -1377,8 +1587,8 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
       {/* Quick Tap — 2 col grid for iPhone */}
       {quickTapCats.length > 0 && (
         <div>
-          <p className="mono" style={{fontSize:"0.56rem",color:"#a8a29e",letterSpacing:".08em",textTransform:"uppercase",marginBottom:5}}>Quick Tap</p>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:7}}>
+          <p className="mono" style={{fontSize:"0.56rem",color:"#6b6460",letterSpacing:".08em",textTransform:"uppercase",marginBottom:5}}>Quick Tap</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,130px),1fr))",gap:7}}>
             {quickTapCats.map(cat=><EnvCard key={cat.id} cat={cat} />)}
           </div>
         </div>
@@ -1387,8 +1597,8 @@ function EnvelopesView({ categories, budgets, envelopeCategoryIds, subBudgets, s
       {/* All budgeted envelopes — same order as Budget tab */}
       {otherCats.length > 0 && (
         <div>
-          <p className="mono" style={{fontSize:"0.56rem",color:"#a8a29e",letterSpacing:".08em",textTransform:"uppercase",marginBottom:5}}>All Envelopes</p>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
+          <p className="mono" style={{fontSize:"0.56rem",color:"#6b6460",letterSpacing:".08em",textTransform:"uppercase",marginBottom:5}}>All Envelopes</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,130px),1fr))",gap:6}}>
             {otherCats.map(cat=><EnvCard key={cat.id} cat={cat} />)}
           </div>
         </div>
@@ -1454,7 +1664,7 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
       <div style={{display:"flex",gap:6}}>
         {[["monthly","Monthly"],["yearly","Yearly"]].map(([mode,label])=>(
           <button key={mode} onClick={()=>setDashMode(mode)}
-            style={{padding:"5px 16px",borderRadius:7,border:"1px solid #e7e5e4",background:dashMode===mode?"#1c1917":"#fff",color:dashMode===mode?"#fff":"#78716c",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace",fontWeight:dashMode===mode?600:400}}>
+            style={{padding:"5px 16px",borderRadius:7,border:"1px solid #e7e5e4",background:dashMode===mode?"#1c1917":"#fff",color:dashMode===mode?"#fff":"#4a4440",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace",fontWeight:dashMode===mode?600:400}}>
             {label}
           </button>
         ))}
@@ -1462,22 +1672,22 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
 
       {/* ══ MONTHLY VIEW ══ */}
       {dashMode==="monthly" && (<>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(165px,1fr))",gap:12}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,165px),1fr))",gap:12}}>
           {[
-            {label:"Income",    value:fmt(totalIncome), sub:"this month",                                                        accent:"#065f46"},
+            {label:"Income",    value:fmt(totalIncome), sub:"this month",                                                        accent:"#054d38"},
             {label:"Spent",     value:fmt(totalSpent),  sub:`${totalIncome?Math.round(totalSpent/totalIncome*100):0}% of income`, accent:totalSpent>totalIncome?"#be123c":"#1c1917"},
-            {label:"Remaining", value:fmt(remaining),   sub:remaining>=0?"available":"over budget",                              accent:remaining>=0?"#065f46":"#be123c"},
+            {label:"Remaining", value:fmt(remaining),   sub:remaining>=0?"available":"over budget",                              accent:remaining>=0?"#054d38":"#be123c"},
             {label:"Budgeted",  value:fmt(Object.values(budgets).reduce((a,b)=>a+b,0)), sub:"allocated",                        accent:"#1c1917"},
           ].map(s=>(
             <div key={s.label} className="stat-card">
-              <p className="mono" style={{fontSize:"0.64rem",color:"#a8a29e",letterSpacing:".08em",textTransform:"uppercase",marginBottom:7}}>{s.label}</p>
+              <p className="mono" style={{fontSize:"0.64rem",color:"#6b6460",letterSpacing:".08em",textTransform:"uppercase",marginBottom:7}}>{s.label}</p>
               <p className="pf"   style={{fontSize:"1.4rem",fontWeight:700,color:s.accent}}>{s.value}</p>
-              <p className="mono" style={{fontSize:"0.65rem",color:"#78716c",marginTop:3}}>{s.sub}</p>
+              <p className="mono" style={{fontSize:"0.65rem",color:"#4a4440",marginTop:3}}>{s.sub}</p>
             </div>
           ))}
         </div>
 
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:14}}>
           <div className="card">
             <p className="pf" style={{fontSize:"0.95rem",fontStyle:"italic",marginBottom:12}}>Spending by Category</p>
             {pieData.length>0 ? (
@@ -1490,7 +1700,7 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
                   <Legend iconType="circle" iconSize={7} wrapperStyle={{fontFamily:"DM Mono,monospace",fontSize:"0.67rem"}} />
                 </PieChart>
               </ResponsiveContainer>
-            ) : <p className="mono" style={{color:"#a8a29e",fontSize:"0.76rem"}}>No expenses yet.</p>}
+            ) : <p className="mono" style={{color:"#6b6460",fontSize:"0.76rem"}}>No expenses yet.</p>}
           </div>
           <div className="card">
             <p className="pf" style={{fontSize:"0.95rem",fontStyle:"italic",marginBottom:12}}>6-Month Spending</p>
@@ -1521,7 +1731,7 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
                     <span style={{display:"flex",alignItems:"center",gap:7,fontSize:"0.84rem"}}>
                       <Bi name={cat.icon} style={{color:cat.color,fontSize:"0.85rem"}} /><span>{cat.label}</span>
                     </span>
-                    <span className="mono" style={{fontSize:"0.75rem",color:over?"#be123c":"#78716c"}}>
+                    <span className="mono" style={{fontSize:"0.75rem",color:over?"#be123c":"#4a4440"}}>
                       {fmt(spent)} / {fmt(budget)}{over&&<span style={{color:"#be123c",marginLeft:5,fontSize:"0.65rem"}}>▲</span>}
                     </span>
                   </div>
@@ -1536,27 +1746,27 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
         {predictions.hasSamples && (
           <div className="card">
             <h2 className="pf" style={{fontSize:"1rem",marginBottom:4,fontStyle:"italic"}}>Spending Forecast</h2>
-            <p className="mono" style={{fontSize:"0.67rem",color:"#a8a29e",marginBottom:14}}>Based on your 3-month average · {fmt(predictions.avgMonthly)}/mo</p>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(165px,1fr))",gap:12,marginBottom:16}}>
+            <p className="mono" style={{fontSize:"0.67rem",color:"#6b6460",marginBottom:14}}>Based on your 3-month average · {fmt(predictions.avgMonthly)}/mo</p>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,165px),1fr))",gap:12,marginBottom:16}}>
               <div className="stat-card">
-                <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Avg / Month</p>
+                <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Avg / Month</p>
                 <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:"#b45309"}}>{fmt(predictions.avgMonthly)}</p>
-                <p className="mono" style={{fontSize:"0.63rem",color:"#78716c",marginTop:3}}>last 3 months</p>
+                <p className="mono" style={{fontSize:"0.63rem",color:"#4a4440",marginTop:3}}>last 3 months</p>
               </div>
               {selectedYear===nowDate.getFullYear()&&(
                 <div className="stat-card">
-                  <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Projected Year-End</p>
-                  <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:predictions.projectedYearEnd>yearIncome?"#be123c":"#065f46"}}>{fmt(predictions.projectedYearEnd)}</p>
-                  <p className="mono" style={{fontSize:"0.63rem",color:"#78716c",marginTop:3}}>{predictions.monthsLeft} months left</p>
+                  <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Projected Year-End</p>
+                  <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:predictions.projectedYearEnd>yearIncome?"#be123c":"#054d38"}}>{fmt(predictions.projectedYearEnd)}</p>
+                  <p className="mono" style={{fontSize:"0.63rem",color:"#4a4440",marginTop:3}}>{predictions.monthsLeft} months left</p>
                 </div>
               )}
               <div className="stat-card">
-                <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Next Month Est.</p>
+                <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Next Month Est.</p>
                 <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:"#1c1917"}}>{fmt(predictions.avgMonthly)}</p>
-                <p className="mono" style={{fontSize:"0.63rem",color:"#78716c",marginTop:3}}>if trend holds</p>
+                <p className="mono" style={{fontSize:"0.63rem",color:"#4a4440",marginTop:3}}>if trend holds</p>
               </div>
             </div>
-            <p className="pf" style={{fontSize:"0.84rem",marginBottom:10,color:"#78716c"}}>Category forecasts (next month):</p>
+            <p className="pf" style={{fontSize:"0.84rem",marginBottom:10,color:"#4a4440"}}>Category forecasts (next month):</p>
             <div style={{display:"flex",flexDirection:"column",gap:8}}>
               {MONTHLY_BUDGET_CATS.filter(cat=>predictions.catAvgs[cat.id]>0).sort((a,b)=>predictions.catAvgs[b.id]-predictions.catAvgs[a.id]).slice(0,8).map(cat=>{
                 const avg=predictions.catAvgs[cat.id];
@@ -1569,7 +1779,7 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
                       <span style={{display:"flex",alignItems:"center",gap:6,fontSize:"0.82rem"}}>
                         <Bi name={cat.icon} style={{color:cat.color,fontSize:"0.82rem"}} /><span>{cat.label}</span>
                       </span>
-                      <span className="mono" style={{fontSize:"0.73rem",color:over?"#be123c":"#78716c"}}>
+                      <span className="mono" style={{fontSize:"0.73rem",color:over?"#be123c":"#4a4440"}}>
                         {fmt(avg)} est{budget>0?` / ${fmt(budget)} budget`:""}
                         {over&&<span style={{color:"#be123c",marginLeft:5,fontSize:"0.63rem"}}>▲</span>}
                       </span>
@@ -1588,23 +1798,23 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
             <button className="btn btn-ghost btn-sm" onClick={onViewAll}>View All →</button>
           </div>
           {monthTx.slice(0,6).map(t=><TxRow key={t.id} t={t} compact />)}
-          {monthTx.length===0 && <p className="mono" style={{color:"#a8a29e",fontSize:"0.76rem"}}>No transactions this month.</p>}
+          {monthTx.length===0 && <p className="mono" style={{color:"#6b6460",fontSize:"0.76rem"}}>No transactions this month.</p>}
         </div>
       </>)}
 
       {/* ══ YEARLY VIEW ══ */}
       {dashMode==="yearly" && (<>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(165px,1fr))",gap:12}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,165px),1fr))",gap:12}}>
           {[
-            {label:"Annual Income", value:fmt(yearIncome),  sub:`${selectedYear}`,                                                          accent:"#065f46"},
+            {label:"Annual Income", value:fmt(yearIncome),  sub:`${selectedYear}`,                                                          accent:"#054d38"},
             {label:"Annual Spent",  value:fmt(yearSpent),   sub:`${yearIncome?Math.round(yearSpent/yearIncome*100):0}% of income`,           accent:yearSpent>yearIncome?"#be123c":"#1c1917"},
-            {label:"Annual Net",    value:fmt(yearRemain),  sub:yearRemain>=0?"saved this year":"over budget",                              accent:yearRemain>=0?"#065f46":"#be123c"},
+            {label:"Annual Net",    value:fmt(yearRemain),  sub:yearRemain>=0?"saved this year":"over budget",                              accent:yearRemain>=0?"#054d38":"#be123c"},
             {label:"Monthly Avg",   value:fmt(yearSpent/Math.max(1,yearBarData.filter(r=>r.spent>0).length)), sub:"avg monthly spend",      accent:"#b45309"},
           ].map(s=>(
             <div key={s.label} className="stat-card">
-              <p className="mono" style={{fontSize:"0.64rem",color:"#a8a29e",letterSpacing:".08em",textTransform:"uppercase",marginBottom:7}}>{s.label}</p>
+              <p className="mono" style={{fontSize:"0.64rem",color:"#6b6460",letterSpacing:".08em",textTransform:"uppercase",marginBottom:7}}>{s.label}</p>
               <p className="pf"   style={{fontSize:"1.4rem",fontWeight:700,color:s.accent}}>{s.value}</p>
-              <p className="mono" style={{fontSize:"0.65rem",color:"#78716c",marginTop:3}}>{s.sub}</p>
+              <p className="mono" style={{fontSize:"0.65rem",color:"#4a4440",marginTop:3}}>{s.sub}</p>
             </div>
           ))}
         </div>
@@ -1622,7 +1832,7 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
           </ResponsiveContainer>
         </div>
 
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:14}}>
           <div className="card">
             <p className="pf" style={{fontSize:"0.95rem",fontStyle:"italic",marginBottom:12}}>Annual Spending by Category</p>
             {CATEGORIES.filter(c=>c.id!=="income"&&yearSpentByCat[c.id]>0).length>0 ? (
@@ -1636,7 +1846,7 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
                   <Legend iconType="circle" iconSize={7} wrapperStyle={{fontFamily:"DM Mono,monospace",fontSize:"0.67rem"}} />
                 </PieChart>
               </ResponsiveContainer>
-            ) : <p className="mono" style={{color:"#a8a29e",fontSize:"0.76rem"}}>No data for {selectedYear}.</p>}
+            ) : <p className="mono" style={{color:"#6b6460",fontSize:"0.76rem"}}>No data for {selectedYear}.</p>}
           </div>
           <div className="card">
             <p className="pf" style={{fontSize:"0.95rem",fontStyle:"italic",marginBottom:12}}>Annual Budget vs. Actual</p>
@@ -1653,7 +1863,7 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
                       <span style={{display:"flex",alignItems:"center",gap:6,fontSize:"0.81rem"}}>
                         <Bi name={cat.icon} style={{color:cat.color,fontSize:"0.81rem"}} /><span>{cat.label}</span>
                       </span>
-                      <span className="mono" style={{fontSize:"0.71rem",color:over?"#be123c":"#78716c"}}>
+                      <span className="mono" style={{fontSize:"0.71rem",color:over?"#be123c":"#4a4440"}}>
                         {fmt(spent)} / {fmt(annualBudget)}{over&&<span style={{color:"#be123c",marginLeft:4,fontSize:"0.63rem"}}>▲</span>}
                       </span>
                     </div>
@@ -1669,22 +1879,22 @@ function DashboardView({ totalIncome,totalSpent,remaining,budgets,spentByCat,pie
         {predictions.hasSamples && selectedYear===nowDate.getFullYear() && (
           <div className="card">
             <h2 className="pf" style={{fontSize:"1rem",marginBottom:4,fontStyle:"italic"}}>Year-End Forecast</h2>
-            <p className="mono" style={{fontSize:"0.67rem",color:"#a8a29e",marginBottom:14}}>Projection based on {fmt(predictions.avgMonthly)}/mo average · {predictions.monthsLeft} months remaining</p>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(165px,1fr))",gap:12}}>
+            <p className="mono" style={{fontSize:"0.67rem",color:"#6b6460",marginBottom:14}}>Projection based on {fmt(predictions.avgMonthly)}/mo average · {predictions.monthsLeft} months remaining</p>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,165px),1fr))",gap:12}}>
               <div className="stat-card">
-                <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Spent So Far</p>
+                <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Spent So Far</p>
                 <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:"#1c1917"}}>{fmt(yearSpent)}</p>
-                <p className="mono" style={{fontSize:"0.63rem",color:"#78716c",marginTop:3}}>{MONTHS[nowDate.getMonth()]} {selectedYear}</p>
+                <p className="mono" style={{fontSize:"0.63rem",color:"#4a4440",marginTop:3}}>{MONTHS[nowDate.getMonth()]} {selectedYear}</p>
               </div>
               <div className="stat-card">
-                <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Projected Total</p>
-                <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:predictions.projectedYearEnd>yearIncome?"#be123c":"#065f46"}}>{fmt(predictions.projectedYearEnd)}</p>
-                <p className="mono" style={{fontSize:"0.63rem",color:"#78716c",marginTop:3}}>by Dec {selectedYear}</p>
+                <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Projected Total</p>
+                <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:predictions.projectedYearEnd>yearIncome?"#be123c":"#054d38"}}>{fmt(predictions.projectedYearEnd)}</p>
+                <p className="mono" style={{fontSize:"0.63rem",color:"#4a4440",marginTop:3}}>by Dec {selectedYear}</p>
               </div>
               <div className="stat-card">
-                <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Projected Surplus</p>
-                <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:yearIncome-predictions.projectedYearEnd>=0?"#065f46":"#be123c"}}>{fmt(Math.abs(yearIncome-predictions.projectedYearEnd))}</p>
-                <p className="mono" style={{fontSize:"0.63rem",color:"#78716c",marginTop:3}}>{yearIncome-predictions.projectedYearEnd>=0?"on track":"projected over"}</p>
+                <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:6}}>Projected Surplus</p>
+                <p className="pf" style={{fontSize:"1.2rem",fontWeight:700,color:yearIncome-predictions.projectedYearEnd>=0?"#054d38":"#be123c"}}>{fmt(Math.abs(yearIncome-predictions.projectedYearEnd))}</p>
+                <p className="mono" style={{fontSize:"0.63rem",color:"#4a4440",marginTop:3}}>{yearIncome-predictions.projectedYearEnd>=0?"on track":"projected over"}</p>
               </div>
             </div>
           </div>
@@ -1716,27 +1926,27 @@ function ReconcileViewLegacy({ transactions, onUpdateCat, onDelete, month, spent
           <h2 className="pf" style={{fontSize:"1.05rem",fontStyle:"italic"}}>Reconciliation — {month}</h2>
           <button className="btn btn-ghost btn-sm" onClick={onImportCSV}>⬆ Import CSV</button>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12,marginBottom:14}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,140px),1fr))",gap:12,marginBottom:14}}>
           <div>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Envelope Logged</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Envelope Logged</p>
             <p className="pf" style={{fontSize:"1.3rem",fontWeight:700,color:"#1e40af"}}>{fmt(envTotal)}</p>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>{manualTx.length} manual entries</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>{manualTx.length} manual entries</p>
           </div>
           <div>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Card Actual (CSV)</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Card Actual (CSV)</p>
             <p className="pf" style={{fontSize:"1.3rem",fontWeight:700,color:"#92400e"}}>{fmt(csvTotal)}</p>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>{csvTx.length} imported entries</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>{csvTx.length} imported entries</p>
           </div>
           <div>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Difference</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Difference</p>
             <p className="pf" style={{fontSize:"1.3rem",fontWeight:700,color:inSync?"#16a34a":"#be123c"}}>{inSync?"✓ In sync":fmt(diff)}</p>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>
               {csvTx.length===0?"upload CSV to compare":inSync?"envelopes match card":"review transactions below"}
             </p>
           </div>
         </div>
         {csvTx.length===0 && (
-          <p className="mono" style={{fontSize:"0.71rem",color:"#78716c",background:"#fef3c7",borderRadius:6,padding:"8px 12px",border:"1px solid #fde68a"}}>
+          <p className="mono" style={{fontSize:"0.71rem",color:"#4a4440",background:"#fef3c7",borderRadius:6,padding:"8px 12px",border:"1px solid #fde68a"}}>
             Use the ⬆ Import CSV button to upload your credit card CSV and compare your envelope totals against what actually hit your card.
           </p>
         )}
@@ -1747,14 +1957,14 @@ function ReconcileViewLegacy({ transactions, onUpdateCat, onDelete, month, spent
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,flexWrap:"wrap",gap:10}}>
           <h2 className="pf" style={{fontSize:"1.05rem",fontStyle:"italic"}}>All Transactions — {month}</h2>
           <div style={{display:"flex",alignItems:"center",gap:8}}>
-            <span className="mono" style={{fontSize:"0.67rem",color:"#a8a29e"}}>{visible.length} entries</span>
+            <span className="mono" style={{fontSize:"0.67rem",color:"#6b6460"}}>{visible.length} entries</span>
             <select className="cat-sel" value={filter} onChange={e=>setFilter(e.target.value)} style={{width:"auto"}}>
               <option value="all">All Categories</option>
               {CATEGORIES.map(c=><option key={c.id} value={c.id}>{c.label}</option>)}
             </select>
           </div>
         </div>
-        {visible.length===0&&<p className="mono" style={{color:"#a8a29e",fontSize:"0.76rem"}}>No transactions found.</p>}
+        {visible.length===0&&<p className="mono" style={{color:"#6b6460",fontSize:"0.76rem"}}>No transactions found.</p>}
         {visible.map(t=><TxRow key={t.id} t={t} onUpdateCat={onUpdateCat} onDelete={onDelete} />)}
       </div>
     </div>
@@ -1808,20 +2018,20 @@ function ReconcileView({ transactions, allTransactions, selectedMonth, selectedY
 
       {/* View mode toggle */}
       <div style={{display:"flex",gap:6,alignItems:"center"}}>
-        <span className="mono" style={{fontSize:"0.67rem",color:"#a8a29e",marginRight:4}}>View:</span>
+        <span className="mono" style={{fontSize:"0.67rem",color:"#6b6460",marginRight:4}}>View:</span>
         <button
           onClick={()=>setViewMode("month")}
-          style={{padding:"4px 12px",borderRadius:6,border:"1px solid #e7e5e4",background:viewMode==="month"?"#1c1917":"#fff",color:viewMode==="month"?"#fff":"#78716c",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace"}}>
+          style={{padding:"4px 12px",borderRadius:6,border:"1px solid #e7e5e4",background:viewMode==="month"?"#1c1917":"#fff",color:viewMode==="month"?"#fff":"#4a4440",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace"}}>
           {month}
         </button>
         <button
           onClick={()=>setViewMode("ytd")}
-          style={{padding:"4px 12px",borderRadius:6,border:"1px solid #e7e5e4",background:viewMode==="ytd"?"#1c1917":"#fff",color:viewMode==="ytd"?"#fff":"#78716c",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace"}}>
+          style={{padding:"4px 12px",borderRadius:6,border:"1px solid #e7e5e4",background:viewMode==="ytd"?"#1c1917":"#fff",color:viewMode==="ytd"?"#fff":"#4a4440",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace"}}>
           YTD {selectedYear}
         </button>
         <button
           onClick={()=>setViewMode("year")}
-          style={{padding:"4px 12px",borderRadius:6,border:"1px solid #e7e5e4",background:viewMode==="year"?"#1c1917":"#fff",color:viewMode==="year"?"#fff":"#78716c",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace"}}>
+          style={{padding:"4px 12px",borderRadius:6,border:"1px solid #e7e5e4",background:viewMode==="year"?"#1c1917":"#fff",color:viewMode==="year"?"#fff":"#4a4440",cursor:"pointer",fontSize:"0.78rem",fontFamily:"DM Mono,monospace"}}>
           All of {selectedYear}
         </button>
       </div>
@@ -1834,27 +2044,27 @@ function ReconcileView({ transactions, allTransactions, selectedMonth, selectedY
             {viewMode==="month"&&<button className="btn btn-ghost btn-sm" onClick={onImportCSV}>Import CSV</button>}
           </div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12,marginBottom:14}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,140px),1fr))",gap:12,marginBottom:14}}>
           <div>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Envelope Logged</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Envelope Logged</p>
             <p className="pf" style={{fontSize:"1.3rem",fontWeight:700,color:"#1e40af"}}>{fmt(envTotal)}</p>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>{manualTx.length} manual entries</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>{manualTx.length} manual entries</p>
           </div>
           <div>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Card Actual (CSV)</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Card Actual (CSV)</p>
             <p className="pf" style={{fontSize:"1.3rem",fontWeight:700,color:"#92400e"}}>{fmt(csvTotal)}</p>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>{csvTx.length} imported entries</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>{csvTx.length} imported entries</p>
           </div>
           <div>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Difference</p>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em",marginBottom:4}}>Difference</p>
             <p className="pf" style={{fontSize:"1.3rem",fontWeight:700,color:inSync?"#16a34a":"#be123c"}}>{inSync?"In sync":fmt(diff)}</p>
-            <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>
+            <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>
               {csvTx.length===0?"upload CSV to compare":inSync?"envelopes match card":"review transactions below"}
             </p>
           </div>
         </div>
         {viewMode==="month"&&csvTx.length===0 && (
-          <p className="mono" style={{fontSize:"0.71rem",color:"#78716c",background:"#fef3c7",borderRadius:6,padding:"8px 12px",border:"1px solid #fde68a"}}>
+          <p className="mono" style={{fontSize:"0.71rem",color:"#4a4440",background:"#fef3c7",borderRadius:6,padding:"8px 12px",border:"1px solid #fde68a"}}>
             Use Import CSV to upload your card data and compare totals.
           </p>
         )}
@@ -1866,18 +2076,18 @@ function ReconcileView({ transactions, allTransactions, selectedMonth, selectedY
           <h2 className="pf" style={{fontSize:"1rem",fontStyle:"italic",marginBottom:12}}>
             Monthly Summary — {viewMode==="ytd" ? `YTD ${selectedYear}` : selectedYear}
           </h2>
-          <div style={{display:"grid",gridTemplateColumns:"auto 1fr 1fr auto",gap:"6px 14px",alignItems:"center"}}>
-            <span className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase"}}>Month</span>
-            <span className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",textAlign:"right"}}>Income</span>
-            <span className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",textAlign:"right"}}>Spent</span>
-            <span className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",textTransform:"uppercase",textAlign:"right"}}>Txns</span>
+          <div style={{display:"grid",gridTemplateColumns:"minmax(44px,.8fr) minmax(70px,1fr) minmax(70px,1fr) minmax(34px,.5fr)",gap:"6px 8px",alignItems:"center"}}>
+            <span className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase"}}>Month</span>
+            <span className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",textAlign:"right"}}>Income</span>
+            <span className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",textAlign:"right"}}>Spent</span>
+            <span className="mono" style={{fontSize:"0.63rem",color:"#6b6460",textTransform:"uppercase",textAlign:"right"}}>Txns</span>
             {monthlyBreakdown.map(r=>{
               const net=r.income-r.spent;
               return [
                 <span key={r.month+"m"} className="mono" style={{fontSize:"0.78rem",color:"#1c1917",fontWeight:600}}>{r.month}</span>,
-                <span key={r.month+"i"} className="mono" style={{fontSize:"0.78rem",color:"#065f46",textAlign:"right"}}>{fmt(r.income)}</span>,
+                <span key={r.month+"i"} className="mono" style={{fontSize:"0.78rem",color:"#054d38",textAlign:"right"}}>{fmt(r.income)}</span>,
                 <span key={r.month+"s"} className="mono" style={{fontSize:"0.78rem",color:r.spent>r.income&&r.income>0?"#be123c":"#92400e",textAlign:"right"}}>{fmt(r.spent)}</span>,
-                <span key={r.month+"c"} className="mono" style={{fontSize:"0.72rem",color:"#a8a29e",textAlign:"right"}}>{r.count}</span>,
+                <span key={r.month+"c"} className="mono" style={{fontSize:"0.72rem",color:"#6b6460",textAlign:"right"}}>{r.count}</span>,
               ];
             })}
           </div>
@@ -1888,14 +2098,14 @@ function ReconcileView({ transactions, allTransactions, selectedMonth, selectedY
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,flexWrap:"wrap",gap:10}}>
           <h2 className="pf" style={{fontSize:"1.05rem",fontStyle:"italic"}}>All Transactions — {viewLabel}</h2>
           <div style={{display:"flex",alignItems:"center",gap:8}}>
-            <span className="mono" style={{fontSize:"0.67rem",color:"#a8a29e"}}>{visible.length} entries</span>
+            <span className="mono" style={{fontSize:"0.67rem",color:"#6b6460"}}>{visible.length} entries</span>
             <select className="cat-sel" value={filter} onChange={e=>setFilter(e.target.value)} style={{width:"auto"}}>
               <option value="all">All Categories</option>
               {CATEGORIES.map(c=><option key={c.id} value={c.id}>{c.label}</option>)}
             </select>
           </div>
         </div>
-        {visible.length===0&&<p className="mono" style={{color:"#a8a29e",fontSize:"0.76rem"}}>No transactions found.</p>}
+        {visible.length===0&&<p className="mono" style={{color:"#6b6460",fontSize:"0.76rem"}}>No transactions found.</p>}
         {visible.map(t=><TxRow key={t.id} t={t} onUpdateCat={onUpdateCat} onDelete={onDelete} />)}
       </div>
     </div>
@@ -1913,14 +2123,14 @@ function TxRow({ t, onUpdateCat, onDelete, compact }) {
           {t.description}
           {!compact&&<span className={`tag tag-${t.source}`}>{t.source}</span>}
         </p>
-        <p className="mono" style={{fontSize:"0.65rem",color:"#a8a29e"}}>{t.date}</p>
+        <p className="mono" style={{fontSize:"0.65rem",color:"#6b6460"}}>{t.date}</p>
       </div>
       {!compact&&onUpdateCat&&(
         <select className="cat-sel" value={t.category} onChange={e=>onUpdateCat(t.id,e.target.value)} style={{flexShrink:0,width:155}}>
           {CATEGORIES.map(c=><option key={c.id} value={c.id}>{c.label}</option>)}
         </select>
       )}
-      <span className="mono" style={{fontSize:"0.86rem",fontWeight:500,color:t.type==="income"?"#065f46":"#1c1917",flexShrink:0,minWidth:74,textAlign:"right"}}>
+      <span className="mono" style={{fontSize:"0.86rem",fontWeight:500,color:t.type==="income"?"#054d38":"#1c1917",flexShrink:0,minWidth:74,textAlign:"right"}}>
         {t.type==="income"?"+":"-"}{fmt(t.amount)}
       </span>
       {onDelete&&<button className="btn-del" onClick={()=>onDelete(t.id)}>✕</button>}
@@ -2083,7 +2293,7 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
         <div style={{marginBottom:16}}><label>Monthly Income (base)</label>
           <input type="number" value={li} onChange={e=>setLi(parseFloat(e.target.value)||0)} />
         </div>
-        <p className="mono" style={{fontSize:"0.66rem",color:"#78716c",marginBottom:14,lineHeight:1.6}}>
+        <p className="mono" style={{fontSize:"0.66rem",color:"#4a4440",marginBottom:14,lineHeight:1.6}}>
           Choose which budget categories show up in Envelopes. Use `Fixed / Hidden` for bills or categories you do not need quick-spend cards for.
         </p>
         <div style={{display:"flex",flexDirection:"column",gap:14}}>
@@ -2119,7 +2329,7 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
                       fontSize:"0.84rem",
                     }}>
                     {cat.label}
-                    <span className="mono" style={{marginLeft:6,fontSize:"0.62rem",color:"#a8a29e"}}>
+                    <span className="mono" style={{marginLeft:6,fontSize:"0.62rem",color:"#6b6460"}}>
                       {expandedBudgetIds[cat.id] ? "hide sub" : "sub budgets"}
                     </span>
                   </button>
@@ -2130,7 +2340,7 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
                       border:"1px solid",
                       borderColor:le.includes(cat.id) ? "#b45309" : "#d6d3d1",
                       background:le.includes(cat.id) ? "#fff7ed" : "#fff",
-                      color:le.includes(cat.id) ? "#b45309" : "#78716c",
+                      color:le.includes(cat.id) ? "#b45309" : "#4a4440",
                       borderRadius:99,
                       padding:"4px 8px",
                       cursor:"pointer",
@@ -2153,19 +2363,19 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
                     <div style={{flex:1,background:"#f5f0eb",borderRadius:99,height:4,overflow:"hidden"}}>
                       <div style={{width:`${Math.min(spent/budget,1)*100}%`,height:"100%",background:over?"#be123c":cat.color,borderRadius:99}} />
                     </div>
-                    <span className="mono" style={{fontSize:"0.64rem",color:over?"#be123c":"#a8a29e",whiteSpace:"nowrap"}}>
+                    <span className="mono" style={{fontSize:"0.64rem",color:over?"#be123c":"#6b6460",whiteSpace:"nowrap"}}>
                       {fmt(spent)} / {fmt(budget)}
                     </span>
                   </div>
                 )}
                 {(expandedBudgetIds[cat.id] || subItems.length > 0) && (
                   <div style={{marginTop:8,paddingLeft:30,display:"flex",flexDirection:"column",gap:6}}>
-                    <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",letterSpacing:".04em",textTransform:"uppercase"}}>
+                    <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",letterSpacing:".04em",textTransform:"uppercase"}}>
                       Sub-budgets ({fmt(subTotal)} of {fmt(budget)})
                     </p>
                     {subItems.map(item=>(
                       <div key={item.id} style={{display:"flex",alignItems:"center",gap:8}}>
-                        <span className="mono" style={{flex:1,fontSize:"0.74rem",color:"#78716c"}}>{item.label}</span>
+                        <span className="mono" style={{flex:1,fontSize:"0.74rem",color:"#4a4440"}}>{item.label}</span>
                         <button
                           type="button"
                           onClick={()=>toggleSubBudgetEnvelope(cat.id, item.id)}
@@ -2173,7 +2383,7 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
                             border:"1px solid",
                             borderColor:item.envelopeOn ? "#b45309" : "#d6d3d1",
                             background:item.envelopeOn ? "#fff7ed" : "#fff",
-                            color:item.envelopeOn ? "#b45309" : "#78716c",
+                            color:item.envelopeOn ? "#b45309" : "#4a4440",
                             borderRadius:99,
                             padding:"3px 8px",
                             cursor:"pointer",
@@ -2212,8 +2422,8 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
           })}
         </div>
         <div style={{marginTop:14,paddingTop:14,borderTop:"1px dashed #e7e5e4",display:"flex",flexDirection:"column",gap:8}}>
-          <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",letterSpacing:".04em",textTransform:"uppercase"}}>Add Budget Item</p>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 110px auto auto",gap:8,alignItems:"center"}}>
+          <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",letterSpacing:".04em",textTransform:"uppercase"}}>Add Budget Item</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,140px),1fr))",gap:8,alignItems:"center"}}>
             <input
               type="text"
               placeholder="Name (e.g. Home Repairs)"
@@ -2238,7 +2448,7 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
                 border:"1px solid",
                 borderColor:newBudgetEnvelopeOn ? "#b45309" : "#d6d3d1",
                 background:newBudgetEnvelopeOn ? "#fff7ed" : "#fff",
-                color:newBudgetEnvelopeOn ? "#b45309" : "#78716c",
+                color:newBudgetEnvelopeOn ? "#b45309" : "#4a4440",
                 borderRadius:99,
                 padding:"4px 8px",
                 cursor:"pointer",
@@ -2252,15 +2462,15 @@ function BudgetsView({ budgets, income, spentByCat, envelopeCategoryIds, subBudg
             </button>
             <button className="btn btn-ghost btn-sm" onClick={addBudgetItem}>Add</button>
           </div>
-          <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e"}}>
+          <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460"}}>
             Built-in categories cannot be deleted. Custom categories can be removed with the × button.
           </p>
         </div>
         <div style={{marginTop:18,paddingTop:14,borderTop:"1px solid #f5f0eb",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
           <div>
-            <p className="mono" style={{fontSize:"0.65rem",color:"#a8a29e",textTransform:"uppercase",letterSpacing:".07em"}}>Total Budgeted</p>
+            <p className="mono" style={{fontSize:"0.65rem",color:"#6b6460",textTransform:"uppercase",letterSpacing:".07em"}}>Total Budgeted</p>
             <p className="mono" style={{fontSize:"1.05rem",fontWeight:500}}>{fmt(total)}</p>
-            <p className="mono" style={{fontSize:"0.7rem",color:surplus>=0?"#065f46":"#be123c",marginTop:2}}>
+            <p className="mono" style={{fontSize:"0.7rem",color:surplus>=0?"#054d38":"#be123c",marginTop:2}}>
               {surplus>=0?"+":""}{fmt(surplus)} unallocated
             </p>
           </div>
@@ -2363,28 +2573,28 @@ function TaxTaskerView({ items, onUpdateItem, onAddItem, onDeleteItem, taxYear }
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:12}}>
           <div>
             <h2 className="pf" style={{fontSize:"1.2rem",fontStyle:"italic"}}>Tax Tasker</h2>
-            <p className="mono" style={{fontSize:"0.68rem",color:"#78716c",marginTop:3}}>
+            <p className="mono" style={{fontSize:"0.68rem",color:"#4a4440",marginTop:3}}>
               {taxYear} tax year · gather documents for Heather
             </p>
           </div>
           <div style={{textAlign:"right"}}>
             <p className="mono" style={{fontSize:"1.3rem",fontWeight:500,color:pct===100?"#16a34a":"#1c1917"}}>
-              {readyCount} <span style={{color:"#a8a29e",fontSize:"0.9rem"}}>/ {items.length} ready</span>
+              {readyCount} <span style={{color:"#6b6460",fontSize:"0.9rem"}}>/ {items.length} ready</span>
             </p>
-            {naCount>0&&<p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>{naCount} marked N/A</p>}
+            {naCount>0&&<p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>{naCount} marked N/A</p>}
           </div>
         </div>
         <div style={{marginTop:14}}>
           <div style={{background:"#f5f0eb",borderRadius:99,height:6,overflow:"hidden"}}>
             <div style={{width:`${pct}%`,height:"100%",background:pct===100?"#16a34a":"#1e40af",borderRadius:99,transition:"width .5s"}} />
           </div>
-          <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:5}}>{pct}% complete</p>
+          <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:5}}>{pct}% complete</p>
         </div>
         <div style={{display:"flex",gap:16,marginTop:12}}>
-          {[{label:"○  Pending",color:"#d6d3d1"},{label:"✓  Ready",color:"#16a34a"},{label:"—  N/A",color:"#a8a29e"}].map(l=>(
+          {[{label:"○  Pending",color:"#d6d3d1"},{label:"✓  Ready",color:"#16a34a"},{label:"—  N/A",color:"#6b6460"}].map(l=>(
             <span key={l.label} className="mono" style={{fontSize:"0.65rem",color:l.color}}>{l.label}</span>
           ))}
-          <span className="mono" style={{fontSize:"0.65rem",color:"#78716c",marginLeft:"auto"}}>Click circle to cycle status</span>
+          <span className="mono" style={{fontSize:"0.65rem",color:"#4a4440",marginLeft:"auto"}}>Click circle to cycle status</span>
         </div>
       </div>
 
@@ -2416,18 +2626,18 @@ function TaxTaskerView({ items, onUpdateItem, onAddItem, onDeleteItem, taxYear }
                 </button>
                 <div style={{flex:1,minWidth:0}}>
                   <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
-                    <p style={{fontSize:"0.88rem",fontWeight:500,textDecoration:item.status==="na"?"line-through":"none",color:item.status==="na"?"#a8a29e":"#1c1917"}}>
+                    <p style={{fontSize:"0.88rem",fontWeight:500,textDecoration:item.status==="na"?"line-through":"none",color:item.status==="na"?"#6b6460":"#1c1917"}}>
                       {item.title}
                     </p>
                     <span className={`source-badge ${srcClass[item.source]||"src-records"}`}>{item.source}</span>
                     {item.custom&&<span style={{fontSize:"0.58rem",color:"#b45309",fontFamily:"DM Mono,monospace",letterSpacing:".04em"}}>CUSTOM</span>}
                   </div>
-                  <p className="mono" style={{fontSize:"0.69rem",color:"#78716c",marginTop:3,lineHeight:1.5}}>{item.description}</p>
+                  <p className="mono" style={{fontSize:"0.69rem",color:"#4a4440",marginTop:3,lineHeight:1.5}}>{item.description}</p>
                   <div style={{marginTop:7}}>
                     <button onClick={()=>setExpandedNotes(p=>({...p,[item.id]:!p[item.id]}))}
-                      style={{background:"none",border:"none",cursor:"pointer",fontFamily:"DM Mono,monospace",fontSize:"0.65rem",color:"#a8a29e",padding:0,letterSpacing:".03em"}}>
+                      style={{background:"none",border:"none",cursor:"pointer",fontFamily:"DM Mono,monospace",fontSize:"0.65rem",color:"#6b6460",padding:0,letterSpacing:".03em"}}>
                       {notesOpen?"hide notes":`+ ${item.notes?"edit notes":"add notes"}`}
-                      {item.notes&&!notesOpen&&<span style={{marginLeft:8,color:"#78716c"}}>"{item.notes.slice(0,40)}{item.notes.length>40?"…":""}"</span>}
+                      {item.notes&&!notesOpen&&<span style={{marginLeft:8,color:"#4a4440"}}>"{item.notes.slice(0,40)}{item.notes.length>40?"…":""}"</span>}
                     </button>
                     {notesOpen&&(
                       <textarea
@@ -2445,7 +2655,7 @@ function TaxTaskerView({ items, onUpdateItem, onAddItem, onDeleteItem, taxYear }
             </div>
           );
         })}
-        {visible.length===0&&<p className="mono" style={{color:"#a8a29e",fontSize:"0.76rem",padding:"16px 0"}}>No items in this group.</p>}
+        {visible.length===0&&<p className="mono" style={{color:"#6b6460",fontSize:"0.76rem",padding:"16px 0"}}>No items in this group.</p>}
       </div>
 
       {/* Add custom */}
@@ -2461,7 +2671,7 @@ function TaxTaskerView({ items, onUpdateItem, onAddItem, onDeleteItem, taxYear }
             <div><label>Description (optional)</label>
               <input value={newItem.description} onChange={e=>setNewItem(n=>({...n,description:e.target.value}))} placeholder="Where to get it, why you need it, etc." />
             </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,180px),1fr))",gap:10}}>
               <div><label>Group</label>
                 <select value={newItem.group} onChange={e=>setNewItem(n=>({...n,group:e.target.value}))}>
                   {TAX_GROUPS.map(g=><option key={g} value={g}>{g}</option>)}
@@ -2516,7 +2726,7 @@ function KeywordsView({ keywords, onSave, onReclassify, onImportMap }) {
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,flexWrap:"wrap",gap:10}}>
         <div>
           <h2 className="pf" style={{fontSize:"1.05rem",fontStyle:"italic"}}>Auto-Categorization Keywords</h2>
-          <p className="mono" style={{fontSize:"0.68rem",color:"#78716c",marginTop:3}}>Matched against transaction descriptions when importing CSV.</p>
+          <p className="mono" style={{fontSize:"0.68rem",color:"#4a4440",marginTop:3}}>Matched against transaction descriptions when importing CSV.</p>
         </div>
         <div style={{display:"flex",gap:8}}>
           <input
@@ -2531,7 +2741,7 @@ function KeywordsView({ keywords, onSave, onReclassify, onImportMap }) {
           <button className="btn btn-amber btn-sm" onClick={doSave}>Save Keywords</button>
         </div>
       </div>
-      <div style={{display:"grid",gridTemplateColumns:"160px 1fr",gap:14,alignItems:"start"}}>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:14,alignItems:"start"}}>
         <div className="card" style={{padding:"10px 0"}}>
           {CATEGORIES.map(cat=>(
             <div key={cat.id} onClick={()=>setActive(cat.id)}
@@ -2549,7 +2759,7 @@ function KeywordsView({ keywords, onSave, onReclassify, onImportMap }) {
             {CATEGORIES.find(c=>c.id===active) && <Bi name={CATEGORIES.find(c=>c.id===active).icon} style={{fontSize:"1rem",color:CATEGORIES.find(c=>c.id===active).color}} />}
             <h3 className="pf" style={{fontSize:"1.05rem",fontStyle:"italic"}}>{CATEGORIES.find(c=>c.id===active)?.label}</h3>
           </div>
-          <p className="mono" style={{fontSize:"0.68rem",color:"#a8a29e",marginBottom:10,lineHeight:1.7}}>
+          <p className="mono" style={{fontSize:"0.68rem",color:"#6b6460",marginBottom:10,lineHeight:1.7}}>
             Comma-separated keywords. Transaction descriptions are checked for these strings (case-insensitive).
           </p>
           <textarea
@@ -2559,7 +2769,7 @@ function KeywordsView({ keywords, onSave, onReclassify, onImportMap }) {
             style={{width:"100%",border:"1.5px solid #d6d3d1",borderRadius:6,padding:"10px 12px",fontFamily:"DM Mono,monospace",fontSize:"0.78rem",background:"#faf7f2",color:"#1c1917",outline:"none",resize:"vertical",lineHeight:1.8}}
             placeholder="e.g. hy-vee, grocery, aldi, fareway"
           />
-          <p className="mono" style={{fontSize:"0.65rem",color:"#a8a29e",marginTop:8}}>
+          <p className="mono" style={{fontSize:"0.65rem",color:"#6b6460",marginTop:8}}>
             {(lk[active]||"").split(",").filter(s=>s.trim()).length} keywords defined
           </p>
         </div>
@@ -2577,7 +2787,7 @@ function ImportPreview({ transactions, onConfirm, onCancel, onUpdateCat }) {
       <div className="card" style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
         <div>
           <h2 className="pf" style={{fontSize:"1.1rem",fontStyle:"italic"}}>Review Import</h2>
-          <p className="mono" style={{fontSize:"0.7rem",color:"#78716c",marginTop:4}}>
+          <p className="mono" style={{fontSize:"0.7rem",color:"#4a4440",marginTop:4}}>
             {transactions.length} transactions · {expenses.length} expenses · {fmt(total)} total
           </p>
           <p className="mono" style={{fontSize:"0.67rem",color:"#0369a1",marginTop:6}}>
@@ -2590,7 +2800,7 @@ function ImportPreview({ transactions, onConfirm, onCancel, onUpdateCat }) {
         </div>
       </div>
       <div className="card">
-        <p className="mono" style={{fontSize:"0.67rem",color:"#a8a29e",marginBottom:13,letterSpacing:".06em",textTransform:"uppercase"}}>Adjust categories before importing</p>
+        <p className="mono" style={{fontSize:"0.67rem",color:"#6b6460",marginBottom:13,letterSpacing:".06em",textTransform:"uppercase"}}>Adjust categories before importing</p>
         {transactions.map(t=>{
           const cat=CATEGORIES.find(c=>c.id===t.category);
           const sv=isSplitVendor(t.description);
@@ -2604,12 +2814,12 @@ function ImportPreview({ transactions, onConfirm, onCancel, onUpdateCat }) {
                     {sv && <span style={{fontSize:"0.65rem",background:"#fef3c7",color:"#92400e",borderRadius:4,padding:"1px 5px",marginRight:5,fontWeight:600}}>SPLIT</span>}
                     {t.description}
                   </p>
-                  <p className="mono" style={{fontSize:"0.65rem",color:"#a8a29e"}}>{t.date}</p>
+                  <p className="mono" style={{fontSize:"0.65rem",color:"#6b6460"}}>{t.date}</p>
                 </div>
                 <select className="cat-sel" value={t.category} onChange={e=>onUpdateCat(t.id,e.target.value)} style={{width:155,flexShrink:0}}>
                   {CATEGORIES.map(c=><option key={c.id} value={c.id}>{c.label}</option>)}
                 </select>
-                <span className="mono" style={{fontSize:"0.84rem",fontWeight:500,color:t.type==="income"?"#065f46":"#1c1917",flexShrink:0,minWidth:72,textAlign:"right"}}>
+                <span className="mono" style={{fontSize:"0.84rem",fontWeight:500,color:t.type==="income"?"#054d38":"#1c1917",flexShrink:0,minWidth:72,textAlign:"right"}}>
                   {t.type==="income"?"+":"-"}{fmt(t.amount)}
                 </span>
               </div>
@@ -2620,7 +2830,7 @@ function ImportPreview({ transactions, onConfirm, onCancel, onUpdateCat }) {
                       {cat} {Math.round(pct*100)}% · {fmt(t.amount*pct)}
                     </span>
                   ))}
-                  <span className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",alignSelf:"center"}}>— adjust category manually</span>
+                  <span className="mono" style={{fontSize:"0.62rem",color:"#6b6460",alignSelf:"center"}}>— adjust category manually</span>
                 </div>
               )}
             </div>
@@ -2872,7 +3082,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
             style={{flex:1,padding:"14px 10px",border:"none",cursor:"pointer",fontFamily:"'DM Mono',monospace",
               fontSize:"0.78rem",letterSpacing:".05em",transition:"all .15s",
               background:activeKid===k.id?k.color:"transparent",
-              color:activeKid===k.id?"#fff":"#78716c",
+              color:activeKid===k.id?"#fff":"#4a4440",
               borderRight:"1px solid #e7e5e4",
             }}>
             <Bi name={k.icon} style={{marginRight:5}} /> {k.name}
@@ -2880,10 +3090,10 @@ function KidsLedgerView({ kids, onUpdateKids }) {
         ))}
       </div>
       {/* Balances */}
-      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(145px,1fr))",gap:12}}>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,145px),1fr))",gap:12}}>
         {[
           {label:"Wallet",    icon:"wallet2",    key:"wallet",    sub:"free to spend",   color:kid.color},
-          {label:"Savings",   icon:"bank2",      key:"savings",   sub:"20% of earnings", color:"#065f46"},
+          {label:"Savings",   icon:"bank2",      key:"savings",   sub:"20% of earnings", color:"#054d38"},
           {label:"Christmas", icon:"gift-fill",  key:"christmas", sub:"20% of earnings", color:"#be123c"},
           {label:"Tithe",     icon:"heart-fill", key:"tithe",     sub:"10% of earnings", color:"#0369a1"},
         ].map(b=>(
@@ -2897,12 +3107,12 @@ function KidsLedgerView({ kids, onUpdateKids }) {
               cursor:"pointer",
               border:bucketAction?.key===b.key ? `1.5px solid ${b.color}` : undefined,
             }}>
-            <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e",letterSpacing:".06em",textTransform:"uppercase",marginBottom:6,display:"flex",alignItems:"center",gap:6}}>
+            <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460",letterSpacing:".06em",textTransform:"uppercase",marginBottom:6,display:"flex",alignItems:"center",gap:6}}>
               <Bi name={b.icon} style={{fontSize:"0.8rem"}} />
               <span>{b.label}</span>
             </p>
             <p className="pf" style={{fontSize:"1.35rem",fontWeight:700,color:b.color}}>{fmt(kid.balances[b.key])}</p>
-            <p className="mono" style={{fontSize:"0.6rem",color:"#a8a29e",marginTop:2}}>
+            <p className="mono" style={{fontSize:"0.6rem",color:"#6b6460",marginTop:2}}>
               {b.key==="wallet" ? "tap to spend or gift" : `${b.sub} - tap to record`}
             </p>
           </button>
@@ -2928,7 +3138,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
               marginBottom:10,
               color:
                 bucketAction.key==="wallet" ? kid.color :
-                bucketAction.key==="savings" ? "#065f46" :
+                bucketAction.key==="savings" ? "#054d38" :
                 bucketAction.key==="christmas" ? "#be123c" :
                 "#0369a1",
             }}>
@@ -2950,7 +3160,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
           )}
           <div style={{display:"flex",flexDirection:"column",gap:8}}>
             <div style={{display:"flex",gap:8,alignItems:"center"}}>
-              <span className="mono" style={{color:"#78716c",flexShrink:0}}>$</span>
+              <span className="mono" style={{color:"#4a4440",flexShrink:0}}>$</span>
               <input type="number" min="0" step="0.01" value={bucketAmt} onChange={e=>setBucketAmt(e.target.value)} placeholder="0.00" autoFocus />
             </div>
             <input type="text" value={bucketDesc} onChange={e=>setBucketDesc(e.target.value)} placeholder="Description" />
@@ -2967,13 +3177,13 @@ function KidsLedgerView({ kids, onUpdateKids }) {
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,flexWrap:"wrap",gap:10}}>
           <div>
             <h2 className="pf" style={{fontSize:"1.05rem",fontStyle:"italic"}}>Weekly Chores</h2>
-            <p className="mono" style={{fontSize:"0.64rem",color:"#a8a29e",marginTop:2}}>
+            <p className="mono" style={{fontSize:"0.64rem",color:"#6b6460",marginTop:2}}>
               Tap once for normal chores, use +/- for repeats, then click Pay Week · Income splits 50/20/20/10
             </p>
           </div>
           <div style={{display:"flex",gap:8,alignItems:"center"}}>
             {earnableThisWeek>0&&(
-              <span className="mono" style={{fontSize:"0.73rem",color:"#065f46",background:"#f0fdf4",padding:"4px 10px",borderRadius:99,border:"1px solid #bbf7d0"}}>
+              <span className="mono" style={{fontSize:"0.73rem",color:"#054d38",background:"#f0fdf4",padding:"4px 10px",borderRadius:99,border:"1px solid #bbf7d0"}}>
                 +{fmt(earnableThisWeek)} ready
               </span>
             )}
@@ -3001,19 +3211,19 @@ function KidsLedgerView({ kids, onUpdateKids }) {
             >
               {isCompleted?"✓":""}
             </button>
-            <span style={{flex:1,fontSize:"0.86rem",textDecoration:isCompleted?"line-through":"none",color:isCompleted?"#a8a29e":"#1c1917"}}>
+            <span style={{flex:1,fontSize:"0.86rem",textDecoration:isCompleted?"line-through":"none",color:isCompleted?"#6b6460":"#1c1917"}}>
               {chore.name}
             </span>
             <div style={{display:"flex",alignItems:"center",gap:4,flexShrink:0}}>
               <button className="btn-del" onClick={()=>adjustChoreCount(chore.id,-1)} title="One less">−</button>
-              <span className="mono" style={{fontSize:"0.75rem",minWidth:22,textAlign:"center",color:isCompleted?kid.color:"#78716c"}}>
+              <span className="mono" style={{fontSize:"0.75rem",minWidth:22,textAlign:"center",color:isCompleted?kid.color:"#4a4440"}}>
                 {choreCount}
               </span>
               <button className="btn-del" onClick={()=>adjustChoreCount(chore.id,1)} title="One more">+</button>
             </div>
             {editingChoreId === chore.id ? (
               <div style={{display:"flex",alignItems:"center",gap:6,flexShrink:0}}>
-                <span className="mono" style={{fontSize:"0.78rem",color:"#78716c"}}>$</span>
+                <span className="mono" style={{fontSize:"0.78rem",color:"#4a4440"}}>$</span>
                 <input
                   type="number"
                   min="0"
@@ -3032,7 +3242,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
               </div>
             ) : (
               <>
-                <span className="mono" style={{fontSize:"0.78rem",color:"#78716c",minWidth:50,textAlign:"right"}}>{fmt(chore.rate)}</span>
+                <span className="mono" style={{fontSize:"0.78rem",color:"#4a4440",minWidth:50,textAlign:"right"}}>{fmt(chore.rate)}</span>
                 <button className="btn-del" onClick={()=>startEditingChoreRate(chore)} title="Edit rate"><Bi name="pencil" /></button>
               </>
             )}
@@ -3045,7 +3255,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
             <input value={newChore.name} onChange={e=>setNewChore(n=>({...n,name:e.target.value}))}
               placeholder="Chore name" style={{flex:1,minWidth:120}} autoFocus />
             <div style={{display:"flex",alignItems:"center",gap:4,flexShrink:0}}>
-              <span className="mono" style={{color:"#78716c"}}>$</span>
+              <span className="mono" style={{color:"#4a4440"}}>$</span>
               <input type="number" min="0" step="0.25" value={newChore.rate}
                 onChange={e=>setNewChore(n=>({...n,rate:e.target.value}))}
                 placeholder="Rate" style={{width:80}} />
@@ -3062,7 +3272,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
       {earnableThisWeek>0&&(
         <div className="card" style={{background:"#fffbf5",borderColor:"#fde68a"}}>
           <p className="mono" style={{fontSize:"0.65rem",color:"#b45309",letterSpacing:".06em",marginBottom:10}}>EARNING BREAKDOWN (when you pay week)</p>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(72px,1fr))",gap:8}}>
             {[
               {label:"Wallet 50%",  amt:earnableThisWeek*0.50},
               {label:"Savings 20%", amt:earnableThisWeek*0.20},
@@ -3070,7 +3280,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
               {label:"Tithe 10%",   amt:earnableThisWeek*0.10},
             ].map(b=>(
               <div key={b.label} style={{textAlign:"center"}}>
-                <p className="mono" style={{fontSize:"0.6rem",color:"#a8a29e",marginBottom:3}}>{b.label}</p>
+                <p className="mono" style={{fontSize:"0.6rem",color:"#6b6460",marginBottom:3}}>{b.label}</p>
                 <p className="mono" style={{fontSize:"0.9rem",fontWeight:500,color:"#1c1917"}}>{fmt(b.amt)}</p>
               </div>
             ))}
@@ -3083,14 +3293,14 @@ function KidsLedgerView({ kids, onUpdateKids }) {
         <div className="card">
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",gap:12,marginBottom:14,flexWrap:"wrap"}}>
             <h2 className="pf" style={{fontSize:"1.05rem",fontStyle:"italic"}}>History</h2>
-            <p className="mono" style={{fontSize:"0.62rem",color:"#a8a29e"}}>Delete entries here if one was added by mistake.</p>
+            <p className="mono" style={{fontSize:"0.62rem",color:"#6b6460"}}>Delete entries here if one was added by mistake.</p>
           </div>
           {kid.history.slice(0,20).map(tx=>{
             const typeStyle={
-              chores:{icon:"check2-square",color:"#065f46"},
+              chores:{icon:"check2-square",color:"#054d38"},
               gift:{icon:"gift-fill",color:"#0369a1"},
               withdrawal:{icon:"dash-circle-fill",color:"#be123c"},
-            }[tx.type]||{icon:"dot",color:"#78716c"};
+            }[tx.type]||{icon:"dot",color:"#4a4440"};
             const historyDetail = tx.type==="chores"
               ? `wallet +${fmt(tx.wallet)} | savings +${fmt(tx.savings)} | christmas +${fmt(tx.christmas)} | tithe +${fmt(tx.tithe)}`
               : tx.type==="bucketAction"
@@ -3099,7 +3309,7 @@ function KidsLedgerView({ kids, onUpdateKids }) {
             const historyStyle = tx.type==="bucketAction"
               ? {
                   icon: tx.bucket==="wallet" ? "wallet2" : tx.bucket==="savings" ? "bank2" : tx.bucket==="christmas" ? "gift-fill" : "heart-fill",
-                  color: tx.bucket==="wallet" ? kid.color : tx.bucket==="savings" ? "#065f46" : tx.bucket==="christmas" ? "#be123c" : "#0369a1",
+                  color: tx.bucket==="wallet" ? kid.color : tx.bucket==="savings" ? "#054d38" : tx.bucket==="christmas" ? "#be123c" : "#0369a1",
                 }
               : typeStyle;
             return (
@@ -3110,9 +3320,9 @@ function KidsLedgerView({ kids, onUpdateKids }) {
                   </span>
                   <div style={{flex:1,minWidth:0}}>
                     <p style={{fontSize:"0.83rem",fontWeight:500,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{tx.description}</p>
-                    <p className="mono" style={{fontSize:"0.63rem",color:"#a8a29e",marginTop:2}}>{tx.date}</p>
+                    <p className="mono" style={{fontSize:"0.63rem",color:"#6b6460",marginTop:2}}>{tx.date}</p>
                     {historyDetail&&(
-                      <p className="mono" style={{fontSize:"0.62rem",color:"#78716c",marginTop:3}}>{historyDetail}</p>
+                      <p className="mono" style={{fontSize:"0.62rem",color:"#4a4440",marginTop:3}}>{historyDetail}</p>
                     )}
                   </div>
                   <div style={{display:"flex",alignItems:"center",gap:8,flexShrink:0}}>
@@ -3163,25 +3373,50 @@ function AuthView() {
 
   const isSuccess = message.toLowerCase().includes("check") || message.toLowerCase().includes("sent");
   return (
-    <div style={{minHeight:"100vh",background:"#faf7f2",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"system-ui,sans-serif"}}>
+    <div className="auth-shell" style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"system-ui,sans-serif"}}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0;}
         .pf{font-family:'Playfair Display',Georgia,serif;}
         .mono{font-family:'DM Mono',monospace;}
-        *{box-sizing:border-box;margin:0;padding:0;}
+        :root{
+          --glass-rim:inset 0 1px 0 rgba(255,255,255,.84),inset 0 -1px 0 rgba(255,255,255,.14),inset 1px 0 0 rgba(255,255,255,.22),inset -1px 0 0 rgba(255,255,255,.22);
+          --accent:#06684f;--accent2:#1360a4;--gold:#c9902e;
+          --text-1:#10201f;--text-2:#4d6762;--text-3:#78908a;
+        }
+        @keyframes meshDrift{
+          0%,100%{transform:scale(1.02) translate(0%,0%);}
+          33%    {transform:scale(1.06) translate(2%,-1.5%);}
+          66%    {transform:scale(1.03) translate(-1.5%,2%);}
+        }
+        .auth-shell{position:relative;overflow:hidden;color:#ffffff;background:linear-gradient(145deg,#0d1f1c 0%,#0e1e2e 55%,#111824 100%);}
+        .auth-shell::before{content:"";position:fixed;inset:0;z-index:0;
+          background:
+            radial-gradient(ellipse 70% 55% at 5% 10%,rgba(6,104,79,.50) 0%,transparent 62%),
+            radial-gradient(ellipse 58% 50% at 95% 8%,rgba(19,96,164,.38) 0%,transparent 56%),
+            radial-gradient(ellipse 45% 40% at 50% 95%,rgba(201,144,46,.22) 0%,transparent 52%),
+            radial-gradient(ellipse 36% 30% at 80% 65%,rgba(6,104,79,.18) 0%,transparent 46%);
+          animation:meshDrift 22s ease-in-out infinite;filter:saturate(1.15) contrast(.96);}
+        .auth-shell::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+          background:
+            radial-gradient(circle at 15% 10%,rgba(6,104,79,.22),transparent 28%),
+            radial-gradient(circle at 88% 6%,rgba(19,96,164,.18),transparent 32%),
+            linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.18));
+          backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+        .auth-shell > style,.auth-shell > div{position:relative;z-index:1;}
       `}</style>
       <div style={{width:"100%",maxWidth:400,padding:"0 20px"}}>
-        <div style={{background:"#fff",border:"1px solid #e7e5e4",borderRadius:12,padding:"36px 32px",boxShadow:"0 4px 20px rgba(0,0,0,.06)"}}>
-          <h1 className="pf" style={{fontSize:"1.7rem",fontWeight:700,fontStyle:"italic",marginBottom:5,color:"#1c1917"}}>The Ledger</h1>
-          <p className="mono" style={{fontSize:"0.68rem",color:"#a8a29e",marginBottom:28,letterSpacing:".06em"}}>
+        <div style={{background:"linear-gradient(145deg,rgba(255,255,255,.68),rgba(255,255,255,.38))",border:"1px solid rgba(255,255,255,.62)",borderRadius:24,padding:"36px 32px",boxShadow:"0 24px 70px rgba(22,48,43,.18),0 8px 24px rgba(42,83,102,.10),inset 0 1px 0 rgba(255,255,255,.74)",backdropFilter:"blur(28px) saturate(1.18)",WebkitBackdropFilter:"blur(28px) saturate(1.18)"}}>
+          <h1 className="pf" style={{fontSize:"1.7rem",fontWeight:700,fontStyle:"italic",marginBottom:5,color:"#10201f"}}>The Ledger</h1>
+          <p className="mono" style={{fontSize:"0.68rem",color:"#78908a",marginBottom:28,letterSpacing:".06em"}}>
             family finance · {mode==="login"?"sign in":mode==="signup"?"create account":"magic link"}
           </p>
           <div style={{display:"flex",gap:5,marginBottom:20}}>
             {[["login","Sign In"],["signup","Sign Up"],["magic","Magic Link"]].map(([m,label])=>(
               <button key={m} onClick={()=>{setMode(m);setMessage("");}}
-                style={{flex:1,padding:"6px 4px",borderRadius:6,border:"1px solid",
-                  borderColor:mode===m?"#b45309":"#e7e5e4",background:mode===m?"#fff7ed":"#fff",
-                  color:mode===m?"#b45309":"#78716c",cursor:"pointer",
+                style={{flex:1,padding:"7px 4px",borderRadius:999,border:"1px solid",
+                  borderColor:mode===m?"rgba(255,255,255,.34)":"rgba(255,255,255,.50)",background:mode===m?"linear-gradient(135deg,#08785f,#2f80c0)":"rgba(255,255,255,.34)",
+                  color:mode===m?"#fff":"#4d6762",cursor:"pointer",boxShadow:mode===m?"0 10px 24px rgba(8,120,95,.22)":"inset 0 1px 0 rgba(255,255,255,.58)",backdropFilter:"blur(14px)",WebkitBackdropFilter:"blur(14px)",
                   fontFamily:"DM Mono,monospace",fontSize:"0.67rem",letterSpacing:".04em"}}>
                 {label}
               </button>
@@ -3189,40 +3424,40 @@ function AuthView() {
           </div>
           <div style={{display:"flex",flexDirection:"column",gap:13}}>
             <div>
-              <label style={{fontFamily:"DM Mono,monospace",fontSize:"0.67rem",letterSpacing:".07em",color:"#78716c",display:"block",marginBottom:5,textTransform:"uppercase"}}>Email</label>
+              <label style={{fontFamily:"DM Mono,monospace",fontSize:"0.67rem",letterSpacing:".07em",color:"#4a4440",display:"block",marginBottom:5,textTransform:"uppercase"}}>Email</label>
               <input type="email" value={email} onChange={e=>setEmail(e.target.value)}
                 onKeyDown={e=>{if(e.key==="Enter")handleSubmit();}}
                 placeholder="your@email.com" autoFocus
-                style={{width:"100%",border:"1.5px solid #d6d3d1",borderRadius:6,padding:"9px 11px",fontFamily:"DM Mono,monospace",fontSize:"0.82rem",background:"#faf7f2",color:"#1c1917",outline:"none"}}
+                style={{width:"100%",border:"1.5px solid rgba(255,255,255,.54)",borderRadius:14,padding:"9px 11px",fontFamily:"DM Mono,monospace",fontSize:"0.82rem",background:"rgba(255,255,255,.48)",color:"#10201f",outline:"none",backdropFilter:"blur(16px)",WebkitBackdropFilter:"blur(16px)"}}
               />
             </div>
             {mode !== "magic" && (
               <div>
-                <label style={{fontFamily:"DM Mono,monospace",fontSize:"0.67rem",letterSpacing:".07em",color:"#78716c",display:"block",marginBottom:5,textTransform:"uppercase"}}>Password</label>
+                <label style={{fontFamily:"DM Mono,monospace",fontSize:"0.67rem",letterSpacing:".07em",color:"#4a4440",display:"block",marginBottom:5,textTransform:"uppercase"}}>Password</label>
                 <input type="password" value={password} onChange={e=>setPassword(e.target.value)}
                   onKeyDown={e=>{if(e.key==="Enter")handleSubmit();}}
                   placeholder="••••••••"
-                  style={{width:"100%",border:"1.5px solid #d6d3d1",borderRadius:6,padding:"9px 11px",fontFamily:"DM Mono,monospace",fontSize:"0.82rem",background:"#faf7f2",color:"#1c1917",outline:"none"}}
+                  style={{width:"100%",border:"1.5px solid rgba(255,255,255,.54)",borderRadius:14,padding:"9px 11px",fontFamily:"DM Mono,monospace",fontSize:"0.82rem",background:"rgba(255,255,255,.48)",color:"#10201f",outline:"none",backdropFilter:"blur(16px)",WebkitBackdropFilter:"blur(16px)"}}
                 />
               </div>
             )}
             <button onClick={handleSubmit} disabled={loading}
-              style={{padding:"11px",background:loading?"#e7e5e4":"#b45309",color:loading?"#a8a29e":"#fef3c7",
-                border:"none",borderRadius:6,cursor:loading?"not-allowed":"pointer",
+              style={{padding:"11px",background:loading?"rgba(255,255,255,.40)":"linear-gradient(135deg,#c9902e,#e7b955 48%,#08785f)",color:loading?"#78908a":"#fff",
+                border:"1px solid rgba(255,255,255,.34)",borderRadius:999,cursor:loading?"not-allowed":"pointer",boxShadow:loading?"none":"0 12px 30px rgba(8,120,95,.22)",
                 fontFamily:"DM Mono,monospace",fontSize:"0.82rem",letterSpacing:".05em",marginTop:4}}>
               {loading?"…":mode==="login"?"Sign In →":mode==="signup"?"Create Account →":"Send Magic Link →"}
             </button>
             {message && (
               <p style={{fontSize:"0.72rem",fontFamily:"DM Mono,monospace",
-                color:isSuccess?"#065f46":"#be123c",padding:"8px 10px",
-                background:isSuccess?"#f0fdf4":"#fff1f2",borderRadius:6,
-                border:"1px solid",borderColor:isSuccess?"#bbf7d0":"#fecdd3",lineHeight:1.6}}>
+                color:isSuccess?"#06684f":"#b4234a",padding:"8px 10px",
+                background:"rgba(255,255,255,.42)",borderRadius:12,
+                border:"1px solid rgba(255,255,255,.48)",lineHeight:1.6,backdropFilter:"blur(14px)",WebkitBackdropFilter:"blur(14px)"}}>
                 {message}
               </p>
             )}
           </div>
         </div>
-        <p style={{fontFamily:"DM Mono,monospace",fontSize:"0.63rem",color:"#a8a29e",textAlign:"center",marginTop:14,letterSpacing:".04em"}}>
+        <p style={{fontFamily:"DM Mono,monospace",fontSize:"0.63rem",color:"rgba(255,255,255,.86)",textAlign:"center",marginTop:14,letterSpacing:".04em",textShadow:"0 1px 8px rgba(16,32,31,.28)"}}>
           Your data is encrypted and stored in the cloud.
         </p>
       </div>
@@ -3249,7 +3484,7 @@ export default function App() {
 
   if (authLoading) return (
     <div style={{minHeight:"100vh",background:"#faf7f2",display:"flex",alignItems:"center",justifyContent:"center"}}>
-      <p style={{fontFamily:"DM Mono,monospace",fontSize:"0.78rem",color:"#a8a29e",letterSpacing:".08em"}}>loading…</p>
+      <p style={{fontFamily:"DM Mono,monospace",fontSize:"0.78rem",color:"#6b6460",letterSpacing:".08em"}}>loading…</p>
     </div>
   );
 
