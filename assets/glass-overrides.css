@@ -1222,3 +1222,41 @@ button[title="Switch to dark mode"],
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+/* Softer over-budget envelope state. */
+.ledger-envelope-over {
+  background: linear-gradient(180deg, rgba(159, 18, 57, .16) 0%, rgba(159, 18, 57, .10) 100%) !important;
+  border-color: rgba(159, 18, 57, .58) !important;
+  border-left-color: rgba(159, 18, 57, .72) !important;
+  color: var(--text-1) !important;
+}
+
+.ledger-envelope-over:hover {
+  background: linear-gradient(180deg, rgba(159, 18, 57, .20) 0%, rgba(159, 18, 57, .12) 100%) !important;
+  border-color: rgba(159, 18, 57, .68) !important;
+}
+
+.ledger-envelope-over,
+.ledger-envelope-over *,
+.ledger-envelope-over [style] {
+  color: var(--text-1) !important;
+  border-color: rgba(159, 18, 57, .48) !important;
+}
+
+.ledger-envelope-over > div > div:first-child > i,
+.ledger-envelope-over > div > div:first-child > .bi,
+.ledger-envelope-over > div > div:first-child > [class^="bi-"],
+.ledger-envelope-over > div > div:first-child > [class*=" bi-"] {
+  color: #7f102e !important;
+}
+
+.ledger-envelope-over > div > div:first-child > div > div:not(:first-child) p {
+  color: #7f102e !important;
+}
+
+.ledger-envelope-over > div > div:first-child > div > div:has(> span) span,
+.ledger-envelope-over > div > div:first-child > div > div:has(> span) span[style] {
+  color: #7f102e !important;
+  background: rgba(255, 255, 255, .42) !important;
+  border: 1px solid rgba(127, 16, 46, .50) !important;
+}
