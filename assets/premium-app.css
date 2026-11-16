@@ -1,0 +1,238 @@
+/* Cox Wallet / The Ledger: adult, mobile-first visual system.
+   Presentation only. Financial logic and stored data are untouched. */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+:root,
+.app-shell,
+.app-shell.dark {
+  --bg: #f3f4f1;
+  --bg-card: #fff;
+  --bg-input: #f8faf9;
+  --bg-nav: #fff;
+  --bg-accent-dim: #edf4f0;
+  --bg-env-open: #fff;
+  --bg-spend: #fff;
+  --border: #dfe5e2;
+  --border-strong: #a6b6ae;
+  --text-1: #172923;
+  --text-2: #52645c;
+  --text-3: #78877f;
+  --accent: #176449;
+  --accent-fg: #fff;
+  --accent2: #386957;
+  --accent2-fg: #fff;
+  --over: #ae554a;
+  --over-bg: #fbeeea;
+  --glass: #fff;
+  --glass-strong: #fff;
+  --glass-border: #dfe5e2;
+  --shadow-soft: 0 10px 30px rgba(20,43,34,.055);
+  color: var(--text-1);
+}
+html { background:#f3f4f1 !important; }
+body { background:#f3f4f1 !important; color:#172923 !important; }
+body::before, body::after { background:none !important; opacity:0 !important; }
+.app-shell, .app-shell.dark { background:transparent !important; }
+.app-shell main { max-width:1100px !important; padding-top: 10px !important; }
+html, body, .app-shell, .app-shell button, .app-shell input,
+.app-shell select, .app-shell textarea {
+  font-family:"DM Sans",system-ui,-apple-system,sans-serif !important;
+}
+.pf, h1,h2,h3,.envelope-card strong,
+.app-shell .btn {
+  font-family:"Manrope",system-ui,-apple-system,sans-serif !important;
+  letter-spacing:-.035em !important;
+}
+.pf,h1,h2,h3 { font-weight:750 !important; }
+.mono, [style*="DM Mono"],[style*="monospace"] {
+  font-family:"DM Sans",system-ui,sans-serif !important;
+  letter-spacing:0 !important;
+  font-variant-numeric:tabular-nums;
+}
+.app-shell .card, .app-shell .stat-card,
+.app-shell .envelope-card, .app-shell .more-drawer,
+.app-shell .env-modal-sheet, .app-shell .toast,
+.app-shell .ledger-envelope-tile {
+  background:#fff !important;
+  border:1px solid #e0e7e2 !important;
+  border-radius:20px !important;
+  box-shadow:0 8px 28px rgba(18,45,33,.045) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.app-shell .card, .app-shell .stat-card,
+.app-shell .envelope-card { padding:20px !important; }
+.app-shell .stat-card { min-height:114px; }
+.app-shell .stat-card .pf { font-weight:800 !important; letter-spacing:-.045em !important; }
+.app-shell .card:hover,.app-shell .stat-card:hover,
+.app-shell .envelope-card:hover { transform:none !important; }
+.app-shell .stat-card:active, .app-shell .ledger-envelope-tile:active {
+  transform:scale(.987) !important;
+}
+.app-shell .ledger-envelope-tile {
+  min-height:108px !important;
+  border-left:1px solid #e0e7e2 !important;
+  overflow:hidden !important;
+}
+.app-shell .ledger-envelope-tile > div { min-height:100px !important; }
+.app-shell .ledger-envelope-tile > div > div:first-child {
+  justify-content:flex-start !important;
+  text-align:left !important;
+  padding:0 18px !important;
+  gap:13px !important;
+}
+.app-shell .ledger-envelope-tile > div > div:first-child > div {
+  align-items:flex-start !important;
+  text-align:left !important;
+}
+.app-shell .ledger-envelope-tile > div > div:first-child > i,
+.app-shell .ledger-envelope-tile > div > div:first-child > .bi {
+  color:#176449 !important;
+  font-size:1.35rem !important;
+}
+.app-shell .ledger-envelope-tile:hover { border-color:#a4c1b1 !important; background:#fcfefc !important; }
+.app-shell .nav-bar {
+  width:min(1100px, calc(100% - 36px)) !important;
+  min-height:78px !important;
+  padding:18px 2px 12px !important;
+  gap:6px !important;
+  border:0 !important;
+  background:transparent !important;
+}
+.app-shell .nav-bar::before {
+  content:"THE LEDGER" !important;
+  font-family:"Manrope",sans-serif !important;
+  color:#172923 !important;
+  font-weight:800 !important;
+  font-size:1.12rem !important;
+  letter-spacing:-.035em !important;
+  margin-right:auto !important;
+}
+.app-shell .nav-item {
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:7px !important;
+  padding:11px 15px !important;
+  border-radius:12px !important;
+  font-size:.9rem !important;
+  font-weight:600 !important;
+  min-height:43px !important;
+  color:#5b6c63 !important;
+}
+.app-shell .nav-item .bi,
+.app-shell .nav-item [class^="bi-"],
+.app-shell .nav-item [class*=" bi-"] { display:inline-block !important; font-size:1rem !important; }
+.app-shell .nav-item.active {
+  background:#e4efe9 !important;
+  color:#176449 !important;
+  border:1px solid transparent !important;
+}
+.app-shell .btn, .app-shell .btn-amber, .app-shell .env-save-btn {
+  min-height:44px !important;
+  border-radius:12px !important;
+  font-size:.88rem !important;
+  font-weight:700 !important;
+  letter-spacing:0 !important;
+  transition: background .18s ease, transform .18s ease, box-shadow .18s ease !important;
+}
+.app-shell .btn-amber, .app-shell .env-save-btn {
+  background:#176449 !important;
+  color:white !important;
+  border:1px solid #176449 !important;
+  box-shadow:0 4px 10px rgba(23,100,73,.12) !important;
+}
+.app-shell .btn-amber:hover,.app-shell .env-save-btn:hover {
+  background:#104e37 !important;
+  color:white !important;
+}
+.app-shell .btn-ghost, .app-shell .month-pill,
+.app-shell .more-drawer-item {
+  background:#fff !important;
+  border:1px solid #e0e7e2 !important;
+  border-radius:12px !important;
+  color:#34493e !important;
+}
+.app-shell .month-pill.active, .app-shell .more-drawer-item.active {
+  background:#e4efe9 !important;
+  color:#176449 !important;
+  border:1px solid #bad5c5 !important;
+}
+.app-shell input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),
+.app-shell select, .app-shell textarea, .app-shell .cat-sel {
+  background:#f8faf9 !important;
+  border:1px solid #d8e2db !important;
+  border-radius:12px !important;
+  color:#172923 !important;
+  -webkit-text-fill-color:#172923 !important;
+  min-height:46px !important;
+  font-size:16px !important;
+}
+.app-shell input:focus, .app-shell select:focus,
+.app-shell textarea:focus, .app-shell .cat-sel:focus {
+  background:#fff !important;
+  border-color:#176449 !important;
+  box-shadow:0 0 0 3px rgba(23,100,73,.12) !important;
+}
+.app-shell .env-amount-input {
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  min-height:0 !important;
+}
+.app-shell label { color:#53665b !important; font-size:.72rem !important; font-weight:700 !important; letter-spacing:.025em !important; }
+.app-shell .pbar { background:#e3ebe5 !important; border-radius:999px !important; }
+.app-shell .pbar-fill { background:#176449 !important; border-radius:999px !important; }
+.app-shell .env-modal-overlay,.app-shell .more-overlay {
+  background:rgba(15,34,25,.36) !important;
+  backdrop-filter:blur(4px) !important;
+  -webkit-backdrop-filter:blur(4px) !important;
+}
+.app-shell .env-modal-sheet,.app-shell .more-drawer {
+  background:#fff !important;
+  border-radius:24px 24px 0 0 !important;
+  box-shadow:0 -10px 40px rgba(18,45,33,.12) !important;
+}
+.app-shell .env-modal-sheet [style*="linear-gradient"],
+.app-shell .more-drawer [style*="linear-gradient"] { background:#fff !important; }
+.app-shell .bottom-nav {
+  background:rgba(255,255,255,.95) !important;
+  border:1px solid #dce5df !important;
+  box-shadow:0 12px 35px rgba(15,45,30,.15) !important;
+  border-radius:22px !important;
+  -webkit-backdrop-filter:blur(18px) !important;
+  backdrop-filter:blur(18px) !important;
+}
+.app-shell .bottom-nav-item { color:#74847a !important; border:0 !important; border-radius:15px !important; }
+.app-shell .bottom-nav-item.active,.app-shell .bottom-nav-item.more-active {
+  color:#176449 !important;
+  background:#e4efe9 !important;
+  border:0 !important;
+}
+.app-shell :is(button,a,input,select,textarea):focus-visible {
+  outline:3px solid rgba(23,100,73,.35) !important;
+  outline-offset:2px;
+}
+@media(max-width:767px) {
+  .app-shell main {
+    max-width:100% !important;
+    padding:12px 16px calc(132px + env(safe-area-inset-bottom,0px)) !important;
+  }
+  .app-shell .nav-bar { min-height:64px !important; padding:15px 16px 8px !important; width:100% !important; }
+  .app-shell .nav-bar::before { font-size:1.06rem !important; }
+  .app-shell .card,.app-shell .stat-card,.app-shell .envelope-card { padding:17px !important; border-radius:18px !important; }
+  .app-shell .stat-card { min-height:100px; }
+  .app-shell .bottom-nav {
+    width:min(390px,calc(100% - 28px)) !important;
+    left:50% !important;
+    bottom:calc(12px + env(safe-area-inset-bottom,0px)) !important;
+    padding:7px 9px !important;
+    min-height:62px !important;
+  }
+  .app-shell .bottom-nav-item { min-height:48px !important; padding:7px 10px !important; }
+  .app-shell .env-modal-sheet,.app-shell .more-drawer { border-radius:24px 24px 0 0 !important; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .app-shell *, .app-shell *::before,.app-shell *::after {
+   animation-duration:.01ms !important;
+   transition-duration:.01ms !important;
+ }
+}
