@@ -693,3 +693,30 @@ html, body, .app-shell, .app-shell button, .app-shell input,
     box-sizing:border-box !important;
   }
 }
+
+
+/* Strong, unmistakable selected child account */
+.app-shell button.kid-account-tab[aria-pressed="true"],
+.app-shell button.kid-account-tab.active {
+  background:#176449 !important;
+  background-color:#176449 !important;
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  border:2px solid #176449 !important;
+  border-radius:12px !important;
+  font-weight:800 !important;
+  box-shadow:0 3px 12px rgba(23,100,73,.24) !important;
+}
+.app-shell button.kid-account-tab[aria-pressed="true"] *,
+.app-shell button.kid-account-tab.active * {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+}
+.app-shell button.kid-account-tab[aria-pressed="false"] {
+  background:#f4f7f5 !important;
+  background-color:#f4f7f5 !important;
+  color:#51645b !important;
+  -webkit-text-fill-color:#51645b !important;
+  border:2px solid transparent !important;
+  box-shadow:none !important;
+}
