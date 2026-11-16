@@ -720,3 +720,38 @@ html, body, .app-shell, .app-shell button, .app-shell input,
   border:2px solid transparent !important;
   box-shadow:none !important;
 }
+
+
+/* Child selector: override legacy broad main-button and inline-background resets. */
+.app-shell main button.kid-account-tab.active[aria-pressed="true"][style*="background"],
+.app-shell main button.kid-account-tab[aria-pressed="true"][style*="background"] {
+  background:#176449 !important;
+  background-color:#176449 !important;
+  background-image:none !important;
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  border:2px solid #0f523a !important;
+  border-radius:12px !important;
+  box-shadow:0 3px 12px rgba(23,100,73,.24) !important;
+  opacity:1 !important;
+  filter:none !important;
+  font-weight:800 !important;
+}
+.app-shell main button.kid-account-tab[aria-pressed="true"] .bi,
+.app-shell main button.kid-account-tab[aria-pressed="true"] [class^="bi-"],
+.app-shell main button.kid-account-tab[aria-pressed="true"] [class*=" bi-"] {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+}
+.app-shell main button.kid-account-tab[aria-pressed="false"][style*="background"] {
+  background:#f4f7f5 !important;
+  background-color:#f4f7f5 !important;
+  color:#51645b !important;
+  -webkit-text-fill-color:#51645b !important;
+  border:2px solid transparent !important;
+  opacity:1 !important;
+  box-shadow:none !important;
+}
+.app-shell main button.kid-account-tab[aria-pressed="false"] .bi {
+  color:#51645b !important;
+}
